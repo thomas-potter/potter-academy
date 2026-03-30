@@ -146,7 +146,7 @@ header { padding: 8rem 2rem 5rem; border-bottom: 1px solid var(--border); text-a
 .btn-secondary:hover { background: #fff; color: #000; }
 
 /* ─── SCROLL INDICATOR ─── */
-.scroll-indicator { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; font-size: 0.7rem; color: var(--muted); animation: bounceDown 2s infinite; text-transform: uppercase; letter-spacing: 0.05em; }
+.scroll-indicator { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; font-size: 0.7rem; color: var(--muted); animation: bounceDown 2s infinite; text-transform: uppercase; letter-spacing: 0.05em; z-index: 10; }
 @keyframes bounceDown { 0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; } 50% { transform: translateX(-50%) translateY(8px); } }
 
 /* ─── SECTION WRAPPER ─── */
