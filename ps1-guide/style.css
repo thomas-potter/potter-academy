@@ -232,13 +232,13 @@ footer { padding: 4rem 1.5rem; border-top: 1px solid var(--border); text-align: 
 
 /* ─── RESPONSIVE ─────────────────────────────── */
 @media (max-width: 900px) {
-    .hero-container { min-height: auto; flex-direction: column; align-items: stretch; padding: 1.5rem 1.5rem 0; }
-    .hero-bg-image { position: relative; width: 100%; height: clamp(240px, 50vw, 300px); z-index: 0; margin: 0 0 1.5rem 0; order: -1; border-radius: 12px; overflow: hidden; }
+    .hero-container { min-height: auto; flex-direction: column; align-items: stretch; text-align: center; }
+    .hero-bg-image { position: relative; width: 100%; height: clamp(240px, 50vw, 300px); z-index: 0; margin: 5rem 0 1.5rem 0; order: -1; border-radius: 12px; overflow: hidden;  }
     .hero-bg-image::after { display: none; }
     .hero-split { grid-template-columns: 1fr; min-height: auto; }
     .hero-left { border-right: none; border-bottom: none; background: none; backdrop-filter: none; padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 4vw, 2.5rem); margin: 0; border-radius: 0; }
     .hero-right { min-height: 320px; }
-    .hero-h1 { font-size: clamp(1.75rem, 6vw, 2.5rem); line-height: 1.15; margin-bottom: 1rem; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); }
+    .hero-h1 { font-size: clamp(3rem, 6vw, 2.5rem); line-height: 1.15; margin-bottom: 1rem; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); }
     .hero-sub { text-shadow: none; }
     .bonuses { padding: 0; }
     .bonus-card { flex-direction: column; align-items: flex-start; }
