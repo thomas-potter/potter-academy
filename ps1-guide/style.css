@@ -43,6 +43,7 @@ header { border-bottom: 1px solid var(--border); overflow: hidden; }
     height: 100%;
     z-index: 0;
     overflow: hidden;
+    transform: translateX(20%);
 }
 
 .hero-bg-image::after {
@@ -53,7 +54,7 @@ header { border-bottom: 1px solid var(--border); overflow: hidden; }
         to right,
         rgba(10,10,10,0.95) 0%,
         rgba(10,10,10,0.75) 30%,
-        rgba(10,10,10,0.3) 60%,
+        rgba(10,10,10,0.2) 40%,
         transparent 100%
     );
     pointer-events: none;
