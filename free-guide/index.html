@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Character Guide</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="shortcut icon" type="image/png" href="Favicon.png" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&family=Familjen+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+
+<body>
+  <div class="container">
+
+
+
+    <!-- SUB -->
+    <h2 class="subheading">
+      Free Guide for Blender Artists Who Want Better Characters
+    </h2>
+
+    <!-- MAIN -->
+    <h1 class="main-heading">
+      Learn the Exact Workflow to Create 
+      <span class="underline">ANY</span> 3D Character in Blender
+    </h1>
+
+    <!-- CONTENT -->
+    <div class="content-wrapper">
+
+      <!-- LEFT -->
+      <div class="text-box">
+        <ul class="benefits-list">
+          <li>
+            <span class="checkmark">✓</span>
+            Stop wasting time on <b>random tutorials</b> that don’t connect into a real workflow.
+          </li>
+
+          <li>
+            <span class="checkmark">✓</span>
+            Follow a <b>clear, repeatable process</b> to go from idea → finished character.
+          </li>
+
+          <li>
+            <span class="checkmark">✓</span>
+            Build a <b>strong foundation</b> so you can create characters with confidence.
+          </li>
+        </ul>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="image-box">
+        <div class="image-placeholder">
+          <img src="https://d1yei2z3i6k35z.cloudfront.net/9770196/69ca3b22516283.98763855_Rendertest21.png" alt="3D Character Render" class="rounded-image" />
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FORM -->
+    <form 
+      class="input-with-button" 
+      action="https://app.gumroad.com/follow_from_embed_form" 
+      method="post"
+      id="gumroad-follow-form-embed"
+    >
+      <input type="hidden" name="seller_id" value="5878735321688" />
+
+      <input 
+        id="gumroad-follow-form-embed-input"
+        type="email" 
+        name="email" 
+        class="bold-placeholder"
+        placeholder="Enter your email"
+        required
+      />
+
+      <button 
+        id="gumroad-follow-form-embed-button" 
+        class="primary" 
+        type="submit"
+      >
+        Get the Free Guide
+      </button>
+    </form>
+
+    <!-- TRUST -->
+    <h3 class="ps">
+      You'll get a quick confirmation email — just click it and the guide is yours.
+    </h3>
+
+  </div>
+
+  <!-- TRACKING -->
+  <script>
+    document
+      .getElementById('gumroad-follow-form-embed-button')
+      .addEventListener('click', function() {
+        if (!document.getElementById('gumroad-follow-form-embed-input').value) return;
+
+        posthog.capture('guide_requested', {
+          button_name: 'Get the Free Guide',
+          email: document.getElementById('gumroad-follow-form-embed-input').value
+        });
+      });
+  </script>
+
+</body>
+</html>
