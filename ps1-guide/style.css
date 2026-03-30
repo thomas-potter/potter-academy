@@ -5,7 +5,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Epilogue', sans-serif; }
 img { display: block; max-width: 100%; }
 a { text-decoration: none; color: inherit; }
 button { cursor: pointer; font-family: inherit; border: none; }
-::selection { background: #22c55e; color: #000; }
+::selection { background: #FDD835; color: #000; }
 
 /* ─── TOKENS ─────────────────────────────────────── */
 :root { --green: #FDD835; --green-nav: #22c55e; --bg: #0a0a0a; --card: #111; --border: #222; --white: #fff; --muted: #6b7280; --radius: 4px; --max-w: 1200px; }
