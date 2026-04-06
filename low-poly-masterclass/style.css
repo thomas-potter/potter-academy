@@ -8,7 +8,7 @@ button { cursor: pointer; font-family: inherit; border: none; }
 ::selection { background: #22c55e; color: #000; }
 
 /* ─── TOKENS ─────────────────────────────────────── */
-:root { --green: #22c55e; --bg: #0a0a0a; --card: #111; --border: #222; --white: #fff; --muted: #6b7280; --radius: 4px; --max-w: 1200px; }
+:root { --green: #22c55e; --bg: #0a0a0a; --card: #111; --border: #222; --white: #fff; --muted: #9ca3af; --radius: 4px; --max-w: 1200px; }
 
 /* ─── GLOBAL ─────────────────────────────────────── */
 .container { max-width: var(--max-w); margin: 0 auto; padding: 4rem 1.5rem; }
@@ -36,8 +36,7 @@ header { padding: 7rem 2rem 4rem; border-bottom: 1px solid var(--border); }
 .hero-cta-group { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
 .btn-primary { font-family: 'Epilogue', sans-serif; background: var(--green); color: #000; padding: .7rem 2rem; font-weight: 800; font-size: 1rem; border: 2px solid #000; letter-spacing: 0.04em; transition: all 0.1s; white-space: nowrap; }
 .btn-primary:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0px #fff; }
-.hero-microcopy { font-size: .75rem; color: #666; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
-
+.hero-microcopy { font-size: .75rem; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; } 
 /* ─── VIDEO PLAYER ──────────────────────────────── */
 .video-wrapper { width: 100%; max-width: 1000px; height: auto; border: 2px solid var(--border); border-radius: var(--radius); overflow: hidden; position: relative; background: #000; }
 .video-inner { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; cursor: pointer; display: flex; align-items: center; justify-content: center; }
@@ -96,7 +95,7 @@ header { padding: 7rem 2rem 4rem; border-bottom: 1px solid var(--border); }
 .bonus-info h3 { font-size: 1.05rem; font-weight: 900; margin-bottom: .3rem; }
 .bonus-info p { font-size: .85rem; color: var(--muted); }
 .bonus-price { text-align: right; flex-shrink: 0; }
-.bonus-price .was { text-decoration: line-through; color: #444; font-size: 1rem; display: block; }
+.bonus-price .was { text-decoration: line-through; color: #71717a; font-size: 1rem; display: block; }
 .bonus-price .free { color: var(--green); font-size: 1.6rem; font-weight: 900; font-style: italic; }
 
 /* ─── TESTIMONIALS ──────────────────────────────── */
@@ -118,20 +117,20 @@ header { padding: 7rem 2rem 4rem; border-bottom: 1px solid var(--border); }
 .guarantee-card h3 { font-size: .85rem; font-weight: 800; color: var(--white); margin-bottom: .3rem; text-transform: uppercase; letter-spacing: 0.04em; }
 .guarantee-card p { font-size: .85rem; color: var(--muted); line-height: 1.7; }
 .buy-card { max-width: 680px; margin: 0 auto; background: #f5f7f5; color: #0a0c0a; border: 2px solid #111; padding: 3.5rem 3.5rem 3rem; text-align: center; display: flex; flex-direction: column; align-items: center; box-shadow: 6px 6px 0px var(--green); }
-.buy-eyebrow { font-size: .6rem; text-transform: uppercase; letter-spacing: 0.12em; color: #5a7060; font-weight: 700; margin-bottom: 1rem; }
+.buy-eyebrow { font-size: .6rem; text-transform: uppercase; letter-spacing: 0.12em; color: #3b4d40; font-weight: 700; margin-bottom: 1rem; }
 .buy-card h2 { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 900; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase; color: #0a0c0a; margin-bottom: 2rem; }
 .price-row { display: flex; align-items: center; gap: 1rem; justify-content: center; margin-bottom: .5rem; }
 .price-main { font-size: 5rem; font-weight: 900; letter-spacing: -0.05em; color: #0a0c0a; line-height: 1; }
-.price-was { text-decoration: line-through; color: #999; font-size: 1.5rem; font-weight: 600; }
+.price-was { text-decoration: line-through; color: #71717a; font-size: 1.5rem; font-weight: 600; }
 .price-save { display: inline-block; background: var(--green); color: #000; font-size: .6rem; font-weight: 700; letter-spacing: 0.08em; padding: .25rem .6rem; text-transform: uppercase; margin-bottom: 2rem; }
 .features-grid { text-align: left; display: grid; grid-template-columns: 1fr 1fr; width: 100%; margin-bottom: 2rem; border: 1px solid #dde0dd; }
 .feature-item { display: flex; align-items: center; gap: .5rem; font-size: .85rem; font-weight: 600; color: #1a221a; padding: .85rem 1rem; border-bottom: 1px solid #dde0dd; }
 .feature-item:nth-child(odd) { border-right: 1px solid #dde0dd; }
 .feature-item:nth-last-child(-n+2) { border-bottom: none; }
-.feature-item .check { color: var(--green); font-weight: 800; flex-shrink: 0; }
+.feature-item .check { color: #166534; font-weight: 800; flex-shrink: 0; }
 .btn-buy { width: 100%; padding: 1.2rem 2rem; background: #0a0c0a; color: #f5f7f5; font-family: 'Epilogue', sans-serif; font-size: 1rem; font-weight: 900; border: 2px solid #0a0c0a; text-transform: uppercase; letter-spacing: 0.04em; transition: background 0.15s, color 0.15s, transform 0.1s; margin-bottom: 1rem; }
 .btn-buy:hover { background: var(--green); color: #000; transform: translate(-2px, -2px); box-shadow: 4px 4px 0 #000; }
-.buy-secure { font-size: .6rem; color: #7a8e7c; text-transform: uppercase; letter-spacing: 0.08em; }
+.buy-secure { font-size: .6rem; color: #4b5d4e; text-transform: uppercase; letter-spacing: 0.08em; }
 
 /* ─── FAQ / Q&A ──────────────────────────────── */
 #faq { max-width: var(--max-w); margin: 0 auto; padding: 7rem 1.5rem; border-top: 1px solid var(--border); }
@@ -154,7 +153,7 @@ footer { padding: 4rem 1.5rem; border-top: 1px solid var(--border); text-align: 
 .footer-logo span { color: var(--green); }
 .footer-copy { font-size: .75rem; color: var(--muted); margin-bottom: 1.5rem; }
 .footer-links { display: flex; gap: 2rem; justify-content: center; }
-.footer-links a { font-size: .7rem; font-weight: 700; color: #444; text-transform: uppercase; transition: color 0.2s; }
+.footer-links a { font-size: .7rem; font-weight: 700; color: var(--muted); text-transform: uppercase; transition: color 0.2s; }
 .footer-links a:hover { color: #fff; }
 
 /* ─── RESPONSIVE ─────────────────────────────── */
