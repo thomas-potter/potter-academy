@@ -21,18 +21,29 @@
     n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},
     e.__SV=1)}(document,window.posthog||[]);
 
-    posthog.init('phc_F7460Uy9MePAEHfj7chiorFkrl0ZsCcDcouPLnpoPvo', {
-    api_host: 'https://eu.i.posthog.com'
+    // FIX 2 & 6: Disable noisy autocapture and use explicit initialization
+        posthog.init('phc_F7460Uy9MePAEHfj7chiorFkrl0ZsCcDcouPLnpoPvo', {
+            api_host: 'https://eu.i.posthog.com',
+            autocapture: false // FIX 6: Disable noisy autocapture
+        });
+
+        // FIX 2: Manually track pageview on initial load (assuming this is the main landing page)
+        posthog.capture('$pageview', {
+            location: 'homepage',
+            source: 'direct'
     });
     </script>
 </head>
+
 <body>
 
-    <!-- NAV -->
+        <!-- NAV -->
     <nav>
         <div class="nav-inner">
-            <a href="https://www.potteracademy.uk" class="nav-logo">POTTER<span>3D</span></a>
-            <a href="#courses" class="nav-cta">Explore</a>
+            <!-- FIX 1: Explicit event capture for navigation clicks -->
+            <a href="https://www.potteracademy.uk" class="nav-logo" data-event-capture="nav_clicked" data-item="potter3d">POTTER<span>3D</span></a>
+            <!-- FIX 1: Explicit event capture for navigation clicks -->
+            <a href="#courses" class="nav-cta" data-event-capture="nav_clicked" data-item="explore_courses">Explore</a>
         </div>
     </nav>
 
@@ -43,8 +54,10 @@
                 Master <span class="accent">3D Character Creation</span> in Blender
             </h1>
             <div class="hero-cta-group">
-                <a href="#courses" class="btn-primary">Explore Courses →</a>
-                <a href="/free-guide" class="btn-secondary">Get Free Guide</a>
+                <!-- FIX 1 & 5: Explicit event capture for CTA clicks -->
+                <a href="#courses" class="btn-primary" data-event-capture="cta_clicked" data-location="hero" data-label="explore_courses">Explore Courses →</a>
+                <!-- FIX 1 & 5: Explicit event capture for CTA clicks -->
+                <a href="/free-guide" class="btn-secondary" data-event-capture="cta_clicked" data-location="hero" data-label="get_free_guide">Get Free Guide</a>
             </div>
         </div>
     </header>
@@ -57,36 +70,40 @@
             </div>
 
             <div class="courses-grid">
-                <a href="/low-poly-masterclass" class="course-card featured">
+                <!-- FIX 1 & 5: Add data attributes for event tracking -->
+                <a href="/low-poly-masterclass" class="course-card featured" data-event-capture="course_viewed" data-page="low_poly_masterclass" data-position="featured">
                     <div class="course-thumb">
                         <img src="https://d1yei2z3i6k35z.cloudfront.net/9770196/69c28ceeb32411.64199487_maxresdefault3.jpg" alt="Low Poly Character Creation">
                     </div>
                     <div class="course-body">
                         <span class="course-tag featured-tag">In Depth</span>
-                        <h3>Master Low Poly Character Creation</h3>
+                        <h3 data-event-capture="course_viewed" data-page="low_poly_masterclass">Master Low Poly Character Creation</h3>
                         <p>End the confusion with solid workflows to create any character in Blender. Perfect for game developers and artists new to 3D.</p>
                         <div class="course-footer">
                             <div class="course-price">
                                 <span class="price-main">$39</span>
                             </div>
-                            <span class="btn-course">Learn More →</span>
+                            <!-- FIX 1 & 5: Add data attributes for event tracking -->
+                            <span class="btn-course" data-event-capture="cta_clicked" data-location="courses" data-label="low_poly_masterclass">Learn More →</span>
                         </div>
                     </div>
                 </a>
 
-                <a href="/ps1-guide" class="course-card">
+                <!-- FIX 1 & 5: Add data attributes for event tracking -->
+                <a href="/ps1-guide" class="course-card" data-event-capture="course_viewed" data-page="ps1_guide" data-position="popular">
                     <div class="course-thumb">
                         <img src="https://d1yei2z3i6k35z.cloudfront.net/9770196/69ca5c634e8f51.54503174_ps1_v2thumbnail.jpg" alt="PS1 Character Creation">
                     </div>
                     <div class="course-body">
                         <span class="course-tag">Most Popular</span>
-                        <h3>Create PS1 Characters in Blender V2</h3>
+                        <h3 data-event-capture="course_viewed" data-page="ps1_guide">Create PS1 Characters in Blender V2</h3>
                         <p>Learn advanced techniques to create beautiful PS1-style characters. 8+ hours of in-depth training with direct feedback.</p>
                         <div class="course-footer">
                             <div class="course-price">
                                 <span class="price-main">$39</span>
                             </div>
-                            <span class="btn-course">Learn More →</span>
+                            <!-- FIX 1 & 5: Add data attributes for event tracking -->
+                            <span class="btn-course" data-event-capture="cta_clicked" data-location="courses" data-label="ps1_guide">Learn More →</span>
                         </div>
                     </div>
                 </a>
@@ -103,27 +120,30 @@
             </div>
             
             <div class="playlists-grid">
-                <a href="https://www.youtube.com/playlist?list=PLYAFctXyURilNnvAQjc1iptR_IKG2VjKU" class="playlist-card">
+                <!-- FIX 1 & 5: Add data attributes for event tracking -->
+                <a href="https://www.youtube.com/playlist?list=PLYAFctXyURilNnvAQjc1iptR_IKG2VjKU" class="playlist-card" data-event-capture="resource_clicked" data-resource="blender_game_chars">
                     <div class="playlist-thumb" style="background: url('https://i.ytimg.com/vi/dl7geQJgxI8/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLA3DijqRNnRPQCw-o75j8PLujAvLA') center/cover;">
                         <span class="playlist-icon">▶</span>
                     </div>
-                    <h3>Create Game Ready Characters in Blender!</h3>
+                    <h3 data-event-capture="resource_clicked" data-resource="blender_game_chars">Create Game Ready Characters in Blender!</h3>
                     <p>Learn how to make Low poly 3D Characters Step by Step for FREE using Blender!</p>
                 </a>
 
-                <a href="https://www.youtube.com/playlist?list=PLYAFctXyURimOTnPDSD8XETijLhtIsw5r" class="playlist-card">
+                <!-- FIX 1 & 5: Add data attributes for event tracking -->
+                <a href="https://www.youtube.com/playlist?list=PLYAFctXyURimOTnPDSD8XETijLhtIsw5r" class="playlist-card" data-event-capture="resource_clicked" data-resource="fix_game_chars">
                     <div class="playlist-thumb" style="background: url('https://i.ytimg.com/vi/9WqFxptKZcQ/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDPr9g0MM6MsWuhrapkKVwv8eSs-A') center/cover;">
                         <span class="playlist-icon">▶</span>
                     </div>
-                    <h3>Fix your Game Characters!</h3>
-                    <p>Solve common issues when making characters in blender</p>
+                    <h3 data-event-capture="resource_clicked" data-resource="fix_game_chars">Fix your Game Characters!</h3>
+                    <p></p>
                 </a>
 
-                <a href="https://www.youtube.com/playlist?list=PLYAFctXyURikwAgjzHPcqoTJiEwjoUn-S" class="playlist-card">
+                <!-- FIX 1 & 5: Add data attributes for event tracking -->
+                <a href="https://www.youtube.com/playlist?list=PLYAFctXyURikwAgjzHPcqoTJiEwjoUn-S" class="playlist-card" data-event-capture="resource_clicked" data-resource="ps1_characters">
                     <div class="playlist-thumb" style="background: url('https://i.ytimg.com/vi/TBSfByl0kwM/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDFSvBL7jAzkhEtKw3dc4ZoAL64bg') center/cover;">
                         <span class="playlist-icon">▶</span>
                     </div>
-                    <h3>Learn to make PS1 Characters in Blender</h3>
+                    <h3 data-event-capture="resource_clicked" data-resource="ps1_characters">Learn to make PS1 Characters in Blender</h3>
                     <p>Tips and tricks to make ps1 characters in blender</p>
                 </a>
             </div>
@@ -133,7 +153,7 @@
     <!-- TESTIMONIALS -->
     <section id="testimonials">
         <div class="section-inner">
-            <h2>Student Success Stories</h2>
+            <h2 data-event-capture="pageview_context" data-location="homepage">Student Success Stories</h2>
             <div class="testimonials-grid">
                 <div class="testimonial">
                     <p class="stars">★★★★★</p>
@@ -155,17 +175,20 @@
     </section>
 
     <!-- FOOTER -->
-    <footer>
+    <footer data-event-capture="pageview_context" data-location="homepage">
         <div class="footer-inner">
             <div class="footer-logo">POTTER<span>3D</span></div>
             <p class="footer-copy">© 2026 Thomas Potter Studio. All rights reserved.</p>
+            <!-- FIX 1: Explicit event capture for footer links -->
             <div class="footer-links">
-                <a href="/terms">Terms</a>
+                <a href="/terms" data-event-capture="nav_clicked" data-item="terms">Terms</a>
             </div>
         </div>
     </footer>
 
     <script>
+
+
         // Scroll indicator animation
         const scrollIndicator = document.querySelector('.scroll-indicator');
         if (scrollIndicator) {
