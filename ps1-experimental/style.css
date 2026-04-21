@@ -1,0 +1,209 @@
+
+/* === 90s ZINE / PS1 TERMINAL CORE === */
+:root {
+	--neon-green: #00ff41;
+	--dark-green: #003b00;
+	--bg-black: #0a0a0a;
+	--zine-white: #e8e8e8;
+	--hot-pink: #ff00ff;
+	--glitch-gap: 5px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
+
+body {
+	background-color: var(--bg-black);
+	color: var(--zine-white);
+	font-family: 'Courier New', Courier, monospace;
+	line-height: 1.4;
+	overflow-x: hidden;
+	word-wrap: break-word;
+}
+
+/* === CRT & NOISE OVERLAYS === */
+body::before {
+	content: ""; position: fixed; inset: 0;
+	background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+	background-size: 100% 3px, 3px 100%; z-index: 9999; pointer-events: none;
+}
+body::after {
+	content: ""; position: fixed; inset: 0;
+	background: url('https://grainy-gradients.vercel.app/noise.svg');
+	opacity: 0.12; mix-blend-mode: overlay; z-index: 9998; pointer-events: none;
+	animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker { 
+	0% { opacity: 0.12; } 50% { opacity: 0.15; } 100% { opacity: 0.11; } 
+}
+
+/* === NAVIGATION: TAB STYLE === */
+nav {
+	position: sticky; top: 0; z-index: 100;
+	background: #000; border-bottom: 3px solid var(--neon-green);
+	padding: 1rem clamp(1rem, 5vw, 4rem);
+	display: flex; justify-content: space-between; align-items: center;
+}
+.nav-logo {
+	font-size: 1.5rem; font-weight: 900; color: #fff; text-decoration: none;
+	text-transform: uppercase; letter-spacing: -1px;
+	background: var(--neon-green); color: #000; padding: 0 10px;
+}
+.nav-cta {
+	background: var(--hot-pink); color: #fff; padding: 8px 15px;
+	text-decoration: none; font-weight: bold; font-size: 0.8rem;
+	box-shadow: 4px 4px 0px #fff; transition: 0.1s;
+}
+.nav-cta:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px var(--neon-green); }
+
+/* === HERO SECTION: THE GLITCH BOOT === */
+header {
+	min-height: 100vh; display: grid; 
+	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+	padding: clamp(2rem, 10vw, 6rem) clamp(1rem, 5vw, 4rem);
+	gap: 4rem; align-items: center;
+}
+
+.hero-left { position: relative; z-index: 10; }
+.hero-h1 {
+	font-size: clamp(3rem, 8vw, 6rem); line-height: 0.85; 
+	text-transform: uppercase; font-family: "Garamond", serif; font-weight: 900;
+	font-style: italic; margin-bottom: 2rem; transform: rotate(-2deg);
+	text-shadow: 4px 4px 0px var(--neon-green);
+}
+.hero-h1 span { display: block; background: #fff; color: #000; width: fit-content; padding: 0 1rem; }
+
+.hero-sub {
+	max-width: 450px; font-size: 1.1rem; border-left: 4px solid var(--neon-green);
+	padding-left: 1.5rem; margin-bottom: 2rem; color: #ccc;
+}
+
+.hero-bg-image {
+	position: relative; border: 2px solid #333;
+	background: #111; padding: 10px; transform: rotate(1deg);
+}
+.hero-bg-image::before {
+	content: "MODEL_PREVIEW_V2"; position: absolute; top: -15px; left: 10px;
+	background: var(--neon-green); color: #000; font-size: 0.7rem; padding: 2px 8px;
+}
+.hero-char-img {
+	width: 100%; filter: contrast(1.5) grayscale(1) brightness(0.8) sepia(0.2);
+	image-rendering: pixelated; display: block;
+}
+
+.btn-primary {
+	display: inline-block; background: var(--neon-green); color: #000;
+	padding: 20px 40px; font-size: 1.2rem; font-weight: 900;
+	text-decoration: none; text-transform: uppercase;
+	border: 4px solid #fff; box-shadow: 8px 8px 0px var(--hot-pink);
+	transition: 0.1s;
+}
+.btn-primary:active { transform: translate(4px, 4px); box-shadow: 0px 0px 0px; }
+
+/* === STATS BLOCK === */
+.hero-stats { display: flex; gap: 2rem; margin: 2rem 0; font-family: monospace; }
+.stat-num { font-size: 2rem; color: var(--neon-green); font-weight: bold; display: block; }
+.stat-label { font-size: 0.7rem; text-transform: uppercase; color: #888; }
+
+/* === ABOUT: THE PUNK SPREAD === */
+#about {
+	padding: 6rem clamp(1rem, 5vw, 4rem); background: #000;
+	border-top: 10px double #222;
+}
+.about-stack {
+	display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 4rem;
+}
+.pain-column h2 { font-size: 2.5rem; margin-bottom: 2rem; color: var(--hot-pink); text-decoration: underline; }
+.pain-list { list-style: none; }
+.pain-list li { 
+	background: #111; margin-bottom: 1rem; padding: 1rem;
+	border: 1px dashed #444; position: relative;
+}
+.pain-list li .x { color: var(--neon-green); margin-right: 10px; font-weight: 900; }
+
+.solution-card {
+	background: #fff; color: #000; padding: 3rem; transform: rotate(-1deg);
+	box-shadow: 15px 15px 0px var(--dark-green);
+}
+.solution-card h2 { font-family: serif; font-size: 2rem; line-height: 1; margin: 1rem 0; }
+.check-list li { margin-bottom: 0.5rem; font-weight: bold; list-style: none; }
+
+/* === TIMELINE: THE SAVE SLOT LIST === */
+#included { padding: 6rem 0; }
+.section-header { padding: 0 4rem; margin-bottom: 4rem; }
+.section-header h2 { font-size: 3rem; color: var(--neon-green); }
+
+.timeline { position: relative; padding: 0 4rem; }
+.module { 
+	display: flex; gap: 2rem; margin-bottom: 4rem; align-items: center;
+	opacity: 0.3; transition: 0.5s; filter: blur(2px);
+}
+.module.active { opacity: 1; filter: blur(0); transform: scale(1.05); }
+
+.module-thumb img {
+	width: 180px; height: 180px; object-fit: cover;
+	border: 5px solid #fff; outline: 5px solid var(--neon-green);
+	filter: grayscale(1) contrast(1.5); image-rendering: pixelated;
+}
+.module-text h3 { font-size: 2rem; text-transform: uppercase; margin-bottom: 0.5rem; }
+.module-label { background: var(--hot-pink); color: #fff; padding: 2px 8px; display: inline-block; margin-bottom: 10px; }
+
+/* === TESTIMONIALS: XEROX STYLE === */
+#testimonials { padding: 6rem 4rem; background: #050505; }
+.testimonials-grid {
+	display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: 20px;
+}
+.testimonial {
+	background: #000; border: 2px solid #fff; padding: 20px;
+	box-shadow: 5px 5px 0px #333; position: relative;
+}
+.testimonial::after {
+	content: "“"; position: absolute; top: -10px; right: 10px;
+	font-size: 4rem; color: var(--neon-green); font-family: serif; opacity: 0.3;
+}
+.stars { color: var(--neon-green); margin-bottom: 10px; font-size: 0.8rem; }
+.author { margin-top: 15px; font-weight: 900; text-transform: uppercase; font-size: 0.7rem; color: var(--hot-pink); }
+
+/* === BUY CARD: THE CONSOLE BOX === */
+#buy { padding: 8rem 2rem; text-align: center; background: radial-gradient(circle, #1a1a1a 0%, #000 100%); }
+.buy-card {
+	max-width: 600px; margin: auto; border: 4px solid var(--neon-green);
+	padding: 4rem 2rem; position: relative; background: #000;
+}
+.buy-card h2 { font-size: clamp(2.5rem, 6vw, 4rem); color: #fff; line-height: 0.9; margin: 1rem 0; }
+.price-main { font-size: 5rem; font-weight: 900; color: var(--neon-green); display: block; margin: 1rem 0; }
+
+.btn-buy {
+	width: 100%; background: #fff; color: #000; padding: 25px;
+	font-size: 1.5rem; font-weight: 900; border: none;
+	box-shadow: 0px 10px 0px var(--hot-pink); cursor: pointer; transition: 0.1s;
+}
+.btn-buy:hover { transform: translateY(-5px); box-shadow: 0px 15px 0px var(--neon-green); }
+
+/* === FAQ: TERMINAL INPUTS === */
+#faq { padding: 6rem 4rem; max-width: 900px; margin: auto; }
+.faq-item { border-bottom: 2px solid #222; margin-bottom: 10px; }
+.faq-toggle {
+	width: 100%; background: none; border: none; color: var(--neon-green);
+	text-align: left; padding: 20px 0; font-size: 1.2rem; font-family: monospace;
+	display: flex; justify-content: space-between;
+}
+.faq-toggle::before { content: "> "; }
+.faq-answer { 
+	max-height: 0; overflow: hidden; transition: 0.3s; color: #aaa; padding-left: 25px;
+}
+.faq-item.active .faq-answer { max-height: 300px; padding-bottom: 20px; }
+
+footer { padding: 4rem; border-top: 5px solid #111; text-align: center; }
+.footer-logo { font-size: 2rem; font-weight: 900; margin-bottom: 1rem; }
+.footer-logo span { color: var(--neon-green); }
+
+/* RESPONSIVE FIXES */
+@media (max-width: 768px) {
+	.hero-h1 { font-size: 3.5rem; }
+	header { padding-top: 4rem; }
+	.timeline { padding: 0 1rem; }
+	.module { flex-direction: column; text-align: center; }
+}
