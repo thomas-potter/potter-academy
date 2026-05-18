@@ -1,178 +1,180 @@
 <!doctype html>
 <html lang="en">
-
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Potter Academy - Terms & Policies</title>
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link
-		href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&family=Archivo:ital,wght@0,100..900;1,100..900&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,700&display=swap"
-		rel="stylesheet" />
-	<link rel="stylesheet" href="styles.css" />
-	<script src="https://unpkg.com/lucide@latest"></script>
-	<link rel="icon" href="../Favicon.webp" type="image/webp" />
-	<style>
-		.terms-page {
-			padding-top: 80px;
-		}
-
-		.terms-content {
-			max-width: var(--max-w);
-			margin: 0 auto;
-			padding: 2rem 1.5rem 4rem;
-		}
-
-		.terms-section {
-			border-top: 1px solid var(--section-border);
-			padding: 2.5rem 0;
-		}
-
-		.terms-section:first-child {
-			border-top: none;
-		}
-
-		.terms-section h2 {
-			font-family: var(--font-display);
-			font-size: 1.25rem;
-			text-transform: uppercase;
-			letter-spacing: -0.02em;
-			line-height: 1.2;
-			margin-bottom: 1rem;
-			color: var(--green);
-		}
-
-		.terms-section p,
-		.terms-section li {
-			font-family: var(--font-body);
-			font-size: 15px;
-			line-height: 1.8;
-			color: var(--text-light);
-			opacity: 0.85;
-		}
-
-		.terms-section p+p {
-			margin-top: 1rem;
-		}
-
-		.terms-section ul {
-			list-style: none;
-			padding: 0;
-			margin: 1rem 0 0;
-		}
-
-		.terms-section ul li {
-			position: relative;
-			padding-left: 1.5rem;
-			margin-bottom: 0.75rem;
-		}
-
-		.terms-section ul li::before {
-			content: "◆";
-			position: absolute;
-			left: 0;
-			color: var(--green);
-			font-size: 10px;
-			opacity: 0.6;
-		}
-
-		.terms-section a {
-			color: var(--green);
-			text-decoration: underline;
-			text-underline-offset: 3px;
-			transition: opacity 0.2s;
-		}
-
-		.terms-section a:hover {
-			opacity: 0.7;
-		}
-
-		.terms-section strong {
-			color: var(--text-light);
-			opacity: 1;
-			font-weight: 700;
-		}
-
-		@media (max-width: 768px) {
-			.terms-section h2 {
-				font-size: 1.1rem;
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Potter Academy - Terms & Policies</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&family=Archivo:ital,wght@0,100..900;1,100..900&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="/terms/styles.css" />
+		<script src="https://unpkg.com/lucide@latest"></script>
+		<link rel="icon" href="/Favicon.webp" type="image/webp" />
+		<style>
+			.terms-page {
+				padding-top: 80px;
 			}
-		}
-	</style>
-</head>
 
-<body>
-	<nav id="navbar">
-		<div class="nav-inner">
-			<a href="../bundle/site.html" class="nav-logo">POTTER<span>ACADEMY</span></a>
-		</div>
-	</nav>
+			.terms-content {
+				max-width: var(--max-w);
+				margin: 0 auto;
+				padding: 2rem 1.5rem 4rem;
+			}
 
-	<main class="terms-page section-dark">
-		<div class="section-header-row">
-			<span class="section-index">01</span>
-			<span class="section-label">Terms & Policies</span>
-		</div>
+			.terms-section {
+				border-top: 1px solid var(--section-border);
+				padding: 2.5rem 0;
+			}
 
-		<div class="terms-content">
-			<section class="terms-section">
-				<h2>Overview</h2>
-				<p>
-					Potter Academy publishes three separate policy pages for
-					legal clarity: Terms of Service, Privacy Policy, and
-					Refund Policy. Use the links below to view the policy
-					that applies to you.
-				</p>
-			</section>
+			.terms-section:first-child {
+				border-top: none;
+			}
 
-			<section class="terms-section">
-				<h2>Terms of Service</h2>
-				<p>
-					This page explains how you may access and use course
-					materials, account requirements, intellectual property
-					rights, liability limits, and governing law.
-				</p>
-				<p>
-					<a href="terms-of-service/">View Terms of Service</a>
-				</p>
-			</section>
+			.terms-section h2 {
+				font-family: var(--font-display);
+				font-size: 1.25rem;
+				text-transform: uppercase;
+				letter-spacing: -0.02em;
+				line-height: 1.2;
+				margin-bottom: 1rem;
+				color: var(--green);
+			}
 
-			<section class="terms-section">
-				<h2>Privacy Policy</h2>
-				<p>
-					This page explains what data we collect, how we use it,
-					how we share it, retention practices, your rights, and
-					security measures.
-				</p>
-				<p>
-					<a href="privacy-policy/">View Privacy Policy</a>
-				</p>
-			</section>
+			.terms-section p,
+			.terms-section li {
+				font-family: var(--font-body);
+				font-size: 15px;
+				line-height: 1.8;
+				color: var(--text-light);
+				opacity: 0.85;
+			}
 
-			<section class="terms-section">
-				<h2>Refund Policy</h2>
-				<p>
-					This page explains our refund window, the request process,
-					approval terms, and exceptions for misused materials.
-				</p>
-				<p>
-					<a href="refund-policy/">View Refund Policy</a>
-				</p>
-			</section>
-		</div>
-	</main>
+			.terms-section p + p {
+				margin-top: 1rem;
+			}
 
-	<footer>
-		<div class="footer-links">
-			<a href="mailto:contact@thomaspotter.uk">[CONTACT]</a>
-		</div>
-		<p class="footer-copy">© 2026 Thomas Potter</p>
-	</footer>
+			.terms-section ul {
+				list-style: none;
+				padding: 0;
+				margin: 1rem 0 0;
+			}
 
-	<script>
-		lucide.createIcons();
-	</script>
-</body>
+			.terms-section ul li {
+				position: relative;
+				padding-left: 1.5rem;
+				margin-bottom: 0.75rem;
+			}
 
+			.terms-section ul li::before {
+				content: "◆";
+				position: absolute;
+				left: 0;
+				color: var(--green);
+				font-size: 10px;
+				opacity: 0.6;
+			}
+
+			.terms-section a {
+				color: var(--green);
+				text-decoration: underline;
+				text-underline-offset: 3px;
+				transition: opacity 0.2s;
+			}
+
+			.terms-section a:hover {
+				opacity: 0.7;
+			}
+
+			.terms-section strong {
+				color: var(--text-light);
+				opacity: 1;
+				font-weight: 700;
+			}
+
+			@media (max-width: 768px) {
+				.terms-section h2 {
+					font-size: 1.1rem;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<nav id="navbar">
+			<div class="nav-inner">
+				<a href="../bundle/site.html" class="nav-logo"
+					>POTTER<span>ACADEMY</span></a
+				>
+			</div>
+		</nav>
+
+		<main class="terms-page section-dark">
+			<div class="section-header-row">
+				<span class="section-index">01</span>
+				<span class="section-label">Terms & Policies</span>
+			</div>
+
+			<div class="terms-content">
+				<section class="terms-section">
+					<h2>Overview</h2>
+					<p>
+						Potter Academy publishes three separate policy pages for
+						legal clarity: Terms of Service, Privacy Policy, and
+						Refund Policy. Use the links below to view the policy
+						that applies to you.
+					</p>
+				</section>
+
+				<section class="terms-section">
+					<h2>Terms of Service</h2>
+					<p>
+						This page explains how you may access and use course
+						materials, account requirements, intellectual property
+						rights, liability limits, and governing law.
+					</p>
+					<p>
+						<a href="terms-of-service/">View Terms of Service</a>
+					</p>
+				</section>
+
+				<section class="terms-section">
+					<h2>Privacy Policy</h2>
+					<p>
+						This page explains what data we collect, how we use it,
+						how we share it, retention practices, your rights, and
+						security measures.
+					</p>
+					<p>
+						<a href="privacy-policy/">View Privacy Policy</a>
+					</p>
+				</section>
+
+				<section class="terms-section">
+					<h2>Refund Policy</h2>
+					<p>
+						This page explains our refund window, the request
+						process, approval terms, and exceptions for misused
+						materials.
+					</p>
+					<p>
+						<a href="refund-policy/">View Refund Policy</a>
+					</p>
+				</section>
+			</div>
+		</main>
+
+		<footer>
+			<div class="footer-links">
+				<a href="mailto:contact@thomaspotter.uk">[CONTACT]</a>
+			</div>
+			<p class="footer-copy">© 2026 Thomas Potter</p>
+		</footer>
+
+		<script>
+			lucide.createIcons();
+		</script>
+	</body>
 </html>
