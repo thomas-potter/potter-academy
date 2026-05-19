@@ -1,471 +1,674 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master Low Poly Characters | Step-by-Step Blender Course</title>
-    <link rel="shortcut icon" type="image/png" href="/Assets/favicon.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800;900&family=Familjen+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/low-poly-masterclass/style.css">
-    <script>
-    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Ii init Di qi Sr Bi Zi Pi capture calculateEventProperties Yi register register_once register_for_session unregister unregister_for_session Xi getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync Ji identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty Wi Vi createPersonProfile setInternalOrTestUser Gi Fi Ki opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing $i debug Tr Ui getPageViewId captureTraceFeedback captureTraceMetric Ri".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-    posthog.init('phc_F7460Uy9MePAEHfj7chiorFkrl0ZsCcDcouPLnpoPvo', {
-        api_host: 'https://eu.i.posthog.com',
-        defaults: '2026-01-30',
-        person_profiles: 'identified_only', 
-    })
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
-    <script defer src="/<unique-path>/script.js"></script>
-</head>
-<body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Master Low Poly Characters | Step-by-Step Blender Course</title>
+		<link rel="shortcut icon" type="image/png" href="/Assets/favicon.png" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@400;700&family=Fraunces:ital,wght@0,400..700;1,400..700&family=Syne:wght@400;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="/low-poly-masterclass/style.css" />
+	</head>
+	<body>
+		<!-- NAV -->
+		<nav>
+			<div class="nav-inner">
+				<a href="https://www.potteracademy.uk" class="nav-logo"
+					>POTTER<span>3D</span></a
+				>
+				<a href="#buy" class="nav-cta">Enroll Now</a>
+			</div>
+		</nav>
 
-    <!-- NAV -->
-    <nav>
-        <div class="nav-inner">
-            <a href="https://www.potteracademy.uk" class="nav-logo">POTTER<span>3D</span></a>
-            <a href="#buy" class="nav-cta">Enroll Now</a>
-        </div>
-    </nav>
+		<!-- HERO -->
+		<header>
+			<div class="hero-content">
+				<div class="hero-badge">
+					<div class="hero-badge-dot"></div>
+					<span>Join 200+ students</span>
+				</div>
 
-    <!-- HERO -->
-    <header>
-        <div class="hero-content">
+				<h1 class="hero-h1">
+					Master
+					<span class="accent">Low Poly Character Creation</span> in
+					Blender
+				</h1>
 
-            <div class="hero-badge">
-                <div class="hero-badge-dot"></div>
-                <span>Join 200+ students</span>
-            </div>
+				<p class="hero-sub">
+					End the hours of confusion and learn solid workflows to
+					create <strong>any character</strong> in Blender.
+				</p>
+				<div class="video-wrapper" id="videoContainer">
+					<div class="video-inner">
+						<video
+							id="previewVideo"
+							preload="metadata"
+							poster="https://d1yei2z3i6k35z.cloudfront.net/9770196/69c28ceeb32411.64199487_maxresdefault3.jpg"
+						>
+							<source
+								src="https://d1yei2z3i6k35z.cloudfront.net/9770196/69c15d3614d1f0.94614870_LpCharacterVSL.mp4"
+								type="video/mp4"
+							/>
+							Your browser does not support the video tag.
+						</video>
+						<div class="video-overlay" id="videoOverlay">
+							<div class="play-btn-wrap">
+								<div class="play-btn">
+									<svg viewBox="0 0 24 24">
+										<path d="M8 5v14l11-7z" />
+									</svg>
+								</div>
+							</div>
+						</div>
+						<div class="video-progress" id="videoProgress">
+							<div class="video-progress-track">
+								<div
+									class="video-progress-fill"
+									id="videoProgressFill"
+								></div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-            <h1 class="hero-h1">
-                Master <span class="accent">Low Poly Character Creation</span> in Blender
-            </h1>
+				<div class="hero-cta-group">
+					<a href="#buy" class="btn-primary">Start Creating Today!</a>
+					<p class="hero-microcopy">14-day money-back guarantee</p>
+				</div>
+			</div>
+		</header>
 
-            <p class="hero-sub">
-                End the hours of confusion and learn solid workflows to create <strong>any character</strong> in Blender.
-            </p>
-            <div class="video-wrapper" id="videoContainer">
-                <div class="video-inner">
-                    <video id="previewVideo" preload="metadata" poster="https://d1yei2z3i6k35z.cloudfront.net/9770196/69c28ceeb32411.64199487_maxresdefault3.jpg">
-                        <source src="https://d1yei2z3i6k35z.cloudfront.net/9770196/69c15d3614d1f0.94614870_LpCharacterVSL.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="video-overlay" id="videoOverlay">
-                        <div class="play-btn-wrap">
-                            <div class="play-btn">
-                                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="video-progress" id="videoProgress">
-                        <div class="video-progress-track">
-                            <div class="video-progress-fill" id="videoProgressFill"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+		<!-- ABOUT -->
+		<section id="about">
+			<div class="about-stack">
+				<div class="pain-column">
+					<h2>Does this sound like you?</h2>
+					<ul class="pain-list">
+						<li>
+							<span class="x">✕</span
+							><span
+								>You watch hours of YouTube tutorials but end up
+								confused with conflicting advice and
+								unstructured learning</span
+							>
+						</li>
+						<li>
+							<span class="x">✕</span
+							><span
+								>Your workflow feels slow and is holding you
+								back from creating the characters you actually
+								want to make</span
+							>
+						</li>
+						<li>
+							<span class="x">✕</span
+							><span
+								>You're stuck following every single button
+								click and want to learn the thought process
+								behind creating characters</span
+							>
+						</li>
+						<li>
+							<span class="x">✕</span
+							><span
+								>You feel like you're spending more time
+								troubleshooting than actually building, and
+								you're not sure where you're going wrong</span
+							>
+						</li>
+					</ul>
+				</div>
 
-            <div class="hero-cta-group">
-                <a href="#buy" class="btn-primary">Start Creating Today!</a>
-                <p class="hero-microcopy">14-day money-back guarantee</p>
-            </div>
-        </div>
-    </header>
+				<div class="solution-card">
+					<span class="section-eyebrow"
+						>Here's what you'll learn</span
+					>
+					<h2>
+						A simple workflow to start creating better characters
+					</h2>
+					<p>
+						Learn the <strong>"Why"</strong> behind everything I do
+						when creating a character from scratch. You're not just
+						copying me, you're learning the thought process and
+						techniques to create any character you want.
+					</p>
+					<ul class="check-list">
+						<li>
+							<strong>✓</strong> Start modeling with confidence
+						</li>
+						<li><strong>✓</strong> Start working quicker</li>
+						<li>
+							<strong>✓</strong> Create your own unique characters
+						</li>
+						<li><strong>✓</strong> Stop wasting time</li>
+					</ul>
+				</div>
+			</div>
+		</section>
 
-    <!-- ABOUT -->
-    <section id="about">
-        <div class="about-stack">
-            <div class="pain-column">
-                <h2>Does this sound like you?</h2>
-                <ul class="pain-list">
-                    <li><span class="x">✕</span><span>You watch hours of YouTube tutorials but end up confused with conflicting advice and unstructured learning</span></li>
-                    <li><span class="x">✕</span><span>Your workflow feels slow and is holding you back from creating the characters you actually want to make</span></li>
-                    <li><span class="x">✕</span><span>You're stuck following every single button click and want to learn the thought process behind creating characters</span></li>
-                    <li><span class="x">✕</span><span>You feel like you're spending more time troubleshooting than actually building, and you're not sure where you're going wrong</span></li>
-                </ul>
-            </div>
+		<!-- CURRICULUM -->
+		<section id="included">
+			<div class="section-header">
+				<h2>Let's breakdown what you'll learn.</h2>
+				<p>
+					8+ Hours of video covering every tip, trick, and insider
+					insight.
+				</p>
+			</div>
 
-            <div class="solution-card">
-                <span class="section-eyebrow">Here's what you'll learn</span>
-                <h2>A simple workflow to start creating better characters</h2>
-                <p>
-                    Learn the <strong>"Why"</strong> behind everything I do when creating a character from scratch. You're not just copying me, you're learning the thought process and techniques to create any character you want.
-                </p>
-                <ul class="check-list">
-                    <li><strong>✓</strong> Start modeling with confidence</li>
-                    <li><strong>✓</strong> Start working quicker</li>
-                    <li><strong>✓</strong> Create your own unique characters</li>
-                    <li><strong>✓</strong> Stop wasting time</li>
-                </ul>
-            </div>
+			<div class="timeline" id="timeline">
+				<div class="timeline-line" id="timelineLine"></div>
 
-        </div>
-    </section>
+				<div class="module" id="mod1">
+					<div class="module-inner">
+						<div class="module-thumb">
+							<img
+								src="https://d1yei2z3i6k35z.cloudfront.net/9770196/69c2904d862d42.17769488_Screenshot2026-03-24at13.19.18.png"
+								alt="Module 1"
+							/>
+						</div>
+						<div class="module-text">
+							<p class="module-label">MODULE 01</p>
+							<h3>Planning & Preproduction</h3>
+							<p>
+								Build your plan, gather references, and lock in
+								proportions so you don't waste time later.
+							</p>
+						</div>
+					</div>
+				</div>
 
-    <!-- CURRICULUM -->
-    <section id="included">
-        <div class="section-header">
-            <h2>Let's breakdown what you'll learn.</h2>
-            <p>8+ Hours of video covering every tip, trick, and insider insight.</p>
-        </div>
+				<div class="module" id="mod2">
+					<div class="module-inner">
+						<div class="module-thumb">
+							<img
+								src="https://d1yei2z3i6k35z.cloudfront.net/9770196/69c2902e241cc0.20472335_videoframe_272899.png"
+								alt="Module 2"
+							/>
+						</div>
+						<div class="module-text">
+							<p class="module-label">MODULE 02</p>
+							<h3>Base Mesh Creation</h3>
+							<p>
+								Learn to build good base meshes with clean
+								topology to help your characters deform properly
+								for animation.
+							</p>
+						</div>
+					</div>
+				</div>
 
-        <div class="timeline" id="timeline">
-            <div class="timeline-line" id="timelineLine"></div>
+				<div class="module" id="mod3">
+					<div class="module-inner">
+						<div class="module-thumb">
+							<img
+								src="https://d1yei2z3i6k35z.cloudfront.net/9770196/69c2902e210069.73901921_videoframe_722508.png"
+								alt="Module 3"
+							/>
+						</div>
+						<div class="module-text">
+							<p class="module-label">MODULE 03</p>
+							<h3>Modeling Details</h3>
+							<p>
+								Add polish with character clothing, hair, and
+								accessories using workflow-friendly techniques.
+							</p>
+						</div>
+					</div>
+				</div>
 
-            <div class="module" id="mod1">
-                <div class="module-inner">
-                    <div class="module-thumb"><img src="https://d1yei2z3i6k35z.cloudfront.net/9770196/69c2904d862d42.17769488_Screenshot2026-03-24at13.19.18.png" alt="Module 1"></div>
-                    <div class="module-text">
-                        <p class="module-label">MODULE 01</p>
-                        <h3>Planning & Preproduction</h3>
-                        <p>Build your plan, gather references, and lock in proportions so you don't waste time later.</p>
-                    </div>
-                </div>
-            </div>
+				<div class="module" id="mod4">
+					<div class="module-inner">
+						<div class="module-thumb">
+							<img
+								src="https://d1yei2z3i6k35z.cloudfront.net/9770196/69c29146682ca1.73588490_videoframe_1009328.png"
+								alt="Module 4"
+							/>
+						</div>
+						<div class="module-text">
+							<p class="module-label">MODULE 04</p>
+							<h3>Rigging & Weight Painting</h3>
+							<p>
+								Create clean rigs and paint weights for smooth
+								deformations. Essential for game-ready movement.
+							</p>
+						</div>
+					</div>
+				</div>
 
-            <div class="module" id="mod2">
-                <div class="module-inner">
-                    <div class="module-thumb"><img src="https://d1yei2z3i6k35z.cloudfront.net/9770196/69c2902e241cc0.20472335_videoframe_272899.png" alt="Module 2"></div>
-                    <div class="module-text">
-                        <p class="module-label">MODULE 02</p>
-                        <h3>Base Mesh Creation</h3>
-                        <p>Learn to build good base meshes with clean topology to help your characters deform properly for animation.</p>
-                    </div>
-                </div>
-            </div>
+				<div class="module" id="mod5">
+					<div class="module-inner">
+						<div class="module-thumb">
+							<img
+								src="https://d1yei2z3i6k35z.cloudfront.net/9770196/69c2902e22be77.76785210_videoframe_683009.png"
+								alt="Module 5"
+							/>
+						</div>
+						<div class="module-text">
+							<p class="module-label">MODULE 05</p>
+							<h3>Animation</h3>
+							<p>
+								Learn the basics of creating game-ready
+								animations in Blender!
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
 
-            <div class="module" id="mod3">
-                <div class="module-inner">
-                    <div class="module-thumb"><img src="https://d1yei2z3i6k35z.cloudfront.net/9770196/69c2902e210069.73901921_videoframe_722508.png" alt="Module 3"></div>
-                    <div class="module-text">
-                        <p class="module-label">MODULE 03</p>
-                        <h3>Modeling Details</h3>
-                        <p>Add polish with character clothing, hair, and accessories using workflow-friendly techniques.</p>
-                    </div>
-                </div>
-            </div>
+			<div class="bonuses">
+				<div class="bonus-card">
+					<div class="bonus-thumb">
+						<img
+							src="https://d1yei2z3i6k35z.cloudfront.net/9770196/69c2902e215930.05753582_69bc5d9968e3f8.56781900_basemeshpack.jpg"
+							alt="Base Mesh Pack"
+						/>
+					</div>
+					<div class="bonus-info">
+						<span class="bonus-tag">Free Bonus</span>
+						<h3>Low Poly Base Mesh Pack</h3>
+						<p>
+							5 low poly rigged characters, ready to use in any
+							project, royalty free.
+						</p>
+					</div>
+					<div class="bonus-price">
+						<span class="was">$10</span>
+						<span class="free">FREE</span>
+					</div>
+				</div>
+			</div>
+		</section>
 
-            <div class="module" id="mod4">
-                <div class="module-inner">
-                    <div class="module-thumb"><img src="https://d1yei2z3i6k35z.cloudfront.net/9770196/69c29146682ca1.73588490_videoframe_1009328.png" alt="Module 4"></div>
-                    <div class="module-text">
-                        <p class="module-label">MODULE 04</p>
-                        <h3>Rigging & Weight Painting</h3>
-                        <p>Create clean rigs and paint weights for smooth deformations. Essential for game-ready movement.</p>
-                    </div>
-                </div>
-            </div>
+		<!-- TESTIMONIALS -->
+		<section id="testimonials">
+			<h2>Student Success</h2>
+			<div class="testimonials-grid">
+				<div class="testimonial">
+					<p class="stars">★★★★★</p>
+					<p>
+						I really liked the course, it gets right to the point
+						and explains the reasoning behind each decision very
+						clearly. It's also a tutorial that actually teaches you
+						how to create low-poly characters. Even if you only know
+						some English, I still recommend it, you'll get real
+						feedback when you post your work in the group.
+					</p>
+					<p class="author">Anonymous</p>
+				</div>
+				<div class="testimonial">
+					<p class="stars">★★★★★</p>
+					<p>
+						I've tried courses by half a dozen other content
+						creators and they just never worked for me. But Thomas'
+						way of explaining just clicks with me. Not only does he
+						explain what he's doing, but WHY he's doing it. It's
+						like he's teaching to people and not just talking to his
+						webcam.
+					</p>
+					<p class="author">Beck</p>
+				</div>
+				<div class="testimonial">
+					<p class="stars">★★★★★</p>
+					<p>
+						Fantastic! I've been struggling to create low-poly
+						models that I'm happy with and Thomas really simplifies
+						the process into very easy-to-follow steps that I think
+						will become second nature with repetition. Time to go
+						back and completely redo the game character I've been
+						working on.
+					</p>
+					<p class="author">Dylan Kress</p>
+				</div>
+				<div class="testimonial">
+					<p class="stars">★★★★★</p>
+					<p>
+						As far as I've seen this is by far the best blender
+						course to start making original characters and jump
+						straight into game development.
+					</p>
+					<p class="author">Ryan Norton</p>
+				</div>
+				<div class="testimonial">
+					<p class="stars">★★★★★</p>
+					<p>
+						I own almost every low poly character course on the
+						internet, and this one is the best by far. God bless you
+						Thomas.
+					</p>
+					<p class="author">Jorge</p>
+				</div>
+				<div class="testimonial">
+					<p class="stars">★★★★★</p>
+					<p>
+						This is exactly what I've been looking for to work on my
+						games. Could you slow down maybe 30%? Other than that
+						this was perfect!
+					</p>
+					<p class="author">Anonymous</p>
+				</div>
+			</div>
+		</section>
 
-            <div class="module" id="mod5">
-                <div class="module-inner">
-                    <div class="module-thumb"><img src="https://d1yei2z3i6k35z.cloudfront.net/9770196/69c2902e22be77.76785210_videoframe_683009.png" alt="Module 5"></div>
-                    <div class="module-text">
-                        <p class="module-label">MODULE 05</p>
-                        <h3>Animation</h3>
-                        <p>Learn the basics of creating game-ready animations in Blender!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+		<!-- GUARANTEE + BUY -->
+		<section id="buy">
+			<div class="guarantee-card">
+				<div class="guarantee-icon">
+					<svg fill="none" viewBox="0 0 24 24">
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+						/>
+					</svg>
+				</div>
+				<div>
+					<h3>14-Day Money-Back Guarantee</h3>
+					<p>
+						If you don't feel like your character skills have
+						improved within 14 days, I'll refund every cent. No
+						questions asked. You keep the skills, I take the risk.
+					</p>
+				</div>
+			</div>
 
-        <div class="bonuses">
-            <div class="bonus-card">
-                <div class="bonus-thumb">
-                    <img src="https://d1yei2z3i6k35z.cloudfront.net/9770196/69c2902e215930.05753582_69bc5d9968e3f8.56781900_basemeshpack.jpg" alt="Base Mesh Pack">
-                </div>
-                <div class="bonus-info">
-                    <span class="bonus-tag">Free Bonus</span>
-                    <h3>Low Poly Base Mesh Pack</h3>
-                    <p>5 low poly rigged characters, ready to use in any project, royalty free.</p>
-                </div>
-                <div class="bonus-price">
-                    <span class="was">$10</span>
-                    <span class="free">FREE</span>
-                </div>
-            </div>
-        </div>
-    </section>
+			<div class="buy-card">
+				<p class="buy-eyebrow">Join 200+ game devs and artists</p>
+				<h2>START CREATING<br />LOW POLY CHARACTERS</h2>
+				<div class="price-row">
+					<span class="price-main">$39</span>
+					<span class="price-was">$59</span>
+				</div>
+				<span class="price-save">Save $20</span>
+				<div class="features-grid">
+					<div class="feature-item">
+						<span class="check">✓</span> 8+ Hours of content
+					</div>
+					<div class="feature-item">
+						<span class="check">✓</span> 1-1 Feedback support
+					</div>
+					<div class="feature-item">
+						<span class="check">✓</span> 5 Character Base Mesh Pack
+					</div>
+					<div class="feature-item">
+						<span class="check">✓</span> 3 Bonus Modules
+					</div>
+				</div>
+				<a href="https://store.thomaspotter.uk/lp-checkout">
+					<button id="btn-buy" class="btn-buy">
+						YES, GIVE ME ACCESS NOW
+					</button>
+				</a>
+				<p class="buy-secure">Secure Checkout · Stripe / PayPal</p>
+			</div>
+		</section>
 
-    <!-- TESTIMONIALS -->
-    <section id="testimonials">
-        <h2>Student Success</h2>
-        <div class="testimonials-grid">
-            <div class="testimonial">
-                <p class="stars">★★★★★</p>
-                <p>I really liked the course, it gets right to the point and explains the reasoning behind each decision very clearly. It's also a tutorial that actually teaches you how to create low-poly characters. Even if you only know some English, I still recommend it, you'll get real feedback when you post your work in the group.</p>
-                <p class="author">Anonymous</p>
-            </div>
-            <div class="testimonial">
-                <p class="stars">★★★★★</p>
-                <p>I've tried courses by half a dozen other content creators and they just never worked for me. But Thomas' way of explaining just clicks with me. Not only does he explain what he's doing, but WHY he's doing it. It's like he's teaching to people and not just talking to his webcam.</p>
-                <p class="author">Beck</p>
-            </div>
-            <div class="testimonial">
-                <p class="stars">★★★★★</p>
-                <p>Fantastic! I've been struggling to create low-poly models that I'm happy with and Thomas really simplifies the process into very easy-to-follow steps that I think will become second nature with repetition. Time to go back and completely redo the game character I've been working on.</p>
-                <p class="author">Dylan Kress</p>
-            </div>
-            <div class="testimonial">
-                <p class="stars">★★★★★</p>
-                <p>As far as I've seen this is by far the best blender course to start making original characters and jump straight into game development.</p>
-                <p class="author">Ryan Norton</p>
-            </div>
-            <div class="testimonial">
-                <p class="stars">★★★★★</p>
-                <p>I own almost every low poly character course on the internet, and this one is the best by far. God bless you Thomas.</p>
-                <p class="author">Jorge</p>
-            </div>
-            <div class="testimonial">
-                <p class="stars">★★★★★</p>
-                <p>This is exactly what I've been looking for to work on my games. Could you slow down maybe 30%? Other than that this was perfect!</p>
-                <p class="author">Anonymous</p>
-            </div>
-        </div>
-    </section>
+		<!-- FAQ / Q&A -->
+		<section id="faq">
+			<div class="faq-container">
+				<h2>Frequently Asked Questions</h2>
 
-    <!-- GUARANTEE + BUY -->
-    <section id="buy">
-        <div class="guarantee-card">
-            <div class="guarantee-icon">
-                <svg fill="none" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                </svg>
-            </div>
-            <div>
-                <h3>14-Day Money-Back Guarantee</h3>
-                <p>If you don't feel like your character skills have improved within 14 days, I'll refund every cent. No questions asked. You keep the skills, I take the risk.</p>
-            </div>
-        </div>
+				<div class="faq-grid">
+					<div class="faq-item">
+						<button class="faq-toggle">
+							<span class="faq-question"
+								>Do you offer refunds?</span
+							>
+							<span class="faq-icon">+</span>
+						</button>
+						<div class="faq-answer">
+							<p>
+								Yes! I offer a 14-day money-back guarantee. If
+								you're not satisfied with the course, just reach
+								out and I'll send your money back.
+							</p>
+						</div>
+					</div>
 
-        <div class="buy-card">
-            <p class="buy-eyebrow">Join 200+ game devs and artists</p>
-            <h2>START CREATING<br>LOW POLY CHARACTERS</h2>
-            <div class="price-row">
-                <span class="price-main">$39</span>
-                <span class="price-was">$59</span>
-            </div>
-            <span class="price-save">Save $20</span>
-            <div class="features-grid">
-                <div class="feature-item"><span class="check">✓</span> 8+ Hours of content</div>
-                <div class="feature-item"><span class="check">✓</span> 1-1 Feedback support</div>
-                <div class="feature-item"><span class="check">✓</span> 5 Character Base Mesh Pack</div>
-                <div class="feature-item"><span class="check">✓</span> 3 Bonus Modules</div>
-            </div>
-            <a href="https://store.thomaspotter.uk/lp-checkout">
-                <button id="btn-buy" class="btn-buy">YES, GIVE ME ACCESS NOW</button>
-            </a>
-            <p class="buy-secure">Secure Checkout · Stripe / PayPal</p>
-        </div>
-    </section>
+					<div class="faq-item">
+						<button class="faq-toggle">
+							<span class="faq-question"
+								>How much time do I actually need to
+								commit?</span
+							>
+							<span class="faq-icon">+</span>
+						</button>
+						<div class="faq-answer">
+							<p>
+								While there are over 8 hours of video content,
+								it is broken down into bite-sized, digestible
+								lessons ranging from 10 to 20 minutes each. You
+								don't need to block out a whole weekend; you can
+								make massive progress just by doing one or two
+								lessons a night with your evening coffee. Plus,
+								you get lifetime access, so there is zero
+								pressure to rush through it.
+							</p>
+						</div>
+					</div>
 
-    <!-- FAQ / Q&A -->
-    <section id="faq">
-        <div class="faq-container">
-            <h2>Frequently Asked Questions</h2>
-            
-            <div class="faq-grid">
+					<div class="faq-item">
+						<button class="faq-toggle">
+							<span class="faq-question"
+								>What If I run into issues?</span
+							>
+							<span class="faq-icon">+</span>
+						</button>
+						<div class="faq-answer">
+							<p>
+								You won't be left on your own. If you run into
+								any issues message me and I'll do my best to
+								help. You can send screenshots of your work, ask
+								questions, and get feedback directly from me and
+								other game devs.
+							</p>
+						</div>
+					</div>
 
-                <div class="faq-item">
-                    <button class="faq-toggle">
-                        <span class="faq-question">Do you offer refunds?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Yes! I offer a 14-day money-back guarantee. If you're not satisfied with the course, just reach out and I'll send your money back.</p>
-                    </div>
-                </div>
+					<div class="faq-item">
+						<button class="faq-toggle">
+							<span class="faq-question"
+								>How long do I get access to the course?</span
+							>
+							<span class="faq-icon">+</span>
+						</button>
+						<div class="faq-answer">
+							<p>
+								You get lifetime access to all course materials.
+							</p>
+						</div>
+					</div>
 
-                <div class="faq-item">
-                    <button class="faq-toggle">
-                        <span class="faq-question">How much time do I actually need to commit?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>While there are over 8 hours of video content, it is broken down into bite-sized, digestible lessons ranging from 10 to 20 minutes each. You don't need to block out a whole weekend; you can make massive progress just by doing one or two lessons a night with your evening coffee. Plus, you get lifetime access, so there is zero pressure to rush through it.</p>
-                    </div>
-                </div>
+					<div class="faq-item">
+						<button class="faq-toggle">
+							<span class="faq-question"
+								>What if I'm a complete beginner?</span
+							>
+							<span class="faq-icon">+</span>
+						</button>
+						<div class="faq-answer">
+							<p>
+								This course is not designed for absolute
+								beginners, the modules are a simiar style to my
+								youtube videos, just more in depth and step by
+								step through the whole process. But if you're
+								patient and a quick learner, youre in the right
+								place
+							</p>
+						</div>
+					</div>
 
-                <div class="faq-item">
-                    <button class="faq-toggle">
-                        <span class="faq-question">What If I run into issues?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>You won't be left on your own. If you run into any issues message me and I'll do my best to help. You can send screenshots of your work, ask questions, and get feedback directly from me and other game devs.</p>
-                    </div>
-                </div>
+					<div class="faq-item">
+						<button class="faq-toggle">
+							<span class="faq-question"
+								>What Blender version do I need?</span
+							>
+							<span class="faq-icon">+</span>
+						</button>
+						<div class="faq-answer">
+							<p>
+								This course is recorded is blender 4.2 and 4.3
+								but all the content should work in the latest
+								version, if you run into any issues, please
+								reach out to me and I'll get it sorted.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-                <div class="faq-item">
-                    <button class="faq-toggle">
-                        <span class="faq-question">How long do I get access to the course?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>You get lifetime access to all course materials.</p>
-                    </div>
-                </div>
+		<!-- FOOTER -->
+		<footer>
+			<p class="footer-logo">POTTER<span>3D</span></p>
+			<p class="footer-copy">© 2026 Thomas Potter</p>
+			<div class="footer-links">
+				<a href="https://potteracademy.uk/terms">[TERMS]</a>
+				<a href="https://potteracademy.uk/contact">[CONTACT]</a>
+				<a href="https://potteracademy.uk/login">[LOGIN]</a>
+			</div>
+		</footer>
 
-                <div class="faq-item">
-                    <button class="faq-toggle">
-                        <span class="faq-question">What if I'm a complete beginner?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>This course is not designed for absolute beginners, the modules are a simiar style to my youtube videos, just more in depth and step by step through the whole process. But if you're patient and a quick learner, youre in the right place</p>
-                    </div>
-                </div>
+		<script>
+			// ── VIDEO PLAYER ──────────────────────────────────────
+			const video = document.getElementById("previewVideo");
+			const overlay = document.getElementById("videoOverlay");
+			const wrapper = document.getElementById("videoContainer");
+			const progress = document.getElementById("videoProgress");
+			const fill = document.getElementById("videoProgressFill");
+			let isTracking = false;
 
+			overlay.addEventListener("click", () => {
+				video.play();
+				wrapper.classList.add("playing");
+				progress.classList.add("active");
+				if (!isTracking) {
+					isTracking = true;
+					requestAnimationFrame(updateProgress);
+				}
+			});
 
-                <div class="faq-item">
-                    <button class="faq-toggle">
-                        <span class="faq-question">What Blender version do I need?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>This course is recorded is blender 4.2 and 4.3 but all the content should work in the latest version, if you run into any issues, please reach out to me and I'll get it sorted.</p>
-                    </div>
-                </div>
+			video.addEventListener("click", () => {
+				if (!video.paused) {
+					video.pause();
+					wrapper.classList.remove("playing");
+				}
+			});
 
-                
-                
-            </div>
-        </div>
-    </section>
+			video.addEventListener("ended", () => {
+				wrapper.classList.remove("playing");
+			});
 
-    <!-- FOOTER -->
-    <footer>
-        <p class="footer-logo">POTTER<span>3D</span></p>
-        <p class="footer-copy">© 2026 Thomas Potter Studio</p>
-        <div class="footer-links">
-            <a href="https://potteracademy.uk/terms">Terms</a>
-        </div>
-    </footer>
+			function updateProgress() {
+				if (video.duration) {
+					fill.style.width =
+						(video.currentTime / video.duration) * 100 + "%";
+				}
+				if (!video.paused && !video.ended) {
+					requestAnimationFrame(updateProgress);
+				} else {
+					isTracking = false;
+				}
+			}
 
-    <script>
+			progress.addEventListener("click", (e) => {
+				const rect = progress.getBoundingClientRect();
+				video.currentTime =
+					((e.clientX - rect.left) / rect.width) * video.duration;
+				if (!isTracking) {
+					isTracking = true;
+					requestAnimationFrame(updateProgress);
+				}
+			});
 
-    document.getElementById('btn-buy').addEventListener('click', function() {
-    posthog.capture('checkout_initiated');
+			// ── TIMELINE SCROLL (SYNCED + BIDIRECTIONAL) ─────────
+			const timelineLine = document.getElementById("timelineLine");
+			const timelineEl = document.getElementById("timeline");
+			const modules = document.querySelectorAll(".module");
 
-    // Pass your PostHog distinct_id into the Systeme.io URL
-    const distinctId = posthog.get_distinct_id();
-    const checkoutUrl = 'https://store.thomaspotter.uk/lp-checkout?ph_id=' + encodeURIComponent(distinctId);
-    window.location.href = checkoutUrl;
-    });
-    // ── VIDEO PLAYER ──────────────────────────────────────
-    const video = document.getElementById("previewVideo");
-    const overlay = document.getElementById("videoOverlay");
-    const wrapper = document.getElementById("videoContainer");
-    const progress = document.getElementById("videoProgress");
-    const fill = document.getElementById("videoProgressFill");
-    let isTracking = false;
+			function updateTimeline() {
+				if (!timelineLine || !timelineEl || modules.length === 0)
+					return;
 
-    overlay.addEventListener("click", () => {
-        video.play();
-        wrapper.classList.add("playing");
-        progress.classList.add("active");
-        if (!isTracking) { isTracking = true; requestAnimationFrame(updateProgress); }
-    });
+				const winH = window.innerHeight;
+				const timelineRect = timelineEl.getBoundingClientRect();
 
-    video.addEventListener("click", () => {
-        if (!video.paused) {
-            video.pause();
-            wrapper.classList.remove("playing");
-        }
-    });
+				const firstRect = modules[0].getBoundingClientRect();
+				const lastRect =
+					modules[modules.length - 1].getBoundingClientRect();
 
-    video.addEventListener("ended", () => {
-        wrapper.classList.remove("playing");
-    });
+				// ── PROGRESS (center-based)
+				const start = firstRect.top - winH * 0.5;
+				const end = lastRect.bottom - winH * 0.5;
 
-    function updateProgress() {
-        if (video.duration) {
-            fill.style.width = (video.currentTime / video.duration) * 100 + "%";
-        }
-        if (!video.paused && !video.ended) {
-            requestAnimationFrame(updateProgress);
-        } else {
-            isTracking = false;
-        }
-    }
+				const progress = Math.min(
+					Math.max(-start / (end - start), 0),
+					1,
+				);
 
-    progress.addEventListener("click", (e) => {
-        const rect = progress.getBoundingClientRect();
-        video.currentTime = ((e.clientX - rect.left) / rect.width) * video.duration;
-        if (!isTracking) { isTracking = true; requestAnimationFrame(updateProgress); }
-    });
+				// update line
+				timelineLine.style.setProperty(
+					"--scroll",
+					progress * 100 + "%",
+				);
 
+				// ── CLIP LINE TO DOT BOUNDS ──────────────────────
+				const firstDotY = firstRect.top + firstRect.height / 2;
+				const lastDotY = lastRect.top + lastRect.height / 2;
 
+				const timelineTop = timelineRect.top;
+				const topPercent =
+					((firstDotY - timelineTop) / timelineRect.height) * 100;
+				const bottomPercent =
+					((timelineRect.bottom - lastDotY) / timelineRect.height) *
+					100;
 
-    // ── TIMELINE SCROLL (SYNCED + BIDIRECTIONAL) ─────────
-    const timelineLine = document.getElementById("timelineLine");
-    const timelineEl   = document.getElementById("timeline");
-    const modules      = document.querySelectorAll(".module");
+				timelineLine.style.clipPath = `polygon(0 ${topPercent}%, 100% ${topPercent}%, 100% ${100 - bottomPercent}%, 0 ${100 - bottomPercent}%)`;
 
-    function updateTimeline() {
-        if (!timelineLine || !timelineEl || modules.length === 0) return;
+				// ── DOTS (sync exactly with progress, BOTH directions)
+				modules.forEach((mod, i) => {
+					const trigger = (i + 0.5) / modules.length;
 
-        const winH = window.innerHeight;
-        const timelineRect = timelineEl.getBoundingClientRect();
+					if (progress >= trigger) {
+						mod.classList.add("active");
+					} else {
+						mod.classList.remove("active"); // 👈 this fixes scrolling back up
+					}
+				});
+			}
 
-        const firstRect = modules[0].getBoundingClientRect();
-        const lastRect  = modules[modules.length - 1].getBoundingClientRect();
+			window.addEventListener("scroll", updateTimeline, {
+				passive: true,
+			});
+			window.addEventListener("resize", updateTimeline);
+			updateTimeline();
 
-        // ── PROGRESS (center-based)
-        const start = firstRect.top - winH * 0.5;
-        const end   = lastRect.bottom - winH * 0.5;
+			// ── FAQ ACCORDION ──────────────────────────────────────
+			const faqToggles = document.querySelectorAll(".faq-toggle");
 
-        const progress = Math.min(Math.max((-start) / (end - start), 0), 1);
+			faqToggles.forEach((toggle) => {
+				toggle.addEventListener("click", () => {
+					const faqItem = toggle.parentElement;
+					const isActive = faqItem.classList.contains("active");
 
-        // update line
-        timelineLine.style.setProperty("--scroll", (progress * 100) + "%");
+					// Close all other items
+					document
+						.querySelectorAll(".faq-item.active")
+						.forEach((item) => {
+							if (item !== faqItem) {
+								item.classList.remove("active");
+							}
+						});
 
-        // ── CLIP LINE TO DOT BOUNDS ──────────────────────
-        const firstDotY = firstRect.top + firstRect.height / 2;
-        const lastDotY = lastRect.top + lastRect.height / 2;
-        
-        const timelineTop = timelineRect.top;
-        const topPercent = ((firstDotY - timelineTop) / timelineRect.height) * 100;
-        const bottomPercent = ((timelineRect.bottom - lastDotY) / timelineRect.height) * 100;
-        
-        timelineLine.style.clipPath = `polygon(0 ${topPercent}%, 100% ${topPercent}%, 100% ${100 - bottomPercent}%, 0 ${100 - bottomPercent}%)`;
-
-        // ── DOTS (sync exactly with progress, BOTH directions)
-        modules.forEach((mod, i) => {
-            const trigger = (i + 0.5) / modules.length;
-
-            if (progress >= trigger) {
-                mod.classList.add("active");
-            } else {
-                mod.classList.remove("active"); // 👈 this fixes scrolling back up
-            }
-        });
-    }
-
-    window.addEventListener("scroll", updateTimeline, { passive: true });
-    window.addEventListener("resize", updateTimeline);
-    updateTimeline();
-
-    // ── FAQ ACCORDION ──────────────────────────────────────
-    const faqToggles = document.querySelectorAll(".faq-toggle");
-    
-    faqToggles.forEach(toggle => {
-        toggle.addEventListener("click", () => {
-            const faqItem = toggle.parentElement;
-            const isActive = faqItem.classList.contains("active");
-            
-            // Close all other items
-            document.querySelectorAll(".faq-item.active").forEach(item => {
-                if (item !== faqItem) {
-                    item.classList.remove("active");
-                }
-            });
-            
-            // Toggle current item
-            faqItem.classList.toggle("active");
-        });
-    });
-</script>
-
-</body>
+					// Toggle current item
+					faqItem.classList.toggle("active");
+				});
+			});
+		</script>
+	</body>
 </html>

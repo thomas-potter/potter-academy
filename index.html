@@ -1,207 +1,275 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Potter3D | Master 3D Character Creation in Blender</title>
-    <link rel="shortcut icon" type="image/png" href="/Assets/favicon.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800;900&family=Familjen+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/style.css">
-    <script>
-    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){
-    function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),
-    t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}
-    (p=t.createElement("script")).type="text/javascript",p.async=!0,
-    p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0])
-    .parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",
-    u.people=u.people||[],u.toString=function(t){var e="posthog";
-    return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},
-    u.people.toString=function(){return u.toString(1)+".people (stub)"},
-    o="capture identify alias people.set people.set_once".split(" "),
-    n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},
-    e.__SV=1)}(document,window.posthog||[]);
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Potter3D | Master 3D Character Creation in Blender</title>
+		<link rel="shortcut icon" type="image/png" href="/Assets/favicon.png" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@400;700&family=Fraunces:ital,wght@0,400..700;1,400..700&family=Syne:wght@400;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="/style.css" />
+	</head>
 
-    // FIX 2 & 6: Disable noisy autocapture and use explicit initialization
-        posthog.init('phc_F7460Uy9MePAEHfj7chiorFkrl0ZsCcDcouPLnpoPvo', {
-            api_host: 'https://eu.i.posthog.com',
-            autocapture: false // FIX 6: Disable noisy autocapture
-        });
+	<body>
+		<!-- NAV -->
+		<nav>
+			<div class="nav-inner">
+				<!-- FIX 1: Explicit event capture for navigation clicks -->
+				<a href="https://www.potteracademy.uk" class="nav-logo"
+					>POTTER<span>3D</span></a
+				>
+				<!-- FIX 1: Explicit event capture for navigation clicks -->
+				<a href="#courses" class="nav-cta">Explore</a>
+			</div>
+		</nav>
 
-        // FIX 2: Manually track pageview on initial load (assuming this is the main landing page)
-        posthog.capture('$pageview', {
-            location: 'homepage',
-            source: 'direct'
-    });
-    </script>
-</head>
+		<!-- HERO -->
+		<header class="section-dark">
+			<div class="hero-inner">
+				<h1 class="hero-h1">
+					MASTER
+					<em>3D Character Creation</em>
+					in Blender
+				</h1>
+				<div class="hero-cta-group">
+					<!-- FIX 1 & 5: Explicit event capture for CTA clicks -->
+					<a href="#courses" class="btn-primary"
+						>EXPLORE COURSES &rarr;</a
+					>
+					<!-- FIX 1 & 5: Explicit event capture for CTA clicks -->
+					<a href="/free-guide" class="btn-secondary"
+						>GET FREE GUIDE</a
+					>
+				</div>
+			</div>
+		</header>
 
-<body>
+		<!-- COURSES SECTION -->
+		<section id="courses" class="section-light">
+			<div class="section-inner">
+				<div class="section-header">
+					<h2>COURSES</h2>
+				</div>
 
-        <!-- NAV -->
-    <nav>
-        <div class="nav-inner">
-            <!-- FIX 1: Explicit event capture for navigation clicks -->
-            <a href="https://www.potteracademy.uk" class="nav-logo" data-event-capture="nav_clicked" data-item="potter3d">POTTER<span>3D</span></a>
-            <!-- FIX 1: Explicit event capture for navigation clicks -->
-            <a href="#courses" class="nav-cta" data-event-capture="nav_clicked" data-item="explore_courses">Explore</a>
-        </div>
-    </nav>
+				<div class="courses-grid">
+					<!-- FIX 1 & 5: Add data attributes for event tracking -->
+					<a
+						href="/low-poly-masterclass"
+						class="course-card featured"
+					>
+						<div class="course-thumb">
+							<img
+								src="https://d1yei2z3i6k35z.cloudfront.net/9770196/69c28ceeb32411.64199487_maxresdefault3.jpg"
+								alt="Low Poly Character Creation"
+							/>
+						</div>
+						<div class="course-body">
+							<h3>MASTER LOW POLY CHARACTER CREATION</h3>
+							<p>
+								End the confusion with solid workflows to create
+								any character in Blender. Perfect for game
+								developers and artists new to 3D.
+							</p>
+							<div class="course-footer">
+								<div class="course-price">
+									<span class="price-main">$39</span>
+								</div>
+								<!-- FIX 1 & 5: Add data attributes for event tracking -->
+								<span class="btn-course"
+									>LEARN MORE &rarr;</span
+								>
+							</div>
+						</div>
+					</a>
 
-    <!-- HERO -->
-    <header>
-        <div class="hero-inner">
-            <h1 class="hero-h1">
-                Master <span class="accent">3D Character Creation</span> in Blender
-            </h1>
-            <div class="hero-cta-group">
-                <!-- FIX 1 & 5: Explicit event capture for CTA clicks -->
-                <a href="#courses" class="btn-primary" data-event-capture="cta_clicked" data-location="hero" data-label="explore_courses">Explore Courses →</a>
-                <!-- FIX 1 & 5: Explicit event capture for CTA clicks -->
-                <a href="/free-guide" class="btn-secondary" data-event-capture="cta_clicked" data-location="hero" data-label="get_free_guide">Get Free Guide</a>
-            </div>
-        </div>
-    </header>
+					<!-- FIX 1 & 5: Add data attributes for event tracking -->
+					<a href="/ps1-guide" class="course-card">
+						<div class="course-thumb">
+							<img
+								src="https://d1yei2z3i6k35z.cloudfront.net/9770196/69ca5c634e8f51.54503174_ps1_v2thumbnail.jpg"
+								alt="PS1 Character Creation"
+							/>
+						</div>
+						<div class="course-body">
+							<h3>CREATE PS1 CHARACTERS IN BLENDER V2</h3>
+							<p>
+								Learn advanced techniques to create beautiful
+								PS1-style characters. 8+ hours of in-depth
+								training with direct feedback.
+							</p>
+							<div class="course-footer">
+								<div class="course-price">
+									<span class="price-main">$39</span>
+								</div>
+								<!-- FIX 1 & 5: Add data attributes for event tracking -->
+								<span class="btn-course"
+									>LEARN MORE &rarr;</span
+								>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</section>
 
-    <!-- COURSES SECTION -->
-    <section id="courses">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2>Courses</h2>
-            </div>
+		<!-- YOUTUBE PLAYLISTS / RESOURCES -->
+		<section id="playlists" class="section-dark">
+			<div class="section-inner">
+				<div class="section-header">
+					<h2>FREE YOUTUBE CONTENT</h2>
+					<p>EXPLORE FULL PLAYLISTS TO DISCOVER MORE</p>
+				</div>
 
-            <div class="courses-grid">
-                <!-- FIX 1 & 5: Add data attributes for event tracking -->
-                <a href="/low-poly-masterclass" class="course-card featured" data-event-capture="course_viewed" data-page="low_poly_masterclass" data-position="featured">
-                    <div class="course-thumb">
-                        <img src="https://d1yei2z3i6k35z.cloudfront.net/9770196/69c28ceeb32411.64199487_maxresdefault3.jpg" alt="Low Poly Character Creation">
-                    </div>
-                    <div class="course-body">
-                        <span class="course-tag featured-tag">In Depth</span>
-                        <h3 data-event-capture="course_viewed" data-page="low_poly_masterclass">Master Low Poly Character Creation</h3>
-                        <p>End the confusion with solid workflows to create any character in Blender. Perfect for game developers and artists new to 3D.</p>
-                        <div class="course-footer">
-                            <div class="course-price">
-                                <span class="price-main">$39</span>
-                            </div>
-                            <!-- FIX 1 & 5: Add data attributes for event tracking -->
-                            <span class="btn-course" data-event-capture="cta_clicked" data-location="courses" data-label="low_poly_masterclass">Learn More →</span>
-                        </div>
-                    </div>
-                </a>
+				<div class="playlists-grid">
+					<!-- FIX 1 & 5: Add data attributes for event tracking -->
+					<a
+						href="https://www.youtube.com/playlist?list=PLYAFctXyURilNnvAQjc1iptR_IKG2VjKU"
+						class="playlist-card"
+					>
+						<div
+							class="playlist-thumb"
+							style="
+								background: url(&quot;https://i.ytimg.com/vi/dl7geQJgxI8/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLA3DijqRNnRPQCw-o75j8PLujAvLA&quot;)
+									center/cover;
+							"
+						>
+							<span class="playlist-icon">&#9654;</span>
+						</div>
+						<h3>CREATE GAME READY CHARACTERS IN BLENDER!</h3>
+						<p>
+							Learn how to make Low poly 3D Characters Step by
+							Step for FREE using Blender!
+						</p>
+					</a>
 
-                <!-- FIX 1 & 5: Add data attributes for event tracking -->
-                <a href="/ps1-guide" class="course-card" data-event-capture="course_viewed" data-page="ps1_guide" data-position="popular">
-                    <div class="course-thumb">
-                        <img src="https://d1yei2z3i6k35z.cloudfront.net/9770196/69ca5c634e8f51.54503174_ps1_v2thumbnail.jpg" alt="PS1 Character Creation">
-                    </div>
-                    <div class="course-body">
-                        <span class="course-tag">Most Popular</span>
-                        <h3 data-event-capture="course_viewed" data-page="ps1_guide">Create PS1 Characters in Blender V2</h3>
-                        <p>Learn advanced techniques to create beautiful PS1-style characters. 8+ hours of in-depth training with direct feedback.</p>
-                        <div class="course-footer">
-                            <div class="course-price">
-                                <span class="price-main">$39</span>
-                            </div>
-                            <!-- FIX 1 & 5: Add data attributes for event tracking -->
-                            <span class="btn-course" data-event-capture="cta_clicked" data-location="courses" data-label="ps1_guide">Learn More →</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
+					<!-- FIX 1 & 5: Add data attributes for event tracking -->
+					<a
+						href="https://www.youtube.com/playlist?list=PLYAFctXyURimOTnPDSD8XETijLhtIsw5r"
+						class="playlist-card"
+					>
+						<div
+							class="playlist-thumb"
+							style="
+								background: url(&quot;https://i.ytimg.com/vi/9WqFxptKZcQ/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDPr9g0MM6MsWuhrapkKVwv8eSs-A&quot;)
+									center/cover;
+							"
+						>
+							<span class="playlist-icon">&#9654;</span>
+						</div>
+						<h3>FIX YOUR GAME CHARACTERS!</h3>
+						<p></p>
+					</a>
 
-    <!-- YOUTUBE PLAYLISTS / RESOURCES -->
-    <section id="playlists">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2>Free YouTube Content</h2>
-                <p>Explore full playlists to discover more</p>
-            </div>
-            
-            <div class="playlists-grid">
-                <!-- FIX 1 & 5: Add data attributes for event tracking -->
-                <a href="https://www.youtube.com/playlist?list=PLYAFctXyURilNnvAQjc1iptR_IKG2VjKU" class="playlist-card" data-event-capture="resource_clicked" data-resource="blender_game_chars">
-                    <div class="playlist-thumb" style="background: url('https://i.ytimg.com/vi/dl7geQJgxI8/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLA3DijqRNnRPQCw-o75j8PLujAvLA') center/cover;">
-                        <span class="playlist-icon">▶</span>
-                    </div>
-                    <h3 data-event-capture="resource_clicked" data-resource="blender_game_chars">Create Game Ready Characters in Blender!</h3>
-                    <p>Learn how to make Low poly 3D Characters Step by Step for FREE using Blender!</p>
-                </a>
+					<!-- FIX 1 & 5: Add data attributes for event tracking -->
+					<a
+						href="https://www.youtube.com/playlist?list=PLYAFctXyURikwAgjzHPcqoTJiEwjoUn-S"
+						class="playlist-card"
+					>
+						<div
+							class="playlist-thumb"
+							style="
+								background: url(&quot;https://i.ytimg.com/vi/TBSfByl0kwM/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDFSvBL7jAzkhEtKw3dc4ZoAL64bg&quot;)
+									center/cover;
+							"
+						>
+							<span class="playlist-icon">&#9654;</span>
+						</div>
+						<h3>LEARN TO MAKE PS1 CHARACTERS IN BLENDER</h3>
+						<p>Tips and tricks to make ps1 characters in blender</p>
+					</a>
+				</div>
+			</div>
+		</section>
 
-                <!-- FIX 1 & 5: Add data attributes for event tracking -->
-                <a href="https://www.youtube.com/playlist?list=PLYAFctXyURimOTnPDSD8XETijLhtIsw5r" class="playlist-card" data-event-capture="resource_clicked" data-resource="fix_game_chars">
-                    <div class="playlist-thumb" style="background: url('https://i.ytimg.com/vi/9WqFxptKZcQ/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDPr9g0MM6MsWuhrapkKVwv8eSs-A') center/cover;">
-                        <span class="playlist-icon">▶</span>
-                    </div>
-                    <h3 data-event-capture="resource_clicked" data-resource="fix_game_chars">Fix your Game Characters!</h3>
-                    <p></p>
-                </a>
+		<!-- TESTIMONIALS -->
+		<section id="testimonials" class="section-dark">
+			<div class="section-inner">
+				<h2>STUDENT SUCCESS STORIES</h2>
+				<div class="testimonials-grid">
+					<div class="testimonial-card">
+						<p class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+						<p>
+							"I've tried courses by half a dozen other content
+							creators and they just never worked for me. But
+							Thomas' way of explaining just clicks with me. Not
+							only does he explain what he's doing, but WHY he's
+							doing it It's like he's teaching to people and not
+							just talking to his webcam."
+						</p>
+						<div class="testimonial-footer">
+							<span class="author">BECK</span>
+							<span class="course-tag">
+								Low Poly Character Course
+							</span>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<p class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+						<p>
+							"This is the stuff! As a complete blender beginner
+							this course is great. I used it as a guide to model
+							a character off a different piece of artwork,
+							instead of following exactly along, but the course
+							was still great in teaching me the required skills.
+							Excellent pacing ensures that the skills you learn
+							one minute are being tested soon after and are
+							quickly cemented."
+						</p>
+						<div class="testimonial-footer">
+							<span class="author">BENJAMIN BULL</span>
+							<span class="course-tag">
+								PS1 Character Course
+							</span>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<p class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+						<p>
+							"Great guide. It has both the theory and the
+							practice, and the explanations are easy to
+							understand even for someone like me who hasn't got a
+							degree in modeling or something like that. Good
+							topology was exactly what I was missing, and now I
+							have it! 🙌"
+						</p>
+						<div class="testimonial-footer">
+							<span class="author">ANONYMOUS</span>
+							<span class="course-tag">Topology Guide</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-                <!-- FIX 1 & 5: Add data attributes for event tracking -->
-                <a href="https://www.youtube.com/playlist?list=PLYAFctXyURikwAgjzHPcqoTJiEwjoUn-S" class="playlist-card" data-event-capture="resource_clicked" data-resource="ps1_characters">
-                    <div class="playlist-thumb" style="background: url('https://i.ytimg.com/vi/TBSfByl0kwM/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDFSvBL7jAzkhEtKw3dc4ZoAL64bg') center/cover;">
-                        <span class="playlist-icon">▶</span>
-                    </div>
-                    <h3 data-event-capture="resource_clicked" data-resource="ps1_characters">Learn to make PS1 Characters in Blender</h3>
-                    <p>Tips and tricks to make ps1 characters in blender</p>
-                </a>
-            </div>
-        </div>
-    </section>
+		<!-- FOOTER -->
+		<footer class="section-dark">
+			<div class="footer-inner">
+				<div class="footer-links">
+					<a href="/terms">[TERMS &amp; PRIVACY POLICY]</a>
+					<a href="/contact">[CONTACT]</a>
+					<a href="/login">[LOGIN]</a>
+				</div>
+				<p class="footer-copy">© 2026 Thomas Potter</p>
+			</div>
+		</footer>
 
-    <!-- TESTIMONIALS -->
-    <section id="testimonials">
-        <div class="section-inner">
-            <h2 data-event-capture="pageview_context" data-location="homepage">Student Success Stories</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial">
-                    <p class="stars">★★★★★</p>
-                    <p>"After so many years I finally learned how to model correctly. This course is absolutely worth it!"</p>
-                    <p class="author">Andrew Moris</p>
-                </div>
-                <div class="testimonial">
-                    <p class="stars">★★★★★</p>
-                    <p>"I learned methods I never knew existed. Worth every penny and the pacing is excellent for different skill levels."</p>
-                    <p class="author">Michelle Zietlow</p>
-                </div>
-                <div class="testimonial">
-                    <p class="stars">★★★★★</p>
-                    <p>"As a complete beginner, this course structured everything perfectly. I created my first character and animated it!"</p>
-                    <p class="author">Benjamin Bull</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer data-event-capture="pageview_context" data-location="homepage">
-        <div class="footer-inner">
-            <div class="footer-logo">POTTER<span>3D</span></div>
-            <p class="footer-copy">© 2026 Thomas Potter Studio. All rights reserved.</p>
-            <!-- FIX 1: Explicit event capture for footer links -->
-            <div class="footer-links">
-                <a href="/terms" data-event-capture="nav_clicked" data-item="terms">Terms</a>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-
-
-        // Scroll indicator animation
-        const scrollIndicator = document.querySelector('.scroll-indicator');
-        if (scrollIndicator) {
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 100) {
-                    scrollIndicator.style.opacity = '0';
-                    scrollIndicator.style.pointerEvents = 'none';
-                } else {
-                    scrollIndicator.style.opacity = '1';
-                }
-            });
-        }
-    </script>
-
-</body>
+		<script>
+			// Scroll indicator animation
+			const scrollIndicator = document.querySelector(".scroll-indicator");
+			if (scrollIndicator) {
+				window.addEventListener("scroll", () => {
+					if (window.scrollY > 100) {
+						scrollIndicator.style.opacity = "0";
+						scrollIndicator.style.pointerEvents = "none";
+					} else {
+						scrollIndicator.style.opacity = "1";
+					}
+				});
+			}
+		</script>
+	</body>
 </html>
