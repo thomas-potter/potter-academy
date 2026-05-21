@@ -207,6 +207,11 @@ document.addEventListener("DOMContentLoaded", () => {
 			course: "PS1 Character Course",
 		},
 		{
+			text: "Excellent course! Gave me a real template that I could work toward to make my own characters. I was never very good at characters, and always had a fascination with low-poly characters. This course is an excellent stepping stone if you're looking for a good and effective workflow!",
+			author: "Gabe M",
+			course: "Low Poly Character Course",
+		},
+		{
 			text: "I own almost every low poly character course in the internet, and this one is the best by far. God bless you Thomas.",
 			author: "Jorge",
 			course: "Low Poly Character Course",
