@@ -123,6 +123,11 @@
 				}
 			}
 		</style>
+		<script>
+		!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+		posthog.init('phc_h3D9Ry7HM4D515gEUYsQzj3jpyxjfuCeXCCxn7hDhUU', {api_host: 'https://eu.i.posthog.com', persistence: 'memory', autocapture: true, capture_pageview: true});
+		</script>
+
 	</head>
 	<body>
 		<nav id="navbar">
@@ -145,36 +150,35 @@
 					<p>
 						Potter Academy is operated by Thomas Potter. This
 						Privacy Policy explains how we collect, use, store, and
-						share your personal data when you use the Platform. We
-						are the data controller for the purposes of UK GDPR.
+						protect your personal data when you visit our website,
+						make a purchase, or use our learning platform.
 					</p>
 				</section>
 
 				<section class="terms-section">
 					<h2>2 — What data we collect</h2>
+					<p>We collect the following types of data:</p>
 					<ul>
 						<li>
-							<strong>Account & identity:</strong> Email address
-							(required), name (optional), profile picture (when
-							using optional social sign-in), and a unique user
-							ID.
+							<strong>Account data:</strong> Name, email address,
+							password (hashed), and progress through course
+							materials.
 						</li>
 						<li>
-							<strong>Learning & progress:</strong> Lessons and
-							courses accessed, completion status, timestamps, and
-							resume position.
+							<strong>Purchase data:</strong> Email, payment
+							confirmation, product purchased, amount, currency,
+							and transaction ID. We do not store card details.
 						</li>
 						<li>
-							<strong>Purchase & billing:</strong> Courses or
-							memberships purchased, purchase status, payment
-							processor reference, customer email at checkout, and
-							purchase date. We do not store card details — these
-							are handled by a third-party payment provider.
+							<strong>Analytics data:</strong> Page views,
+							button clicks, and referral source (e.g. which
+							YouTube video or email brought you here). See
+							Section 5 for details.
 						</li>
 						<li>
-							<strong>Technical & log data:</strong> IP address,
-							browser type and version, request timestamps, and
-							session cookies.
+							<strong>Technical data:</strong> IP address,
+							browser type, and device information (collected
+							automatically by our hosting and payment providers).
 						</li>
 					</ul>
 				</section>
@@ -216,8 +220,13 @@
 							</tr>
 							<tr>
 								<td>
-									Preventing fraud and duplicate purchases
+									Understanding which content drives sales so
+									we can improve our offerings
 								</td>
+								<td>Legitimate interest</td>
+							</tr>
+							<tr>
+								<td>Preventing fraud and duplicate purchases</td>
 								<td>Legitimate interest</td>
 							</tr>
 							<tr>
@@ -235,23 +244,76 @@
 				<section class="terms-section">
 					<h2>4 — How we share your data</h2>
 					<p>We do not sell, rent, or trade your personal data.</p>
+					<p>We share data only with the following service providers:</p>
+					<ul>
+						<li>
+							<strong>Convex</strong> — backend database and
+							authentication.
+						</li>
+						<li>
+							<strong>Creem</strong> — payment processing.
+						</li>
+						<li>
+							<strong>PostHog</strong> — cookieless analytics
+							(see Section 5).
+						</li>
+						<li>
+							<strong>Resend</strong> — transactional email
+							delivery.
+						</li>
+					</ul>
 				</section>
 
 				<section class="terms-section">
-					<h2>5 — Cookies</h2>
+					<h2>5 — Analytics &amp; tracking</h2>
 					<p>
-						We use strictly necessary session cookies to maintain
-						your login state. These cannot be disabled as they are
-						essential for the Platform to function. We do not use
-						tracking or analytics cookies.
+						We use <strong>PostHog</strong> to understand how
+						visitors interact with our website and which content
+						drives sales. This helps us improve our courses and
+						marketing.
+					</p>
+					<p><strong>What we track:</strong></p>
+					<ul>
+						<li>Page views and navigation paths</li>
+						<li>Button clicks (e.g. "Get Instant Access") and CTA interactions</li>
+						<li>Referral source — if you arrived via a tracking link (e.g. from a YouTube video or email), we record that reference to attribute any purchase to the correct content</li>
+						<li>UTM parameters (source, medium, campaign) when present in the URL</li>
+						<li>Checkout completions (recorded server-side from our payment provider webhooks)</li>
+					</ul>
+					<p><strong>What we do NOT do:</strong></p>
+					<ul>
+						<li>We do not use cookies for analytics. PostHog is configured to use memory-only storage ("cookieless" mode).</li>
+						<li>We do not track you across other websites.</li>
+						<li>We do not build advertising profiles or share analytics data with ad networks.</li>
+					</ul>
+					<p>
+						PostHog data is hosted in the <strong>EU</strong>. You
+						can opt out of analytics tracking by enabling Do Not
+						Track (DNT) in your browser, or by contacting us to
+						request deletion of your analytics data.
 					</p>
 				</section>
 
 				<section class="terms-section">
-					<h2>6 — Data retention</h2>
+					<h2>6 — Cookies</h2>
+					<p>
+						We use strictly necessary session cookies to maintain
+						your login state on the learning platform. These cannot be
+						disabled as they are essential for the Platform to
+						function.
+					</p>
+					<p>
+						We do <strong>not</strong> use tracking or
+						advertising cookies. Our analytics (PostHog) runs in
+						cookieless mode with memory-only storage.
+					</p>
+				</section>
+
+				<section class="terms-section">
+					<h2>7 — Data retention</h2>
 					<ul>
 						<li>
-							<strong>Account & progress data:</strong> Retained
+							<strong>Account &amp; progress data:</strong> Retained
 							while your account is active. Deleted upon account
 							deletion.
 						</li>
@@ -267,11 +329,15 @@
 							2 years so we can link them to your account if you
 							later register with the same email.
 						</li>
+						<li>
+							<strong>Analytics data:</strong> Retained for up
+							to 2 years, then automatically purged by PostHog.
+						</li>
 					</ul>
 				</section>
 
 				<section class="terms-section">
-					<h2>7 — Your rights</h2>
+					<h2>8 — Your rights</h2>
 					<p>
 						Under UK GDPR, you have the right to access, correct,
 						delete, export, or object to processing of your personal
@@ -283,7 +349,7 @@
 				</section>
 
 				<section class="terms-section">
-					<h2>8 — Data security</h2>
+					<h2>9 — Data security</h2>
 					<p>
 						Data is stored in a secure backend environment.
 						Authentication uses encrypted session tokens. Payments
@@ -293,7 +359,7 @@
 				</section>
 
 				<section class="terms-section">
-					<h2>9 — International transfers</h2>
+					<h2>10 — International transfers</h2>
 					<p>
 						Our infrastructure providers may process data in the
 						United States or other jurisdictions. Such transfers are
@@ -303,7 +369,7 @@
 				</section>
 
 				<section class="terms-section">
-					<h2>10 — Children's privacy</h2>
+					<h2>11 — Children's privacy</h2>
 					<p>
 						The Platform is not directed at children under the age
 						of 16. We do not knowingly collect data from children.
@@ -313,7 +379,7 @@
 				</section>
 
 				<section class="terms-section">
-					<h2>11 — Embedded content</h2>
+					<h2>12 — Embedded content</h2>
 					<p>
 						Some lessons may contain embedded video content. These
 						providers may collect viewing data and set their own
@@ -323,7 +389,7 @@
 				</section>
 
 				<section class="terms-section">
-					<h2>12 — Changes to this policy</h2>
+					<h2>13 — Changes to this policy</h2>
 					<p>
 						We may update this Privacy Policy from time to time.
 						Material changes will be communicated via email or a
@@ -332,7 +398,7 @@
 				</section>
 
 				<section class="terms-section">
-					<h2>13 — Contact & complaints</h2>
+					<h2>14 — Contact &amp; complaints</h2>
 					<p>
 						Questions or complaints about our data practices? Email
 						<a href="mailto:contact@thomaspotter.uk"
