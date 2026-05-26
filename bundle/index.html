@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<base href="/bundle/" />
 		<title>Potter Academy</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -560,6 +561,20 @@
 
 		<script src="main.js"></script>
 		<script>
+		(function() {
+			// Click tracking: fire a click event to the backend when a ref param is present
+			var params = new URLSearchParams(window.location.search);
+			var ref = params.get('ref');
+			if (ref) {
+				try {
+					fetch('https://judicious-walrus-668.convex.site/track-click', {
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({ ref: ref })
+					}).catch(function() { /* silently ignore */ });
+				} catch(e) { /* silently ignore */ }
+			}
+		})();
 		document.addEventListener('DOMContentLoaded', function() {
 			// Preserve query params (UTM + ref) on checkout link
 			var search = window.location.search;
