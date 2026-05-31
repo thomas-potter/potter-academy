@@ -233,6 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		},
 	];
 
+
 	const buildTrack = (trackEl, cards, duration) => {
 		trackEl.innerHTML = [...cards, ...cards]
 			.map(
@@ -252,6 +253,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	buildTrack(document.getElementById("track1"), row1Cards, 60);
 	buildTrack(document.getElementById("track2"), row2Cards, 60);
+	buildTrack(document.getElementById("track3"), row3Cards, 60);
 
 	// FAQ accordion
 	document.querySelectorAll(".faq-row-header").forEach((header) => {

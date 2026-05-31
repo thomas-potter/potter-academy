@@ -39,7 +39,7 @@
 				<h2 class="green-subtitle" id="hero-dynamic-title">
 					LOW POLY CHARACTER CREATION
 				</h2>
-				<a href="#pricing" class="btn-primary" data-ph-track="bundle_cta_clicked" data-ph-location="hero">START CREATING TODAY!</a>
+				<a href="#pricing" class="btn-primary">START CREATING TODAY!</a>
 				<p class="guarantee">30-Day Money-Back Guarantee</p>
 			</div>
 		</main>
@@ -110,7 +110,7 @@
 						process I personally use on every project I work on.
 					</p>
 				</div>
-				<a href="#pricing" class="btn-primary" data-ph-track="bundle_cta_clicked" data-ph-location="pitch">JOIN NOW</a>
+				<a href="#pricing" class="btn-primary">JOIN NOW</a>
 			</div>
 		</section>
 
@@ -390,6 +390,9 @@
 			<div class="carousel-viewport" id="row2">
 				<div class="carousel-track row-2" id="track2"></div>
 			</div>
+			<div class="carousel-viewport" id="row3">
+				<div class="carousel-track row-3" id="track3"></div>
+			</div>
 		</section>
 
 		<!-- PRICING -->
@@ -409,9 +412,7 @@
 					<span class="price-save">- save %50</span>
 					<a
 						href="https://app.potteracademy.uk/checkout"
-						class="btn-primary btn-large"
-						data-ph-track="bundle_cta_clicked"
-						data-ph-location="pricing"
+						class="btn-primary btn-large js-checkout-link"
 						>GET INSTANT ACCESS</a
 					>
 					<p class="pricing-guarantee">
@@ -572,23 +573,28 @@
 			}
 		})();
 		document.addEventListener('DOMContentLoaded', function() {
-			// Preserve query params (UTM + ref) on checkout link
 			var search = window.location.search;
+			var urlParams = new URLSearchParams(search);
+			var source = urlParams.get('ref') || 'direct';
+
+			// Preserve query params (UTM + ref) on checkout links
 			if (search) {
 				document.querySelectorAll('a[href*="app.potteracademy.uk/checkout"]').forEach(function(el) {
 					var href = el.getAttribute('href');
 					el.href = href + (href.indexOf('?') > -1 ? '&' : '?') + search.substring(1);
 				});
 			}
-			// Track bundle CTA clicks
-			document.querySelectorAll('[data-ph-track]').forEach(function(el) {
-				el.addEventListener('click', function() {
+
+			// Unified checkout tracking — only on actual checkout CTAs
+			document.querySelectorAll('.js-checkout-link').forEach(function(el) {
+				el.addEventListener('click', function(e) {
 					if (window.posthog) {
-						var urlParams = new URLSearchParams(window.location.search);
-						posthog.capture('bundle_cta_clicked', {
-							location: el.getAttribute('data-ph-location') || 'unknown',
-							text: el.textContent.trim(),
-							source: urlParams.get('ref') || 'direct'
+						posthog.capture('start_checkout', {
+							location: 'bundle_pricing',
+							price: 69,
+							currency: 'USD',
+							source: source,
+							$current_url: window.location.href
 						});
 					}
 				});
