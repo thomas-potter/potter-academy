@@ -21,10 +21,14 @@ document.addEventListener("DOMContentLoaded", () => {
 			src: "../imgs/low_poly_banner.webp",
 			title: "Low Poly Character Creation",
 		},
+		{
+			src: "../imgs/weapon_banner.webp",
+			title: "Stylized Game Weapons",
+		},
 	];
 
-	const ITEM_W = 900,
-		GAP = 32,
+	const ITEM_W = 380,
+		GAP = 24,
 		STRIDE = ITEM_W + GAP;
 	const CLONE_SETS = 3,
 		ORIGIN_COUNT = mediaItems.length;
@@ -90,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			const item = document.createElement("div");
 			item.className = "carousel-item";
 			item.dataset.index = idx;
-			item.innerHTML = `<img src="${media.src}" alt="${media.title}" draggable="false" />`;
+			item.style.cssText = `background-image: url('${media.src}'); background-size: cover; background-position: center;`;
 			item.addEventListener("click", () => {
 				if (isTransitioning) return;
 				const nearest = [0, 1, 2]
@@ -108,8 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 	track.appendChild(fragment);
 
-	track.addEventListener("transitionend", (e) => {
-		if (e.target !== track || e.propertyName !== "transform") return;
+	track.addEventListener("transitionend", () => {
 		isTransitioning = false;
 		const realIdx =
 			((virtualIndex % ORIGIN_COUNT) + ORIGIN_COUNT) % ORIGIN_COUNT;
@@ -229,6 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			course: "Low Poly Character Course",
 		},
 	];
+
 
 	const buildTrack = (trackEl, cards, duration) => {
 		trackEl.innerHTML = [...cards, ...cards]
