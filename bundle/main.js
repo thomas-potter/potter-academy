@@ -2,12 +2,15 @@ document.addEventListener("DOMContentLoaded", () => {
 	const track = document.getElementById("carousel-track");
 	const prevBtn = document.getElementById("carousel-prev");
 	const nextBtn = document.getElementById("carousel-next");
+	const heroContent = document.getElementById("hero-content");
 	const heroDynamicTitle = document.getElementById("hero-dynamic-title");
 	const heroSubtitle = document.getElementById("hero-subtitle");
 	const heroLayerA = document.getElementById("hero-layer-a");
 	const heroLayerB = document.getElementById("hero-layer-b");
 	const carouselContainer = document.getElementById("carousel");
-	const navbar = document.getElementById("navbar");
+
+	// Guard clauses for missing DOM elements
+	if (!track || !carouselContainer) return;
 
 	const mediaItems = [
 		{
@@ -58,16 +61,36 @@ document.addEventListener("DOMContentLoaded", () => {
 		isTransitioning = false;
 
 	const updateHeroTitle = (title) => {
-		if (heroDynamicTitle)
-			heroDynamicTitle.textContent = (
-				title || "Low Poly Character Creation"
-			).toUpperCase();
+		if (!heroDynamicTitle) return;
+		const newText = (title || "Low Poly Character Creation").toUpperCase();
+		if (heroDynamicTitle.textContent !== newText) {
+			heroDynamicTitle.textContent = newText;
+		}
 	};
 
 	const updateHeroSubtitle = (subtitle) => {
-		if (heroSubtitle)
-			heroSubtitle.textContent =
-				subtitle || "Everything You Need to Create Game-Ready Characters";
+		if (!heroSubtitle) return;
+		const newText =
+			subtitle || "Everything You Need to Create Game-Ready Characters";
+		if (heroSubtitle.textContent !== newText) {
+			heroSubtitle.textContent = newText;
+		}
+	};
+
+	const TRANSITION_MS = 420;
+
+	const animateHeroChange = (title, subtitle) => {
+		if (!heroContent) {
+			updateHeroTitle(title);
+			updateHeroSubtitle(subtitle);
+			return;
+		}
+		heroContent.classList.add("is-transitioning");
+		setTimeout(() => {
+			updateHeroTitle(title);
+			updateHeroSubtitle(subtitle);
+			heroContent.classList.remove("is-transitioning");
+		}, TRANSITION_MS);
 	};
 
 	const crossFadeBg = (src) => {
@@ -84,8 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	const displayMedia = (media) => {
 		crossFadeBg(media.src);
-		updateHeroTitle(media.title);
-		updateHeroSubtitle(media.subtitle);
+		animateHeroChange(media.title, media.subtitle);
 	};
 
 	const getTranslateX = (vIdx) =>
@@ -159,11 +181,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	});
 
+	// Auto-rotation interval in milliseconds
+	const AUTO_ROTATE_MS = 3500;
+
 	const nextSlide = () => selectVirtual(virtualIndex + 1);
 	const prevSlide = () => selectVirtual(virtualIndex - 1);
 	const startAutoRotate = () => {
 		clearInterval(autoRotateTimer);
-		autoRotateTimer = setInterval(nextSlide, 3500);
+		autoRotateTimer = setInterval(nextSlide, AUTO_ROTATE_MS);
 	};
 
 	nextBtn.addEventListener("click", () => {
@@ -174,8 +199,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		prevSlide();
 		startAutoRotate();
 	});
-	window.addEventListener("resize", recenterCarousel);
-	window.addEventListener("load", recenterCarousel);
+
+	// ResizeObserver covers all container size changes including window resizes
 	if (typeof ResizeObserver !== "undefined") {
 		const resizeObserver = new ResizeObserver(() => recenterCarousel());
 		resizeObserver.observe(carouselContainer);
@@ -277,6 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	];
 
 	const buildTrack = (trackEl, cards, duration) => {
+		if (!trackEl) return;
 		trackEl.innerHTML = [...cards, ...cards]
 			.map(
 				(c) => `
@@ -295,29 +321,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	buildTrack(document.getElementById("track1"), row1Cards, 60);
 	buildTrack(document.getElementById("track2"), row2Cards, 60);
-	buildTrack(document.getElementById("track3"), row3Cards, 60);
 
-	// FAQ accordion
-	document.querySelectorAll(".faq-row-header").forEach((header) => {
-		header.addEventListener("click", () => {
-			const row = header.parentElement;
-			document.querySelectorAll(".faq-row.active").forEach((el) => {
-				if (el !== row) el.classList.remove("active");
+	// Shared accordion logic for FAQ and course rows
+	function setupAccordion(headerSelector) {
+		document.querySelectorAll(headerSelector).forEach((header) => {
+			header.addEventListener("click", () => {
+				const row = header.parentElement;
+				row.parentElement.querySelectorAll(".active").forEach((el) => {
+					if (el !== row) el.classList.remove("active");
+				});
+				row.classList.toggle("active");
 			});
-			row.classList.toggle("active");
 		});
-	});
-
-	// Course row selection
-	document.querySelectorAll(".course-row-header").forEach((header) => {
-		header.addEventListener("click", () => {
-			const row = header.parentElement;
-			document.querySelectorAll(".course-row.active").forEach((el) => {
-				if (el !== row) el.classList.remove("active");
-			});
-			row.classList.toggle("active");
-		});
-	});
+	}
+	setupAccordion(".faq-row-header");
+	setupAccordion(".course-row-header");
 
 	// Intersection Observer for scroll reveal animations (courses + FAQ only)
 	const revealObserver = new IntersectionObserver(
