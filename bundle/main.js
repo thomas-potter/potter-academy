@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const prevBtn = document.getElementById("carousel-prev");
 	const nextBtn = document.getElementById("carousel-next");
 	const heroDynamicTitle = document.getElementById("hero-dynamic-title");
+	const heroSubtitle = document.getElementById("hero-subtitle");
 	const heroLayerA = document.getElementById("hero-layer-a");
 	const heroLayerB = document.getElementById("hero-layer-b");
 	const carouselContainer = document.getElementById("carousel");
@@ -12,20 +13,43 @@ document.addEventListener("DOMContentLoaded", () => {
 		{
 			src: "../imgs/topology_banner.webp",
 			title: "Clean Character Topology",
+			subtitle:
+				"Learn proven techniques to build clean and optimized topology, saving you hours of frustration and improving all your characters!",
 		},
 		{
 			src: "../imgs/ps1_v2_banner.webp",
 			title: "PS1 Character Creation",
+			subtitle:
+				"Learn simple techniques to make PS1 characters in blender, saving you hours of frustration and learning real skills to improve your characters!",
 		},
 		{
 			src: "../imgs/low_poly_banner.webp",
 			title: "Low Poly Character Creation",
+			subtitle:
+				"End the hours of confusion and learn solid workflows to create any character in Blender.",
 		},
 	];
 
-	const ITEM_W = 900,
+	let ITEM_W = 900,
 		GAP = 32,
 		STRIDE = ITEM_W + GAP;
+
+	const measureCarousel = () => {
+		const firstItem = track.querySelector(".carousel-item");
+		if (!firstItem) return { ITEM_W, GAP, STRIDE };
+
+		const itemStyle = getComputedStyle(firstItem);
+		const flexBasis = parseFloat(itemStyle.flexBasis || itemStyle.width);
+		const measuredWidth = firstItem.getBoundingClientRect().width;
+		const fallbackWidth =
+			Number.isFinite(flexBasis) && flexBasis > 0 ? flexBasis : measuredWidth;
+
+		ITEM_W = fallbackWidth > 0 ? fallbackWidth : ITEM_W;
+		GAP = parseFloat(itemStyle.columnGap || itemStyle.gap) || 32;
+		STRIDE = ITEM_W + GAP;
+
+		return { ITEM_W, GAP, STRIDE };
+	};
 	const CLONE_SETS = 3,
 		ORIGIN_COUNT = mediaItems.length;
 	let virtualIndex = ORIGIN_COUNT;
@@ -38,6 +62,12 @@ document.addEventListener("DOMContentLoaded", () => {
 			heroDynamicTitle.textContent = (
 				title || "Low Poly Character Creation"
 			).toUpperCase();
+	};
+
+	const updateHeroSubtitle = (subtitle) => {
+		if (heroSubtitle)
+			heroSubtitle.textContent =
+				subtitle || "Everything You Need to Create Game-Ready Characters";
 	};
 
 	const crossFadeBg = (src) => {
@@ -55,6 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const displayMedia = (media) => {
 		crossFadeBg(media.src);
 		updateHeroTitle(media.title);
+		updateHeroSubtitle(media.subtitle);
 	};
 
 	const getTranslateX = (vIdx) =>
@@ -74,7 +105,15 @@ document.addEventListener("DOMContentLoaded", () => {
 		track.style.transition = "";
 	};
 
+	const recenterCarousel = () => {
+		measureCarousel();
+		requestAnimationFrame(() => {
+			jumpWithoutAnimation(virtualIndex);
+		});
+	};
+
 	const selectVirtual = (vIdx, animate = true) => {
+		measureCarousel();
 		if (isTransitioning && animate) return;
 		isTransitioning = animate;
 		virtualIndex = vIdx;
@@ -124,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const prevSlide = () => selectVirtual(virtualIndex - 1);
 	const startAutoRotate = () => {
 		clearInterval(autoRotateTimer);
-		autoRotateTimer = setInterval(nextSlide, 15000);
+		autoRotateTimer = setInterval(nextSlide, 3500);
 	};
 
 	nextBtn.addEventListener("click", () => {
@@ -135,14 +174,21 @@ document.addEventListener("DOMContentLoaded", () => {
 		prevSlide();
 		startAutoRotate();
 	});
-	window.addEventListener("resize", () => jumpWithoutAnimation(virtualIndex));
+	window.addEventListener("resize", recenterCarousel);
+	window.addEventListener("load", recenterCarousel);
+	if (typeof ResizeObserver !== "undefined") {
+		const resizeObserver = new ResizeObserver(() => recenterCarousel());
+		resizeObserver.observe(carouselContainer);
+	}
 
 	// Init
 	const middleIndex = Math.floor(mediaItems.length / 2);
+	measureCarousel();
 	heroLayerA.style.backgroundImage = `url('${mediaItems[middleIndex].src}')`;
 	heroLayerB.classList.remove("visible");
 	activeFront = "a";
 	updateHeroTitle(mediaItems[middleIndex].title);
+	updateHeroSubtitle(mediaItems[middleIndex].subtitle);
 	virtualIndex = ORIGIN_COUNT + middleIndex;
 	jumpWithoutAnimation(virtualIndex);
 	updateActiveHighlight(virtualIndex);
