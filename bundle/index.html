@@ -8,7 +8,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&family=Archivo:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,700&family=Syne:wght@700&display=swap"
+			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700,900;1,400&family=Archivo:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,700&family=Syne:wght@700&display=swap"
 			rel="stylesheet"
 		/>
 		<link rel="stylesheet" href="styles.css" />
@@ -582,12 +582,43 @@
 					}
 				}
 			})();
+			(function () {
+				// Click tracking: fire a click event to the backend when a ref param is present
+				var params = new URLSearchParams(window.location.search);
+				var ref = params.get("ref");
+				if (ref) {
+					try {
+						fetch(
+							"https://judicious-walrus-668.convex.site/track-click",
+							{
+								method: "POST",
+								headers: { "Content-Type": "application/json" },
+								body: JSON.stringify({ ref: ref }),
+							},
+						).catch(function () {
+							/* silently ignore */
+						});
+					} catch (e) {
+						/* silently ignore */
+					}
+				}
+			})();
 			document.addEventListener("DOMContentLoaded", function () {
 				var search = window.location.search;
 				var urlParams = new URLSearchParams(search);
 				var source = urlParams.get("ref") || "direct";
+				var bundleDistinctId = window.posthog?.get_distinct_id();
 
-				// Preserve query params (UTM + ref) on checkout links
+				// 1. Bundle Viewed
+				if (window.posthog) {
+					posthog.capture("bundle_viewed", {
+						source: source,
+						bundle_distinct_id: bundleDistinctId,
+						$current_url: window.location.href,
+					});
+				}
+
+				// Preserve query params (UTM + ref) on checkout links + add ph_id
 				if (search) {
 					document
 						.querySelectorAll(
@@ -598,11 +629,61 @@
 							el.href =
 								href +
 								(href.indexOf("?") > -1 ? "&" : "?") +
-								search.substring(1);
+								search.substring(1) +
+								(href.indexOf("?") > -1 ? "&" : "?") +
+								"ph_id=" + encodeURIComponent(bundleDistinctId);
 						});
 				}
 
-				// Unified checkout tracking — only on actual checkout CTAs
+				// 2. Bundle Button Clicked (non-checkout buttons)
+				function trackBundleButtonClick(buttonName, buttonLocation) {
+					if (window.posthog) {
+						posthog.capture("bundle_button_clicked", {
+							button_name: buttonName,
+							button_location: buttonLocation,
+							source: source,
+							bundle_distinct_id: bundleDistinctId,
+							$current_url: window.location.href,
+						});
+					}
+				}
+
+				// Nav CTA
+				document.querySelectorAll('.nav-cta').forEach(function(el) {
+					el.addEventListener('click', function() {
+						trackBundleButtonClick('nav_cta', 'navbar');
+					});
+				});
+
+				// Hero CTA
+				document.querySelectorAll('.hero-footer .btn-primary').forEach(function(el) {
+					el.addEventListener('click', function() {
+						trackBundleButtonClick('hero_cta', 'hero_footer');
+					});
+				});
+
+				// Pitch CTA
+				document.querySelectorAll('.pitch-section .btn-primary').forEach(function(el) {
+					el.addEventListener('click', function() {
+						trackBundleButtonClick('pitch_cta', 'pitch_section');
+					});
+				});
+
+				// Final CTA
+				document.querySelectorAll('.final-cta .btn-primary').forEach(function(el) {
+					el.addEventListener('click', function() {
+						trackBundleButtonClick('final_cta', 'final_cta_section');
+					});
+				});
+
+				// Carousel nav
+				document.querySelectorAll('.carousel-nav').forEach(function(el) {
+					el.addEventListener('click', function() {
+						trackBundleButtonClick('carousel_nav', 'carousel');
+					});
+				});
+
+				// 3. Unified checkout tracking — only on actual checkout CTAs
 				document
 					.querySelectorAll(".js-checkout-link")
 					.forEach(function (el) {
@@ -613,6 +694,7 @@
 									price: 69,
 									currency: "USD",
 									source: source,
+									bundle_distinct_id: bundleDistinctId,
 									$current_url: window.location.href,
 								});
 							}

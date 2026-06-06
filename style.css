@@ -476,16 +476,22 @@ header {
 }
 
 .course-card {
-	background: var(--bg-light);
+	background: #fff;
 	border: 1px solid var(--border-light);
 	display: flex;
 	flex-direction: column;
-	transition: border-color 0.2s;
+	transition:
+		box-shadow 0.3s ease,
+		transform 0.3s ease;
 	position: relative;
+	border-radius: 2px;
+	overflow: hidden;
 }
 
 .course-card:hover {
-	border-color: var(--green);
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+	transform: translateY(-4px);
+	border-color: #d0d0d0;
 }
 
 .course-card.featured {
@@ -495,12 +501,12 @@ header {
 }
 
 .section-light .course-card {
-	background: var(--bg-light);
+	background: #fff;
 	border: 1px solid var(--border-light);
 }
 
 .section-light .course-card:hover {
-	border-color: var(--green);
+	border-color: #d0d0d0;
 }
 
 .course-thumb {
@@ -515,15 +521,15 @@ header {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	transition: transform 0.4s;
+	transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .course-card:hover .course-thumb img {
-	transform: scale(1.03);
+	transform: scale(1.04);
 }
 
 .course-body {
-	padding: 1.75rem;
+	padding: 2rem;
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;
@@ -550,11 +556,11 @@ header {
 
 .course-body h3 {
 	font-family: var(--font-display);
-	font-size: 1.25rem;
+	font-size: 1.15rem;
 	font-weight: 900;
-	letter-spacing: -0.02em;
-	margin-bottom: 0.6rem;
-	line-height: 1.2;
+	letter-spacing: -0.01em;
+	margin-bottom: 0.75rem;
+	line-height: 1.25;
 	text-transform: uppercase;
 	color: var(--text-dark);
 }
@@ -562,8 +568,7 @@ header {
 .course-body p {
 	font-family: var(--font-body);
 	font-size: 0.875rem;
-	color: var(--text-dark);
-	opacity: 0.7;
+	color: #555;
 	line-height: 1.7;
 	flex-grow: 1;
 	margin-bottom: 1.5rem;
@@ -597,7 +602,7 @@ header {
 	align-items: center;
 	justify-content: space-between;
 	padding-top: 1.25rem;
-	border-top: 1px solid var(--border-light);
+	border-top: 1px solid #eaeaea;
 	margin-top: auto;
 }
 
@@ -606,6 +611,7 @@ header {
 	font-size: 1.5rem;
 	font-weight: 900;
 	color: var(--text-dark);
+	letter-spacing: -0.02em;
 }
 
 .course-price .free-price {
@@ -620,7 +626,7 @@ header {
 }
 
 .btn-course {
-	padding: 0.6rem 1.5rem;
+	padding: 0.65rem 1.5rem;
 	background: var(--green);
 	color: var(--bg-dark);
 	font-family: var(--font-display);
@@ -628,13 +634,13 @@ header {
 	font-weight: 900;
 	text-transform: uppercase;
 	letter-spacing: 0.06em;
-	border: 2px solid var(--bg-dark);
-	transition: all 0.15s;
+	border: none;
+	transition: all 0.2s ease;
 }
 
 .btn-course:hover {
-	transform: translate(-2px, -2px);
-	box-shadow: 3px 3px 0 var(--border-light);
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(57, 255, 20, 0.35);
 }
 
 .course-card.featured .btn-course {
@@ -643,11 +649,11 @@ header {
 }
 
 .course-card.featured .btn-course:hover {
-	box-shadow: 3px 3px 0 var(--border-light);
+	box-shadow: 0 4px 12px rgba(57, 255, 20, 0.35);
 }
 
 .section-light .btn-course:hover {
-	box-shadow: 3px 3px 0 var(--border-light);
+	box-shadow: 0 4px 12px rgba(57, 255, 20, 0.35);
 }
 
 .featured-badge {

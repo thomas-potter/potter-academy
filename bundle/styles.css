@@ -862,7 +862,7 @@ nav {
 	margin-bottom: 0.5rem;
 }
 .price-main {
-	font-family: var(--font-syne);
+	font-family: var(--font-display);
 	font-weight: 700;
 	font-style: italic;
 	font-size: 5.5rem;
