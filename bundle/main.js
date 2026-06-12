@@ -31,6 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
 			subtitle:
 				"End the hours of confusion and learn solid workflows to create any character in Blender.",
 		},
+		{
+			src: "../imgs/game_animation_header.webp",
+			title: "Game Ready Animation",
+			subtitle:
+				"Learn the art of creating clean animations, ready for your game.",
+		},
 	];
 
 	let ITEM_W = 900,
