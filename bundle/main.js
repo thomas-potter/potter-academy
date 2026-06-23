@@ -341,7 +341,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	}
 	setupAccordion(".faq-row-header");
-	setupAccordion(".course-row-header");
 
 	// Intersection Observer for scroll reveal animations (courses + FAQ only)
 	const revealObserver = new IntersectionObserver(
@@ -356,7 +355,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		{ threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
 	);
 
-	document.querySelectorAll(".course-row, .faq-row").forEach((el) => {
+	document.querySelectorAll(".course-card, .faq-row").forEach((el) => {
 		el.classList.add("reveal");
 		const parent = el.parentElement;
 		if (parent) {
