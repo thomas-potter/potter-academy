@@ -215,10 +215,10 @@ nav {
 .title-combined {
 	font-family: var(--font-display);
 	font-weight: 900;
-	font-size: 3.2rem;
+	font-size: 3rem;
 	line-height: 1.2;
 	margin-bottom: 0.5rem;
-	letter-spacing: -0.02em;
+	letter-spacing: -0.03em;
 	text-align: center;
 	color: var(--text-light);
 	text-transform: uppercase;
@@ -233,7 +233,7 @@ nav {
 	position: relative;
 	background: transparent;
 	color: var(--bg-dark);
-	padding: 0.05em 0.25em;
+	padding: 0.01em 0.1em;
 	margin: 0 0.1em;
 	display: inline-block;
 	vertical-align: bottom;
@@ -428,11 +428,11 @@ nav {
 	text-align: center;
 }
 .pitch-headline {
-	font-size: 3rem;
+	font-size: 2.5rem;
 	font-weight: 800;
 	line-height: 1.15;
 	margin-bottom: 3rem;
-	max-width: 1200px;
+	max-width: 1400px;
 	margin-left: auto;
 	margin-right: auto;
 }
