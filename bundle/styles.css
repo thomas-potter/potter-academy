@@ -160,7 +160,7 @@ nav {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: 6rem 2rem 6rem;
+	padding: 6rem 2rem 0rem;
 	min-height: auto;
 	overflow: hidden;
 	gap: 0.5rem;
@@ -449,7 +449,7 @@ nav {
 	border-radius: 2px;
 }
 .pitch-body {
-	max-width: 680px;
+	max-width: 800px;
 	margin: 0 auto 3rem;
 	text-align: center;
 }
@@ -974,7 +974,7 @@ nav {
 	margin: 0 auto;
 }
 .final-cta-inner h2 {
-	font-size: 4rem;
+	font-size: 3rem;
 	margin-bottom: 1rem;
 }
 
