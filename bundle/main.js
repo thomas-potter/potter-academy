@@ -15,19 +15,19 @@ document.addEventListener("DOMContentLoaded", () => {
 	const mediaItems = [
 		{
 			src: "../imgs/topology_banner.webp",
-			title: "Clean Character Topology",
+			title: "Game Ready Topology",
 			subtitle:
 				"Learn proven techniques to build clean and optimized topology, saving you hours of frustration and improving all your characters!",
 		},
 		{
 			src: "../imgs/ps1_v2_banner.webp",
-			title: "PS1 Character Creation",
+			title: "PS1 Game Character Creation",
 			subtitle:
 				"Learn simple techniques to make PS1 characters in blender, saving you hours of frustration and learning real skills to improve your characters!",
 		},
 		{
 			src: "../imgs/low_poly_banner.webp",
-			title: "Low Poly Character Creation",
+			title: "Low Poly Game Character Creation",
 			subtitle:
 				"End the hours of confusion and learn solid workflows to create any character in Blender.",
 		},
