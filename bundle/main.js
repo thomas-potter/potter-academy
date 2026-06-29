@@ -369,4 +369,63 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 		revealObserver.observe(el);
 	});
+
+	// ── LEARN TIMELINE SCROLL (synced + bidirectional) ──────────
+	const learnLine = document.getElementById("learnLine");
+	const learnTimelineEl = document.getElementById("learnTimeline");
+	const learnItems = document.querySelectorAll(".learn-item");
+
+	function updateLearnTimeline() {
+		if (!learnLine || !learnTimelineEl || learnItems.length === 0)
+			return;
+
+		const winH = window.innerHeight;
+		const timelineRect = learnTimelineEl.getBoundingClientRect();
+
+		const firstRect = learnItems[0].getBoundingClientRect();
+		const lastRect =
+			learnItems[learnItems.length - 1].getBoundingClientRect();
+
+		// ── PROGRESS (center-based)
+		const start = firstRect.top - winH * 0.5;
+		const end = lastRect.bottom - winH * 0.5;
+
+		const progress = Math.min(
+			Math.max(-start / (end - start), 0),
+			1,
+		);
+
+		// update line gradient
+		learnLine.style.setProperty("--scroll", progress * 100 + "%");
+
+		// ── CLIP LINE TO DOT BOUNDS ──────────────────────
+		const firstDotY = firstRect.top + firstRect.height / 2;
+		const lastDotY = lastRect.top + lastRect.height / 2;
+
+		const timelineTop = timelineRect.top;
+		const topPercent =
+			((firstDotY - timelineTop) / timelineRect.height) * 100;
+		const bottomPercent =
+			((timelineRect.bottom - lastDotY) / timelineRect.height) *
+			100;
+
+		learnLine.style.clipPath = `polygon(0 ${topPercent}%, 100% ${topPercent}%, 100% ${100 - bottomPercent}%, 0 ${100 - bottomPercent}%)`;
+
+		// ── DOTS (sync exactly with progress, BOTH directions)
+		learnItems.forEach((item, i) => {
+			const trigger = (i + 0.5) / learnItems.length;
+
+			if (progress >= trigger) {
+				item.classList.add("active");
+			} else {
+				item.classList.remove("active");
+			}
+		});
+	}
+
+	window.addEventListener("scroll", updateLearnTimeline, {
+		passive: true,
+	});
+	window.addEventListener("resize", updateLearnTimeline);
+	updateLearnTimeline();
 });
