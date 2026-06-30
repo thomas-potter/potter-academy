@@ -139,17 +139,19 @@ nav {
 }
 .nav-cta {
 	font-family: var(--font-display);
-	font-weight: 600;
+	font-weight: 900;
 	font-size: 12px;
 	letter-spacing: 0.15em;
 	color: var(--bg-dark);
 	background-color: var(--green);
 	padding: 0.5rem 1rem;
-	transition: all 0.2s ease;
+	transition:
+		transform 0.15s ease,
+		box-shadow 0.15s ease;
 }
 .nav-cta:hover {
-	background: var(--green);
-	color: var(--bg-dark);
+	transform: translate(-2px, -2px);
+	box-shadow: 4px 4px 0 var(--text-light);
 }
 
 /* BUTTONS */
@@ -159,8 +161,8 @@ nav {
 	color: var(--bg-dark);
 	font-family: var(--font-display);
 	font-weight: 900;
-	font-size: 14px;
-	letter-spacing: 0.1em;
+	font-size: 15px;
+	letter-spacing: 0.08em;
 	padding: 14px 32px;
 	border-radius: 0;
 	transition:
@@ -171,22 +173,22 @@ nav {
 	cursor: pointer;
 }
 .btn-primary:hover {
-	transform: scale(1.02);
-	box-shadow: 0 0 24px rgba(57, 255, 20, 0.25);
+	transform: translate(-2px, -2px);
+	box-shadow: 4px 4px 0 var(--text-light);
 }
 .btn-large {
 	padding: 18px 40px;
-	font-size: 16px;
+	font-size: 17px;
 }
 
 /* Buy button — black/white, flips to green/black on hover */
 .btn-buy {
 	width: 100%;
-	padding: 1.2rem 2rem;
+	padding: 1.2rem 1.5rem;
 	background: var(--bg-dark);
 	color: var(--text-light);
 	font-family: var(--font-display);
-	font-size: 1rem;
+	font-size: 1.3rem;
 	font-weight: 900;
 	border: 2px solid var(--bg-dark);
 	text-transform: uppercase;
@@ -537,7 +539,7 @@ nav {
 	padding-top: 3rem;
 }
 .section-title {
-	font-size: 4.5rem;
+	font-size: 2.5rem;
 	margin-bottom: 3rem;
 	max-width: 900px;
 }
@@ -629,10 +631,93 @@ nav {
 }
 
 .course-info p {
-	font-size: 14px;
-	line-height: 1.6;
-	opacity: 0.8;
+	font-family: var(--font-accent);
+	font-style: italic;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 1.5;
+	letter-spacing: 0;
+	text-transform: none;
+	opacity: 0.7;
 	margin: 0;
+}
+
+.course-meta {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-family: var(--font-body);
+	font-size: 12px;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	opacity: 0.75;
+}
+.course-runtime {
+	color: var(--green);
+	font-weight: 700;
+}
+.course-tag {
+	position: absolute;
+	top: 0.75rem;
+	left: 0.75rem;
+	background: var(--bg-dark);
+	color: var(--green);
+	border: 1px solid var(--green);
+	font-family: var(--font-body);
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	padding: 0.3rem 0.55rem;
+	text-transform: uppercase;
+}
+.course-list {
+	list-style: none;
+	margin: 0.25rem 0 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+}
+.course-list li {
+	position: relative;
+	padding-left: 1.25rem;
+	font-size: 13px;
+	line-height: 1.5;
+	opacity: 0.82;
+}
+.course-list li::before {
+	content: "-";
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: var(--green);
+	font-weight: 700;
+}
+.course-bonus {
+	margin-top: auto;
+	font-family: var(--font-body);
+	font-size: 12px;
+	letter-spacing: 0.05em;
+	color: var(--green);
+	opacity: 0.9;
+	padding-top: 0.6rem;
+	border-top: 1px solid var(--section-border);
+}
+.courses-head {
+	text-align: center;
+	max-width: var(--max-w);
+	margin: 0 auto;
+}
+.courses-subtitle {
+	font-family: var(--font-body);
+	font-size: 13px;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	opacity: 0.6;
+	margin-top: -0.75rem;
+}
+.courses-cta {
+	margin-top: 1.25rem;
 }
 
 .row-index {
@@ -848,10 +933,10 @@ nav {
 	margin-bottom: 1.5rem;
 }
 .pricing-name {
-	font-size: 2.75rem;
+	font-size: 2.5rem;
 	margin-bottom: 1.5rem;
-	letter-spacing: 0.05em;
-	font-weight: 800;
+	letter-spacing: 0.02em;
+	font-weight: 900;
 }
 .pricing-card .price-row {
 	display: flex;
