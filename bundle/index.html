@@ -8,11 +8,12 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&family=Archivo:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,700&family=Syne:wght@700&display=swap"
+			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@0,400;0,700&family=Archivo:ital,wght@0,700;0,800;0,900;1,700&family=Fraunces:ital,opsz,wght@1,9..144,400&family=Syne:wght@700&display=swap"
 			rel="stylesheet"
 		/>
 		<link rel="stylesheet" href="styles.css" />
-		<link rel="preload" as="image" href="../imgs/low_poly_banner.webp" />
+		<script src="main.js" defer></script>
+		<link rel="preload" as="image" href="../imgs/low_poly_banner.webp" fetchpriority="high" />
 		<link rel="icon" href="/Favicon.webp" type="image/webp" />
 		<script>
 			!(function (t, e) {
@@ -96,7 +97,6 @@
 		<main class="hero section-dark">
 			<div class="hero-bg-layer layer-a" id="hero-layer-a"></div>
 			<div class="hero-bg-layer layer-b" id="hero-layer-b"></div>
-			<div class="hero-bg-mask"></div>
 			<div class="hero-content" id="hero-content">
 				<h1 class="title-combined">
 					<span class="title-prefix">MASTER</span>
@@ -190,22 +190,20 @@
 			class="courses-section section-dark"
 			id="courses"
 		>
-			<div class="courses-head">
-				<h2 class="section-title section-title-centered">Let's breakdown what you'll learn.</h2>
-			</div>
+			<h2 class="section-title section-title-centered">Let's breakdown what you'll learn.</h2>
 			<div class="courses-grid">
 				<article class="course-card reveal">
 					<div class="course-thumb">
 						<img
 							src="../imgs/ps1_v2_banner.webp"
 							alt="PS1 Character Course V2 banner with retro-style character"
+							loading="lazy"
+							decoding="async"
 						/>
 						<span class="course-value">Worth $59</span>
 					</div>
 					<div class="course-info">
-						<div class="course-meta">
-							<span class="course-runtime">8+ hours</span>
-						</div>
+						<span class="course-runtime">8+ hours</span>
 						<h3 class="course-title">PS1 Character Course V2</h3>
 						<ul class="course-list">
 							<li>Base mesh masterclass, covering topology and proportions</li>
@@ -221,13 +219,13 @@
 						<img
 							src="../imgs/low_poly_banner.webp"
 							alt="Low Poly Character Course banner with stylized model"
+							loading="lazy"
+							decoding="async"
 						/>
 						<span class="course-value">Worth $59</span>
 					</div>
 					<div class="course-info">
-						<div class="course-meta">
-							<span class="course-runtime">8+ hours</span>
-						</div>
+						<span class="course-runtime">8+ hours</span>
 						<h3 class="course-title">Low Poly Character Course</h3>
 						<ul class="course-list">
 							<li>Develop character idea and concept</li>
@@ -244,13 +242,13 @@
 						<img
 							src="../imgs/topology_banner.webp"
 							alt="Character Topology Guide banner with wireframe overlay"
+							loading="lazy"
+							decoding="async"
 						/>
 						<span class="course-value">Worth $19</span>
 					</div>
 					<div class="course-info">
-						<div class="course-meta">
-							<span class="course-runtime">2 hours</span>
-						</div>
+						<span class="course-runtime">2 hours</span>
 						<h3 class="course-title">Character Topology Guide</h3>
 						<ul class="course-list">
 							<li>Game-ready topology fundamentals</li>
@@ -266,14 +264,14 @@
 						<img
 							src="../imgs/game_animation_header.webp"
 							alt="Game Animation Course banner with animated character"
+							loading="lazy"
+							decoding="async"
 						/>
 						<span class="course-value">Worth $39</span>
 						<span class="course-tag">Early Access</span>
 					</div>
 					<div class="course-info">
-						<div class="course-meta">
-							<span class="course-runtime">5+ hours</span>
-						</div>
+						<span class="course-runtime">5+ hours</span>
 						<h3 class="course-title">Game Animation Guide</h3>
 						<ul class="course-list">
 							<li>Animation principles with practical examples and application</li>
@@ -289,7 +287,7 @@
 					Plus: every future course added to the bundle at no extra
 					cost.
 				</p>
-				<a href="#pricing" class="btn-primary courses-cta">GET ALL 4 COURSES FOR $69</a>
+				<a href="#pricing" class="btn-primary courses-cta">JOIN NOW!</a>
 			</div>
 		</section>
 
@@ -347,35 +345,31 @@
 			class="pricing-section section-dark"
 			id="pricing"
 		>
-			<div class="pricing-inner">
-				<div class="pricing-card">
-					<span class="beta-badge">POTTER ACADEMY IS IN BETA</span>
-					<h2 class="pricing-name">TAKE YOUR GAME ART TO THE NEXT LEVEL</h2>
-					<div class="price-row">
-						<span class="price-main">$69</span>
-						<span class="price-was">$176</span>
-					</div>
-					<span class="price-save">- save $107</span>
-					<div class="pricing-checklist">
-						<span class="check-item">PS1 Character Course V2</span>
-						<span class="check-item">Low Poly Character Guide</span>
-						<span class="check-item">Character Topology Guide</span>
-						<span class="check-item">Game Animation Course</span>
-						<span class="check-item">20+ hours of content</span>
-						<span class="check-item"
-							>All future courses - free</span
-						>
-						<span class="check-item">Discord community access</span>
-					</div>
-					<a
-						href="https://app.potteracademy.uk/checkout"
-						class="btn-buy js-checkout-link"
-						>GET INSTANT ACCESS</a
-					>
-					<p class="pricing-guarantee">
-						30-day money-back guarantee. No questions asked.
-					</p>
+			<div class="pricing-card">
+				<span class="beta-badge">POTTER ACADEMY IS IN BETA</span>
+				<h2 class="pricing-name">TAKE YOUR GAME ART TO THE NEXT LEVEL</h2>
+				<div class="price-row">
+					<span class="price-main">$69</span>
+					<span class="price-was">$176</span>
 				</div>
+				<span class="price-save">- save $107</span>
+				<div class="pricing-checklist">
+					<span class="check-item">PS1 Character Course V2</span>
+					<span class="check-item">Low Poly Character Guide</span>
+					<span class="check-item">Character Topology Guide</span>
+					<span class="check-item">Game Animation Course</span>
+					<span class="check-item">20+ hours of content</span>
+					<span class="check-item">All future courses - free</span>
+					<span class="check-item">Discord community access</span>
+				</div>
+				<a
+					href="https://app.potteracademy.uk/checkout"
+					class="btn-buy js-checkout-link"
+					>GET INSTANT ACCESS</a
+				>
+				<p class="pricing-guarantee">
+					30-day money-back guarantee. No questions asked.
+				</p>
 			</div>
 		</section>
 
@@ -521,148 +515,5 @@
 			<p class="footer-copy">© 2026 Thomas Potter</p>
 		</footer>
 
-		<script src="main.js"></script>
-		<script>
-			(function () {
-				// Click tracking: fire a click event to the backend when a ref param is present
-				var params = new URLSearchParams(window.location.search);
-				var ref = params.get("ref");
-				if (ref) {
-					try {
-						fetch(
-							"https://judicious-walrus-668.convex.site/track-click",
-							{
-								method: "POST",
-								headers: { "Content-Type": "application/json" },
-								body: JSON.stringify({ ref: ref }),
-							},
-						).catch(function () {
-							/* silently ignore */
-						});
-					} catch (e) {
-						/* silently ignore */
-					}
-				}
-			})();
-			(function () {
-				// Click tracking: fire a click event to the backend when a ref param is present
-				var params = new URLSearchParams(window.location.search);
-				var ref = params.get("ref");
-				if (ref) {
-					try {
-						fetch(
-							"https://judicious-walrus-668.convex.site/track-click",
-							{
-								method: "POST",
-								headers: { "Content-Type": "application/json" },
-								body: JSON.stringify({ ref: ref }),
-							},
-						).catch(function () {
-							/* silently ignore */
-						});
-					} catch (e) {
-						/* silently ignore */
-					}
-				}
-			})();
-			document.addEventListener("DOMContentLoaded", function () {
-				var search = window.location.search;
-				var urlParams = new URLSearchParams(search);
-				var source = urlParams.get("ref") || "direct";
-				var bundleDistinctId = window.posthog?.get_distinct_id();
-
-				// 1. Bundle Viewed
-				if (window.posthog) {
-					posthog.capture("bundle_viewed", {
-						source: source,
-						bundle_distinct_id: bundleDistinctId,
-						$current_url: window.location.href,
-					});
-				}
-
-				// Preserve query params (UTM + ref) on checkout links + add ph_id
-				if (search) {
-					document
-						.querySelectorAll(
-							'a[href*="app.potteracademy.uk/checkout"]',
-						)
-						.forEach(function (el) {
-							var href = el.getAttribute("href");
-							el.href =
-								href +
-								(href.indexOf("?") > -1 ? "&" : "?") +
-								search.substring(1) +
-								(href.indexOf("?") > -1 ? "&" : "?") +
-								"ph_id=" + encodeURIComponent(bundleDistinctId);
-						});
-				}
-
-				// 2. Bundle Button Clicked (non-checkout buttons)
-				function trackBundleButtonClick(buttonName, buttonLocation) {
-					if (window.posthog) {
-						posthog.capture("bundle_button_clicked", {
-							button_name: buttonName,
-							button_location: buttonLocation,
-							source: source,
-							bundle_distinct_id: bundleDistinctId,
-							$current_url: window.location.href,
-						});
-					}
-				}
-
-				// Nav CTA
-				document.querySelectorAll('.nav-cta').forEach(function(el) {
-					el.addEventListener('click', function() {
-						trackBundleButtonClick('nav_cta', 'navbar');
-					});
-				});
-
-				// Hero CTA
-				document.querySelectorAll('.hero-footer .btn-primary').forEach(function(el) {
-					el.addEventListener('click', function() {
-						trackBundleButtonClick('hero_cta', 'hero_footer');
-					});
-				});
-
-				// Pitch CTA
-				document.querySelectorAll('.pitch-section .btn-primary').forEach(function(el) {
-					el.addEventListener('click', function() {
-						trackBundleButtonClick('pitch_cta', 'pitch_section');
-					});
-				});
-
-				// Final CTA
-				document.querySelectorAll('.final-cta .btn-primary').forEach(function(el) {
-					el.addEventListener('click', function() {
-						trackBundleButtonClick('final_cta', 'final_cta_section');
-					});
-				});
-
-				// Carousel nav
-				document.querySelectorAll('.carousel-nav').forEach(function(el) {
-					el.addEventListener('click', function() {
-						trackBundleButtonClick('carousel_nav', 'carousel');
-					});
-				});
-
-				// 3. Unified checkout tracking — only on actual checkout CTAs
-				document
-					.querySelectorAll(".js-checkout-link")
-					.forEach(function (el) {
-						el.addEventListener("click", function (e) {
-							if (window.posthog) {
-								posthog.capture("start_checkout", {
-									location: "bundle_pricing",
-									price: 69,
-									currency: "USD",
-									source: source,
-									bundle_distinct_id: bundleDistinctId,
-									$current_url: window.location.href,
-								});
-							}
-						});
-					});
-			});
-		</script>
 	</body>
 </html>

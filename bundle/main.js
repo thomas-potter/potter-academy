@@ -1,3 +1,16 @@
+// Fire ref click-track as early as possible (non-blocking)
+(function () {
+	var ref = new URLSearchParams(window.location.search).get("ref");
+	if (!ref) return;
+	try {
+		fetch("https://judicious-walrus-668.convex.site/track-click", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ ref: ref }),
+		}).catch(function () {});
+	} catch (e) {}
+})();
+
 document.addEventListener("DOMContentLoaded", () => {
 	const track = document.getElementById("carousel-track");
 	const prevBtn = document.getElementById("carousel-prev");
@@ -368,5 +381,72 @@ document.addEventListener("DOMContentLoaded", () => {
 			if (idx >= 3) el.classList.add("reveal-delay-3");
 		}
 		revealObserver.observe(el);
+	});
+
+	// --- Analytics & tracking (moved out of inline <script>) ---
+	var search = window.location.search;
+	var source = new URLSearchParams(search).get("ref") || "direct";
+	var bundleDistinctId = window.posthog ? window.posthog.get_distinct_id() : undefined;
+
+	if (window.posthog) {
+		posthog.capture("bundle_viewed", {
+			source: source,
+			bundle_distinct_id: bundleDistinctId,
+			$current_url: window.location.href,
+		});
+	}
+
+	// Preserve query params on checkout links + add ph_id
+	if (search) {
+		document
+			.querySelectorAll('a[href*="app.potteracademy.uk/checkout"]')
+			.forEach(function (el) {
+				var href = el.getAttribute("href");
+				el.href =
+					href +
+					(href.indexOf("?") > -1 ? "&" : "?") +
+					search.substring(1) +
+					(href.indexOf("?") > -1 ? "&" : "?") +
+					"ph_id=" + encodeURIComponent(bundleDistinctId);
+			});
+	}
+
+	function trackBundleButtonClick(buttonName, buttonLocation) {
+		if (!window.posthog) return;
+		posthog.capture("bundle_button_clicked", {
+			button_name: buttonName,
+			button_location: buttonLocation,
+			source: source,
+			bundle_distinct_id: bundleDistinctId,
+			$current_url: window.location.href,
+		});
+	}
+
+	function bindClicks(selector, name, location) {
+		document.querySelectorAll(selector).forEach(function (el) {
+			el.addEventListener("click", function () {
+				trackBundleButtonClick(name, location);
+			});
+		});
+	}
+
+	bindClicks(".nav-cta", "nav_cta", "navbar");
+	bindClicks(".hero-footer .btn-primary", "hero_cta", "hero_footer");
+	bindClicks(".pitch-section .btn-primary", "pitch_cta", "pitch_section");
+	bindClicks(".final-cta .btn-primary", "final_cta", "final_cta_section");
+	bindClicks(".carousel-nav", "carousel_nav", "carousel");
+
+	document.querySelectorAll(".js-checkout-link").forEach(function (el) {
+		el.addEventListener("click", function () {
+			if (!window.posthog) return;
+			posthog.capture("start_checkout", {
+				location: "bundle_pricing",
+				price: 69,
+				currency: "USD",
+				source: source,
+				bundle_distinct_id: bundleDistinctId,
+				$current_url: window.location.href,
+			});
+		});
 	});
 });
