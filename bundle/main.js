@@ -1,4 +1,27 @@
 // Fire ref click-track as early as possible (non-blocking)
+// Block dark-mode extensions from altering the page
+(function enforceDarkMode() {
+	const forbidden = ["filter", "backdrop-filter"];
+	const reset = () => {
+		document.documentElement.style.colorScheme = "dark";
+		document.querySelectorAll("html, body, body *").forEach((el) => {
+			const style = getComputedStyle(el);
+			forbidden.forEach((prop) => {
+				const val = style[prop];
+				if (val && val !== "none") {
+					try {
+						el.style.setProperty(prop, "none", "important");
+					} catch (e) {}
+				}
+			});
+		});
+	};
+	reset();
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", reset);
+	}
+	setInterval(reset, 1000);
+})();
 (function () {
 	var ref = new URLSearchParams(window.location.search).get("ref");
 	if (!ref) return;
@@ -34,13 +57,13 @@ document.addEventListener("DOMContentLoaded", () => {
 		},
 		{
 			src: "../imgs/ps1_v2_banner.webp",
-			title: "PS1 Game Character Creation",
+			title: "PS1 Character Creation",
 			subtitle:
 				"Learn simple techniques to make PS1 characters in blender, saving you hours of frustration and learning real skills to improve your characters!",
 		},
 		{
 			src: "../imgs/low_poly_banner.webp",
-			title: "Low Poly Game Character Creation",
+			title: "Low Poly Character Creation",
 			subtitle:
 				"End the hours of confusion and learn solid workflows to create any character in Blender.",
 		},
@@ -355,32 +378,12 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 	setupAccordion(".faq-row-header");
 
-	// Intersection Observer for scroll reveal animations (courses + FAQ only)
-	const revealObserver = new IntersectionObserver(
-		(entries) => {
-			entries.forEach((entry) => {
-				if (entry.isIntersecting) {
-					entry.target.classList.add("visible");
-					revealObserver.unobserve(entry.target);
-				}
-			});
-		},
-		{ threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
-	);
-
-	document.querySelectorAll(".course-card, .faq-row").forEach((el) => {
-		el.classList.add("reveal");
-		const parent = el.parentElement;
-		if (parent) {
-			const siblings = Array.from(parent.children).filter((c) =>
-				c.classList.contains("reveal"),
-			);
-			const idx = siblings.indexOf(el);
-			if (idx === 1) el.classList.add("reveal-delay-1");
-			if (idx === 2) el.classList.add("reveal-delay-2");
-			if (idx >= 3) el.classList.add("reveal-delay-3");
-		}
-		revealObserver.observe(el);
+	// Clicking any course card scrolls to the pricing section
+	document.querySelectorAll(".course-card").forEach((card) => {
+		card.style.cursor = "pointer";
+		card.addEventListener("click", () => {
+			document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" });
+		});
 	});
 
 	// --- Analytics & tracking (moved out of inline <script>) ---
