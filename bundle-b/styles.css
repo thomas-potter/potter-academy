@@ -860,9 +860,9 @@ nav {
 	letter-spacing: 0.15em;
 }
 .quote-text {
-	font-family: var(--font-accent);
-	font-style: italic;
-	font-size: 1.05rem;
+	font-family: var(--font-body);
+	font-style: normal;
+	font-size: 1.2rem;
 	line-height: 1.65;
 	color: var(--text-light);
 	margin-bottom: 1.25rem;

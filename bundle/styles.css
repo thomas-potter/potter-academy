@@ -765,11 +765,9 @@ nav {
 
 /* TESTIMONIALS */
 .testimonial-section {
-	padding: var(--section-pad);
+	padding: 4rem 1.5rem;
 	position: relative;
 	overflow: hidden;
-	content-visibility: auto;
-	contain-intrinsic-size: 0 500px;
 }
 .carousel-viewport {
 	width: 100%;
@@ -816,8 +814,8 @@ nav {
 .testimonial-card {
 	background: var(--surface);
 	border: 1px solid var(--border-dark);
-	padding: 1.75rem;
-	width: 340px;
+	padding: 1rem;
+	width: 320px;
 	flex-shrink: 0;
 	transition: border-color 0.3s ease;
 	border-radius: 0;
@@ -829,17 +827,17 @@ nav {
 }
 .stars {
 	color: var(--green);
-	font-size: 1rem;
-	margin-bottom: 1rem;
+	font-size: 0.85rem;
+	margin-bottom: 0.75rem;
 	letter-spacing: 0.15em;
 }
 .quote-text {
-	font-family: var(--font-accent);
-	font-style: italic;
-	font-size: 1.05rem;
-	line-height: 1.65;
+	font-family: var(--font-body);
+	font-style: normal;
+	font-size: 0.9rem;
+	line-height: 1.45;
 	color: var(--text-light);
-	margin-bottom: 1.25rem;
+	margin-bottom: 0.75rem;
 }
 .card-footer {
 	display: flex;
@@ -853,11 +851,11 @@ nav {
 	font-weight: 400;
 	text-transform: uppercase;
 	letter-spacing: 0.08em;
-	font-size: 11px;
+	font-size: 10px;
 }
 .course-label {
 	font-family: var(--font-body);
-	font-size: 11px;
+	font-size: 10px;
 	color: var(--green);
 	opacity: 0.75;
 	letter-spacing: 0.03em;
@@ -875,6 +873,63 @@ nav {
 .pricing-section {
 	padding: var(--section-pad-sm) 1.5rem var(--section-pad);
 	position: relative;
+}
+
+/* COUNTDOWN */
+.countdown {
+	width: 100%;
+	margin-bottom: 1.25rem;
+}
+.countdown-label {
+	display: block;
+	font-family: var(--font-body);
+	font-size: 11px;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+	color: var(--text-dark);
+	opacity: 0.7;
+	margin-bottom: 0.35rem;
+}
+.countdown-timer {
+	display: inline-flex;
+	justify-content: center;
+	align-items: flex-end;
+	gap: 0.15rem;
+	background: var(--text-dark);
+	color: var(--bg-light);
+	padding: 0.5rem 0.85rem;
+	border-radius: 4px;
+}
+.countdown-unit {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-width: 30px;
+}
+.countdown-unit > span:first-child {
+	font-family: var(--font-display);
+	font-size: 1.75rem;
+	font-weight: 800;
+	color: var(--bg-light);
+	line-height: 1;
+}
+.countdown-unit small {
+	font-family: var(--font-body);
+	font-size: 9px;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: var(--bg-light);
+	opacity: 0.7;
+	margin-top: 0.15rem;
+}
+.countdown-sep {
+	font-family: var(--font-display);
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: var(--bg-light);
+	line-height: 1;
+	padding-bottom: 0.4rem;
+	opacity: 0.8;
 }
 .pricing-card {
 	max-width: 680px;
@@ -1176,7 +1231,16 @@ footer {
 		--duration: 35s;
 	}
 	.testimonial-card {
-		width: 300px;
+		width: 260px;
+		padding: 1rem;
+	}
+	.quote-text {
+		font-size: 0.875rem;
+		line-height: 1.45;
+	}
+	.stars {
+		font-size: 0.8rem;
+		margin-bottom: 0.5rem;
 	}
 	.faq-row-header {
 		grid-template-columns: 50px 1fr 40px;
@@ -1325,12 +1389,16 @@ footer {
 		font-size: 0.9375rem;
 	}
 	.testimonial-card {
-		width: min(300px, 80vw);
-		padding: 1.25rem;
+		width: min(260px, 80vw);
+		padding: 1rem;
 	}
 	.quote-text {
-		font-size: 0.9375rem;
-		line-height: 1.6;
+		font-size: 0.85rem;
+		line-height: 1.45;
+	}
+	.author-name,
+	.course-label {
+		font-size: 9px;
 	}
 	.final-cta-inner h2 {
 		font-size: 2.25rem;

@@ -452,4 +452,116 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 		});
 	});
+
 });
+// Countdown: expires 5 days from today at 20:00 UK time (8pm)
+// Self-contained so it is not gated by the carousel DOMContentLoaded handler.
+// Re-syncs after bfcache restore and when the tab becomes visible again, so it
+// never gets stuck showing a stale value (the "works only after reload" bug).
+(function () {
+	function getLondonMidday(daysFromNow) {
+		// Build a UTC Date whose local clock-time reads 20:00 in Europe/London.
+		const tz = "Europe/London";
+		const now = new Date();
+		const dateParts = new Intl.DateTimeFormat("en-GB", {
+			timeZone: tz,
+			year: "numeric",
+			month: "2-digit",
+			day: "2-digit",
+		}).formatToParts(now);
+		const get = (type) => dateParts.find((p) => p.type === type).value;
+		const y = parseInt(get("year"), 10);
+		const m = parseInt(get("month"), 10);
+		const d = parseInt(get("day"), 10) + daysFromNow;
+
+		// 20:00 UTC is the anchor; add the London offset to make London wall-time 20:00
+		const utcAnchor = new Date(Date.UTC(y, m - 1, d, 20, 0, 0));
+		const offsetStr = new Intl.DateTimeFormat("en-US", {
+			timeZone: tz,
+			timeZoneName: "shortOffset",
+		})
+			.formatToParts(utcAnchor)
+			.find((p) => p.type === "timeZoneName").value;
+		const match = offsetStr.match(/GMT([+-])(\d{1,2})(?::(\d{2}))?/);
+		if (!match) return utcAnchor;
+		const sign = match[1] === "-" ? -1 : 1;
+		const hours = parseInt(match[2], 10);
+		const mins = match[3] ? parseInt(match[3], 10) : 0;
+		const offsetMs = sign * (hours * 3600000 + mins * 60000);
+		return new Date(utcAnchor.getTime() + offsetMs);
+	}
+
+	// Compute the deadline once so it stays stable across re-syncs/reloads.
+	const end = getLondonMidday(5);
+
+	function pad(n) {
+		return String(n).padStart(2, "0");
+	}
+
+	let timer = null;
+
+	function update() {
+		const els = {
+			days: document.getElementById("cd-days"),
+			hours: document.getElementById("cd-hours"),
+			minutes: document.getElementById("cd-minutes"),
+			seconds: document.getElementById("cd-seconds"),
+		};
+		if (!els.days || !els.hours || !els.minutes || !els.seconds) return;
+
+		const diff = end.getTime() - Date.now();
+		if (diff <= 0) {
+			els.days.textContent = "00";
+			els.hours.textContent = "00";
+			els.minutes.textContent = "00";
+			els.seconds.textContent = "00";
+			stop();
+			return;
+		}
+		const days = Math.floor(diff / 86400000);
+		const hours = Math.floor((diff % 86400000) / 3600000);
+		const minutes = Math.floor((diff % 3600000) / 60000);
+		const seconds = Math.floor((diff % 60000) / 1000);
+		els.days.textContent = pad(days);
+		els.hours.textContent = pad(hours);
+		els.minutes.textContent = pad(minutes);
+		els.seconds.textContent = pad(seconds);
+	}
+
+	function stop() {
+		if (timer) {
+			clearInterval(timer);
+			timer = null;
+		}
+	}
+
+	function start() {
+		stop();
+		// Bail out (and keep bailing) until the countdown markup actually exists.
+		if (!document.getElementById("cd-days")) return;
+		update();
+		timer = setInterval(update, 1000);
+	}
+
+	function onReady(fn) {
+		if (document.readyState === "loading") {
+			document.addEventListener("DOMContentLoaded", fn, { once: true });
+		} else {
+			fn();
+		}
+	}
+
+	onReady(start);
+
+	// Restart after the page is restored from back/forward cache (bfcache),
+	// where DOMContentLoaded does not fire again and timers are paused.
+	window.addEventListener("pageshow", (event) => {
+		if (event.persisted) start();
+	});
+
+	// Re-sync immediately when returning to a backgrounded tab, since the
+	// interval may have been throttled/frozen while hidden.
+	document.addEventListener("visibilitychange", () => {
+		if (!document.hidden) update();
+	});
+})();
