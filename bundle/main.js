@@ -56,11 +56,12 @@ document.addEventListener("DOMContentLoaded", () => {
 				"Learn proven techniques to build clean and optimized topology, saving you hours of frustration and improving all your characters!",
 		},
 		{
-			src: "../imgs/ps1_v2_banner.webp",
-			title: "PS1 Character Creation",
+			src: "../imgs/game_animation_header.webp",
+			title: "Game Ready Animation",
 			subtitle:
-				"Learn simple techniques to make PS1 characters in blender, saving you hours of frustration and learning real skills to improve your characters!",
+				"Learn the art of creating clean animations, ready for your game.",
 		},
+		
 		{
 			src: "../imgs/low_poly_banner.webp",
 			title: "Low Poly Character Creation",
@@ -68,11 +69,12 @@ document.addEventListener("DOMContentLoaded", () => {
 				"End the hours of confusion and learn solid workflows to create any character in Blender.",
 		},
 		{
-			src: "../imgs/game_animation_header.webp",
-			title: "Game Ready Animation",
+			src: "../imgs/ps1_v2_banner.webp",
+			title: "PS1 Character Creation",
 			subtitle:
-				"Learn the art of creating clean animations, ready for your game.",
+				"Learn simple techniques to make PS1 characters in blender, saving you hours of frustration and learning real skills to improve your characters!",
 		},
+
 	];
 
 	let ITEM_W = 900,
