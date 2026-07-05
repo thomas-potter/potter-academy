@@ -728,6 +728,7 @@ nav {
 .outcomes-section .section-header {
 	max-width: var(--max-w);
 	margin: 0 auto 3.5rem;
+	text-align: center;
 }
 .outcomes-section .section-header h2 {
 	font-family: var(--font-display);
