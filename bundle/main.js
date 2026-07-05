@@ -456,96 +456,14 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 
 });
-// Countdown: expires 5 days from today at 20:00 UK time (8pm)
-// Self-contained so it is not gated by the carousel DOMContentLoaded handler.
-// Re-syncs after bfcache restore and when the tab becomes visible again, so it
-// never gets stuck showing a stale value (the "works only after reload" bug).
+
+// == OUTCOMES TIMELINE SCROLL SYNC ===========================================
+// Self-contained so it is NOT gated by the carousel DOMContentLoaded handler,
+// and re-syncs after bfcache restore, tab visibility changes and font/image
+// load — so the line never gets stuck on a stale value (the "works only after
+// reload" bug).
 (function () {
-	function getLondonMidday(daysFromNow) {
-		// Build a UTC Date whose local clock-time reads 20:00 in Europe/London.
-		const tz = "Europe/London";
-		const now = new Date();
-		const dateParts = new Intl.DateTimeFormat("en-GB", {
-			timeZone: tz,
-			year: "numeric",
-			month: "2-digit",
-			day: "2-digit",
-		}).formatToParts(now);
-		const get = (type) => dateParts.find((p) => p.type === type).value;
-		const y = parseInt(get("year"), 10);
-		const m = parseInt(get("month"), 10);
-		const d = parseInt(get("day"), 10) + daysFromNow;
-
-		// 20:00 UTC is the anchor; add the London offset to make London wall-time 20:00
-		const utcAnchor = new Date(Date.UTC(y, m - 1, d, 20, 0, 0));
-		const offsetStr = new Intl.DateTimeFormat("en-US", {
-			timeZone: tz,
-			timeZoneName: "shortOffset",
-		})
-			.formatToParts(utcAnchor)
-			.find((p) => p.type === "timeZoneName").value;
-		const match = offsetStr.match(/GMT([+-])(\d{1,2})(?::(\d{2}))?/);
-		if (!match) return utcAnchor;
-		const sign = match[1] === "-" ? -1 : 1;
-		const hours = parseInt(match[2], 10);
-		const mins = match[3] ? parseInt(match[3], 10) : 0;
-		const offsetMs = sign * (hours * 3600000 + mins * 60000);
-		return new Date(utcAnchor.getTime() + offsetMs);
-	}
-
-	// Compute the deadline once so it stays stable across re-syncs/reloads.
-	const end = getLondonMidday(5);
-
-	function pad(n) {
-		return String(n).padStart(2, "0");
-	}
-
-	let timer = null;
-
-	function update() {
-		const els = {
-			days: document.getElementById("cd-days"),
-			hours: document.getElementById("cd-hours"),
-			minutes: document.getElementById("cd-minutes"),
-			seconds: document.getElementById("cd-seconds"),
-		};
-		if (!els.days || !els.hours || !els.minutes || !els.seconds) return;
-
-		const diff = end.getTime() - Date.now();
-		if (diff <= 0) {
-			els.days.textContent = "00";
-			els.hours.textContent = "00";
-			els.minutes.textContent = "00";
-			els.seconds.textContent = "00";
-			stop();
-			return;
-		}
-		const days = Math.floor(diff / 86400000);
-		const hours = Math.floor((diff % 86400000) / 3600000);
-		const minutes = Math.floor((diff % 3600000) / 60000);
-		const seconds = Math.floor((diff % 60000) / 1000);
-		els.days.textContent = pad(days);
-		els.hours.textContent = pad(hours);
-		els.minutes.textContent = pad(minutes);
-		els.seconds.textContent = pad(seconds);
-	}
-
-	function stop() {
-		if (timer) {
-			clearInterval(timer);
-			timer = null;
-		}
-	}
-
-	function start() {
-		stop();
-		// Bail out (and keep bailing) until the countdown markup actually exists.
-		if (!document.getElementById("cd-days")) return;
-		update();
-		timer = setInterval(update, 1000);
-	}
-
-	function onReady(fn) {
+	function ready(fn) {
 		if (document.readyState === "loading") {
 			document.addEventListener("DOMContentLoaded", fn, { once: true });
 		} else {
@@ -553,17 +471,90 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	}
 
-	onReady(start);
+	let outcomesLine, outcomesTimeline, outcomesModules;
 
-	// Restart after the page is restored from back/forward cache (bfcache),
-	// where DOMContentLoaded does not fire again and timers are paused.
+	function cacheEls() {
+		outcomesLine = document.getElementById("outcomes-line");
+		outcomesTimeline = document.getElementById("outcomes-timeline");
+		outcomesModules = document.querySelectorAll(".outcomes-section .module");
+	}
+
+	function updateOutcomesTimeline() {
+		if (!outcomesLine || !outcomesTimeline || outcomesModules.length === 0)
+			return;
+
+		const winH = window.innerHeight;
+		const timelineRect = outcomesTimeline.getBoundingClientRect();
+		const firstRect = outcomesModules[0].getBoundingClientRect();
+		const lastRect =
+			outcomesModules[outcomesModules.length - 1].getBoundingClientRect();
+
+		// -- PROGRESS (center-based)
+		const start = firstRect.top - winH * 0.5;
+		const end = lastRect.bottom - winH * 0.5;
+		const progress = Math.min(Math.max(-start / (end - start), 0), 1);
+
+		// update line
+		outcomesLine.style.setProperty("--scroll", progress * 100 + "%");
+
+		// -- CLIP LINE TO DOT BOUNDS
+		const firstDotY = firstRect.top + firstRect.height / 2;
+		const lastDotY = lastRect.top + lastRect.height / 2;
+		const timelineTop = timelineRect.top;
+		const topPercent =
+			((firstDotY - timelineTop) / timelineRect.height) * 100;
+		const bottomPercent =
+			((timelineRect.bottom - lastDotY) / timelineRect.height) * 100;
+
+		outcomesLine.style.clipPath = `polygon(0 ${topPercent}%, 100% ${topPercent}%, 100% ${100 - bottomPercent}%, 0 ${100 - bottomPercent}%)`;
+
+		// -- DOTS (sync exactly with progress, BOTH directions)
+		outcomesModules.forEach((mod, i) => {
+			const trigger = (i + 0.5) / outcomesModules.length;
+			if (progress >= trigger) {
+				mod.classList.add("active");
+			} else {
+				mod.classList.remove("active"); // fixes scrolling back up
+			}
+		});
+	}
+
+	let bound = false;
+	function init() {
+		cacheEls();
+		if (!outcomesLine) return; // no timeline on this page
+		if (!bound) {
+			bound = true;
+			window.addEventListener("scroll", updateOutcomesTimeline, {
+				passive: true,
+			});
+			window.addEventListener("resize", updateOutcomesTimeline);
+		}
+		updateOutcomesTimeline();
+	}
+
+	ready(init);
+
+	// Fonts/images can shift the module layout after DOMContentLoaded; recalc
+	// once they've settled so the line stays aligned with the dots on first load.
+	if (document.fonts && document.fonts.ready) {
+		document.fonts.ready.then(updateOutcomesTimeline);
+	}
+	window.addEventListener("load", () => updateOutcomesTimeline(), { once: true });
+
+	// Re-sync after the page is restored from back/forward cache (bfcache),
+	// where DOMContentLoaded does not fire again and the saved clip-path /
+	// scroll values may be stale for the current viewport.
 	window.addEventListener("pageshow", (event) => {
-		if (event.persisted) start();
+		if (event.persisted) {
+			cacheEls();
+			updateOutcomesTimeline();
+		}
 	});
 
-	// Re-sync immediately when returning to a backgrounded tab, since the
-	// interval may have been throttled/frozen while hidden.
+	// Re-sync when returning to a foregrounded tab — the viewport may have
+	// changed (e.g. mobile URL bar) while hidden.
 	document.addEventListener("visibilitychange", () => {
-		if (!document.hidden) update();
+		if (!document.hidden) updateOutcomesTimeline();
 	});
 })();
