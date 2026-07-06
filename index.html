@@ -3,278 +3,629 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Potter3D | Master 3D Character Creation in Blender</title>
-		<link rel="icon" href="/Favicon.webp" type="image/webp" />
+		<title>Potter Academy | Master 3D Character Creation in Blender</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@400;700&family=Fraunces:ital,wght@0,400..700;1,400..700&family=Syne:wght@400;700;800&display=swap"
 			rel="stylesheet"
 		/>
-		<link rel="stylesheet" href="/style.css" />
+		<link rel="stylesheet" href="/styles.css" />
+		<script src="/main.js" defer></script>
+		<link rel="preload" as="image" href="/imgs/low_poly_banner.webp" fetchpriority="high" />
+		<link rel="icon" href="/Favicon.webp" type="image/webp" />
 		<script>
-		!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-		posthog.init('phc_h3D9Ry7HM4D515gEUYsQzj3jpyxjfuCeXCCxn7hDhUU', {api_host: 'https://eu.i.posthog.com', persistence: 'memory', autocapture: true, capture_pageview: true});
-	</script>
-
+			!(function (t, e) {
+				var o, n, p, r;
+				e.__SV ||
+					((window.posthog = e),
+					(e._i = []),
+					(e.init = function (i, s, a) {
+						function g(t, e) {
+							var o = e.split(".");
+							(2 == o.length && ((t = t[o[0]]), (e = o[1])),
+								(t[e] = function () {
+									t.push(
+										[e].concat(
+											Array.prototype.slice.call(
+												arguments,
+												0,
+											),
+										),
+									);
+								}));
+						}
+						(((p = t.createElement("script")).type =
+							"text/javascript"),
+							(p.async = !0),
+							(p.src =
+								s.api_host.replace(
+									".i.posthog.com",
+									"-assets.i.posthog.com",
+								) + "/static/array.js"),
+							(r =
+								t.getElementsByTagName(
+									"script",
+								)[0]).parentNode.insertBefore(p, r));
+						var u = e;
+						for (
+							void 0 !== a ? (u = e[a] = []) : (a = "posthog"),
+								u.people = u.people || [],
+								u.toString = function (t) {
+									var e = "posthog";
+									return (
+										"posthog" !== a && (e += "." + a),
+										t || (e += " (stub)"),
+										e
+									);
+								},
+								u.people.toString = function () {
+									return u.toString(1) + ".people (stub)";
+								},
+								o =
+									"capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep onSessionId".split(
+										" ",
+									),
+								n = 0;
+							n < o.length;
+							n++
+						)
+							g(u, o[n]);
+						e._i.push([i, s, a]);
+					}),
+					(e.__SV = 1));
+			})(document, window.posthog || []);
+			posthog.init("phc_h3D9Ry7HM4D515gEUYsQzj3jpyxjfuCeXCCxn7hDhUU", {
+				api_host: "https://eu.i.posthog.com",
+				persistence: "memory",
+				autocapture: true,
+				capture_pageview: true,
+			});
+		</script>
 	</head>
-
 	<body>
 		<!-- NAV -->
-		<nav>
+		<nav id="navbar">
 			<div class="nav-inner">
-				<!-- FIX 1: Explicit event capture for navigation clicks -->
-				<a href="https://www.potteracademy.uk" class="nav-logo"
-					>POTTER<span>3D</span></a
-				>
-				<!-- FIX 1: Explicit event capture for navigation clicks -->
-				<a href="#courses" class="nav-cta">Explore</a>
+				<a href="/" class="nav-logo">POTTER<span>ACADEMY</span></a>
+				<div class="nav-links"></div>
+				<a href="#pricing" class="nav-cta">ENROLL NOW</a>
 			</div>
 		</nav>
 
 		<!-- HERO -->
-		<header class="section-dark">
-			<div class="hero-inner">
-				<h1 class="hero-h1">
-					MASTER
-					<em>3D Character Creation</em>
-					in Blender
+		<main class="hero section-dark">
+			<div class="hero-bg-layer layer-a" id="hero-layer-a"></div>
+			<div class="hero-bg-layer layer-b" id="hero-layer-b"></div>
+			<div class="hero-content" id="hero-content">
+				<h1 class="title-combined">
+					<span class="title-prefix">MASTER</span>
+					<span class="title-highlight" id="hero-dynamic-title"
+						>LOW POLY CHARACTER CREATION</span
+					>
+					<span class="title-suffix">IN BLENDER</span>
 				</h1>
-				<div class="hero-cta-group">
-					<!-- FIX 1 & 5: Explicit event capture for CTA clicks -->
-					<a href="#courses" class="btn-primary"
-						>EXPLORE COURSES &rarr;</a
-					>
-					<!-- FIX 1 & 5: Explicit event capture for CTA clicks -->
-					<a href="/free-guide" class="btn-secondary"
-						>GET FREE GUIDE</a
-					>
-				</div>
+				<p class="title-subtitle" id="hero-subtitle">
+					Everything You Need to Create Game-Ready Characters
+				</p>
 			</div>
-		</header>
 
-		<!-- COURSES SECTION -->
-		<section id="courses" class="section-light">
-			<div class="section-inner">
-				<div class="section-header">
-					<h2>COURSES</h2>
+			<!-- CAROUSEL -->
+			<section class="carousel-section section-dark">
+				<button class="carousel-nav prev" id="carousel-prev">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<path d="m15 18-6-6 6-6" />
+					</svg>
+				</button>
+				<div class="carousel-container" id="carousel">
+					<div class="carousel-track" id="carousel-track"></div>
+				</div>
+				<button class="carousel-nav next" id="carousel-next">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<path d="m9 18 6-6-6-6" />
+					</svg>
+				</button>
+			</section>
+
+			<div class="hero-footer">
+				<a href="#pricing" class="btn-primary">LEARN GAME ART TODAY!</a>
+				<p class="guarantee">30-Day Money-Back Guarantee</p>
+			</div>
+		</main>
+
+		<!-- PROBLEM / PITCH -->
+		<section class="pitch-section section-dark">
+			<div class="pitch-inner">
+				<h2 class="pitch-headline">
+					STOP WASTING HOURS WITH RANDOM TUTORIALS.
+					<br />Learn Workflows to Create <br /><em class="text-accent">ANYTHING YOU WANT</em>
+				</h2>
+				<div class="pitch-body">
+					<p>
+						Most Blender tutorials teach you which buttons to press,
+						but never <strong>why</strong> you're pressing them. You
+						end up with a finished model and zero understanding of
+						how to build your own. 
+					</p>
+					<p>
+						Thats why I created the	<strong>Potter Academy</strong>,
+						a collection of all my courses, dedicated to taking your art to the next level. 
+						You'll learn the exact workflows I use to create my game-ready characters, from start to finish.
+					</p>
+					<p>
+						These courses cover a range of different topics, from low poly and ps1 characters, 
+						to animation and game ready topology, with more coming soon. I made This so I can build
+						one place for you to take your art to the next level, 
+						without having to waste time doomscrolling through youtube tutorials.
+					</p>
+				</div>
+				<a href="#pricing" class="btn-primary">JOIN NOW</a>
+			</div>
+		</section>
+
+		<hr class="divider">
+
+		<!-- OUTCOMES - What you'll learn timeline -->
+		<section class="outcomes-section section-dark" id="outcomes">
+			<div class="section-header">
+				<h2>Become more confident with blender</h2>
+			</div>
+
+			<div class="timeline" id="outcomes-timeline">
+				<div class="timeline-line" id="outcomes-line"></div>
+
+				<div class="module" id="outcome1">
+					<div class="module-inner">
+						<div class="module-thumb">
+							<img
+								src="/imgs/low_poly_screenshot_process.webp"
+								alt="PS1 character workflow process screenshot"
+								loading="lazy"
+								decoding="async"
+							/>
+						</div>
+						<div class="module-text">
+<h3>Workflow-First Thinking</h3>
+							<p>
+								Stop memorizing button clicks. Understand the decisions
+								behind every step so you can adapt any tutorial to your
+								own art.
+							</p>
+						</div>
+					</div>
 				</div>
 
-				<div class="courses-grid">
-					<!-- FIX 1 & 5: Add data attributes for event tracking -->
-					<a
-						href="/low-poly-masterclass"
-						class="course-card featured"
-					>
-						<div class="course-thumb">
+				<div class="module" id="outcome2">
+					<div class="module-inner">
+						<div class="module-thumb">
 							<img
-								src="https://d1yei2z3i6k35z.cloudfront.net/9770196/69c28ceeb32411.64199487_maxresdefault3.jpg"
-								alt="Low Poly Character Creation"
+								src="/imgs/low_poly_screenshot_basemesh.webp"
+								alt="Stylized low poly character"
+								loading="lazy"
+								decoding="async"
 							/>
 						</div>
-						<div class="course-body">
-							<h3>MASTER LOW POLY CHARACTER CREATION</h3>
+						<div class="module-text">
+<h3>Create Any Character You Want</h3>
 							<p>
-								End the confusion with solid workflows to create
-								any character in Blender. Perfect for game
-								developers and artists new to 3D.
+								From PS1 to low poly, build a flexible
+								process that works for the characters you actually want
+								to make.
 							</p>
-							<div class="course-footer">
-								<div class="course-price">
-									<span class="price-main">$39</span>
-								</div>
-								<!-- FIX 1 & 5: Add data attributes for event tracking -->
-								<span class="btn-course"
-									>LEARN MORE &rarr;</span
-								>
-							</div>
 						</div>
-					</a>
+					</div>
+				</div>
 
-					<!-- FIX 1 & 5: Add data attributes for event tracking -->
-					<a href="/ps1-guide" class="course-card">
-						<div class="course-thumb">
+				<div class="module" id="outcome3">
+					<div class="module-inner">
+						<div class="module-thumb">
 							<img
-								src="https://d1yei2z3i6k35z.cloudfront.net/9770196/69ca5c634e8f51.54503174_ps1_v2thumbnail.jpg"
-								alt="PS1 Character Creation"
+								src="/imgs/ps1_screenshot_process.webp"
+								alt="Character topology process screenshot"
+								loading="lazy"
+								decoding="async"
 							/>
 						</div>
-						<div class="course-body">
-							<h3>CREATE PS1 CHARACTERS IN BLENDER V2</h3>
+						<div class="module-text">
+<h3>Clean Topology &amp; Rigging</h3>
 							<p>
-								Learn advanced techniques to create beautiful
-								PS1-style characters. 8+ hours of in-depth
-								training with direct feedback.
+								Learn edge-loop placement, deformation-friendly topology,
+								and rigs that hold up in real game engines.
 							</p>
-							<div class="course-footer">
-								<div class="course-price">
-									<span class="price-main">$39</span>
-								</div>
-								<!-- FIX 1 & 5: Add data attributes for event tracking -->
-								<span class="btn-course"
-									>LEARN MORE &rarr;</span
-								>
-							</div>
 						</div>
-					</a>
+					</div>
+				</div>
+
+				<div class="module" id="outcome4">
+					<div class="module-inner">
+						<div class="module-thumb">
+							<img
+								src="/imgs/ps1_screenshot_texturing.webp"
+								alt="Game animation course screenshot"
+								loading="lazy"
+								decoding="async"
+							/>
+						</div>
+						<div class="module-text">
+<h3>Animation Fundamentals</h3>
+							<p>
+								Go from static models to walk cycles, attacks, and
+								game-ready movement with animator-friendly workflows.
+							</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- YOUTUBE PLAYLISTS / RESOURCES -->
-		<section id="playlists" class="section-dark">
-			<div class="section-inner">
-				<div class="section-header">
-					<h2>FREE YOUTUBE CONTENT</h2>
-					<p>EXPLORE FULL PLAYLISTS TO DISCOVER MORE</p>
-				</div>
+		<hr class="divider">
 
-				<div class="playlists-grid">
-					<!-- FIX 1 & 5: Add data attributes for event tracking -->
-					<a
-						href="https://www.youtube.com/playlist?list=PLYAFctXyURilNnvAQjc1iptR_IKG2VjKU"
-						class="playlist-card"
-					>
-						<div
-							class="playlist-thumb"
-							style="
-								background: url(&quot;https://i.ytimg.com/vi/dl7geQJgxI8/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLA3DijqRNnRPQCw-o75j8PLujAvLA&quot;)
-									center/cover;
-							"
-						>
-							<span class="playlist-icon">&#9654;</span>
-						</div>
-						<h3>CREATE GAME READY CHARACTERS IN BLENDER!</h3>
-						<p>
-							Learn how to make Low poly 3D Characters Step by
-							Step for FREE using Blender!
-						</p>
-					</a>
+		<!-- COURSES - Square Grid -->
+		<section
+			class="courses-section section-dark"
+			id="courses"
+		>
+			<h2 class="section-title section-title-centered">Whats included in the academy?</h2>
+			<div class="courses-grid">
+				<article class="course-card">
+					<div class="course-thumb">
+						<img
+							src="/imgs/ps1_v2_banner.webp"
+							alt="PS1 Character Course V2 banner with retro-style character"
+							loading="lazy"
+							decoding="async"
+						/>
+						<span class="course-value">Worth $60</span>
+					</div>
+					<div class="course-info">
+						<span class="course-runtime">8+ hours</span>
+						<h3 class="course-title">PS1 Character Course V2</h3>
+						<ul class="course-list">
+							<li>Base mesh masterclass, covering topology and proportions</li>
+							<li>Modeling clothing, hair, weapons and accessories</li>
+							<li>Step by step UV unwrapping tutorial</li>
+							<li>Full Texturing guide, with extra tips and tricks</li>
+						</ul>
+					</div>
+				</article>
 
-					<!-- FIX 1 & 5: Add data attributes for event tracking -->
-					<a
-						href="https://www.youtube.com/playlist?list=PLYAFctXyURimOTnPDSD8XETijLhtIsw5r"
-						class="playlist-card"
-					>
-						<div
-							class="playlist-thumb"
-							style="
-								background: url(&quot;https://i.ytimg.com/vi/9WqFxptKZcQ/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDPr9g0MM6MsWuhrapkKVwv8eSs-A&quot;)
-									center/cover;
-							"
-						>
-							<span class="playlist-icon">&#9654;</span>
-						</div>
-						<h3>FIX YOUR GAME CHARACTERS!</h3>
-						<p></p>
-					</a>
+				<article class="course-card">
+					<div class="course-thumb">
+						<img
+							src="/imgs/low_poly_banner.webp"
+							alt="Low Poly Character Course banner with stylized model"
+							loading="lazy"
+							decoding="async"
+						/>
+						<span class="course-value">Worth $60</span>
+					</div>
+					<div class="course-info">
+						<span class="course-runtime">8+ hours</span>
+						<h3 class="course-title">Low Poly Character Course</h3>
+						<ul class="course-list">
+							<li>Develop character idea and concept</li>
+							<li>Create clean base mesh with proper topology</li>
+							<li>Model clothing, hair, and accessories with simple tools</li>
+							<li>Rigging and weight painting for game-ready animations</li>
+							<li>Free 5 rigged base mesh character pack</li>
+						</ul>
+					</div>
+				</article>
 
-					<!-- FIX 1 & 5: Add data attributes for event tracking -->
-					<a
-						href="https://www.youtube.com/playlist?list=PLYAFctXyURikwAgjzHPcqoTJiEwjoUn-S"
-						class="playlist-card"
-					>
-						<div
-							class="playlist-thumb"
-							style="
-								background: url(&quot;https://i.ytimg.com/vi/TBSfByl0kwM/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDFSvBL7jAzkhEtKw3dc4ZoAL64bg&quot;)
-									center/cover;
-							"
-						>
-							<span class="playlist-icon">&#9654;</span>
-						</div>
-						<h3>LEARN TO MAKE PS1 CHARACTERS IN BLENDER</h3>
-						<p>Tips and tricks to make ps1 characters in blender</p>
-					</a>
-				</div>
+				<article class="course-card">
+					<div class="course-thumb">
+						<img
+							src="/imgs/topology_banner.webp"
+							alt="Character Topology Guide banner with wireframe overlay"
+							loading="lazy"
+							decoding="async"
+						/>
+						<span class="course-value">Worth $20</span>
+					</div>
+					<div class="course-info">
+						<span class="course-runtime">2 hours</span>
+						<h3 class="course-title">Character Topology Guide</h3>
+						<ul class="course-list">
+							<li>Game-ready topology fundamentals</li>
+							<li>Where to place edge loops for clean deformation</li>
+							<li>Build a low poly base mesh from scratch</li>
+							<li>Feedback on your models &amp; watch other reviews</li>
+						</ul>
+					</div>
+				</article>
+				<article class="course-card">
+					<div class="course-thumb">
+						<img
+							src="/imgs/game_animation_header.webp"
+							alt="Game Animation Course banner with animated character"
+							loading="lazy"
+							decoding="async"
+						/>
+						<span class="course-value">Worth $40</span>
+						<span class="course-tag">Early Access</span>
+					</div>
+					<div class="course-info">
+						<span class="course-runtime">5+ hours</span>
+						<h3 class="course-title">Game Animation Guide</h3>
+						<ul class="course-list">
+							<li>Animation principles with practical examples and application</li>
+							<li>Step-by-step guides to animating walk and run cycles</li>
+							<li>Creating a unique attack animation from start to finish</li>
+							<li>Working directly with the included free rig</li>
+						</ul>
+					</div>
+				</article>
+				<article class="course-card">
+					<div class="course-thumb">
+						<img
+							src="https://d1yei2z3i6k35z.cloudfront.net/9770196/6a480efa48b6e9.71866907_riggingmasterclassthumbnail.jpg"
+							alt="Rigging Masterclass thumbnail showing a character rig"
+							loading="lazy"
+							decoding="async"
+						/>
+						<span class="course-value">Worth $20</span>
+						<span class="course-tag">Early Access</span>
+					</div>
+					<div class="course-info">
+						<span class="course-runtime">2+ hours</span>
+						<h3 class="course-title">Rigging Masterclass</h3>
+						<ul class="course-list">
+							<li>Rigging fundamentals from the ground up</li>
+							<li>Building clean, animator-friendly rigs</li>
+							<li>Weight painting for smooth deformation</li>
+							<li>Game-ready rigging workflow tips</li>
+						</ul>
+					</div>
+				</article>
+			</div>
+			<div class="courses-footnote">
+				<p>
+					Plus: every future course added to the bundle at no extra
+					cost.
+				</p>
+				<a href="#pricing" class="btn-primary courses-cta">JOIN NOW!</a>
 			</div>
 		</section>
+
+		<hr class="divider">
 
 		<!-- TESTIMONIALS -->
-		<section id="testimonials" class="section-dark">
-			<div class="section-inner">
-				<h2>STUDENT SUCCESS STORIES</h2>
-				<div class="testimonials-grid">
-					<div class="testimonial-card">
-						<p class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-						<p>
-							"I've tried courses by half a dozen other content
-							creators and they just never worked for me. But
-							Thomas' way of explaining just clicks with me. Not
-							only does he explain what he's doing, but WHY he's
-							doing it It's like he's teaching to people and not
-							just talking to his webcam."
-						</p>
-						<div class="testimonial-footer">
-							<span class="author">BECK</span>
-							<span class="course-tag">
-								Low Poly Character Course
-							</span>
-						</div>
+		<section class="testimonial-section section-dark">
+			<h2 class="section-title section-title-centered">
+				What Students have to say
+			</h2>
+			<div class="carousel-viewport" id="row1">
+				<div class="carousel-track row-1" id="track1"></div>
+			</div>
+			<div class="carousel-viewport" id="row2">
+				<div class="carousel-track row-2" id="track2"></div>
+			</div>
+		</section>
+
+		<hr class="divider">
+
+		<!-- 30-DAY GUARANTEE -->
+		<section class="guarantee-section section-dark">
+			<div class="guarantee-inner">
+				<h2 class="guarantee-title">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<path
+							d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+						/>
+						<path d="m9 12 2 2 4-4" />
+					</svg>
+					30-DAY MONEY-BACK GUARANTEE
+				</h2>
+				<p class="guarantee-lead">
+					Try out the potter academy risk free. Dive into every course, build
+					your first character, and see if the workflow clicks. If it
+					doesn't, just email me within 30 days for a complete refund.
+					No questions asked.
+				</p>
+			</div>
+		</section>
+
+
+		<!-- PRICING -->
+		<section
+			class="pricing-section section-dark"
+			id="pricing"
+		>
+			<div class="buy-card">
+				<h2>TAKE YOUR ART TO THE NEXT LEVEL</h2>
+				<div class="price-row">
+					<span class="price-main">$69</span>
+					<span class="price-was">$200</span>
+				</div>
+				<span class="price-save">Save $131</span>
+				<div class="features-grid">
+					<div class="feature-item"><span class="check">✓</span> PS1 Character Course V2</div>
+					<div class="feature-item"><span class="check">✓</span> Low Poly Character Guide</div>
+					<div class="feature-item"><span class="check">✓</span> Character Topology Guide</div>
+					<div class="feature-item"><span class="check">✓</span> Game Animation Course</div>
+					<div class="feature-item"><span class="check">✓</span> Rigging Masterclass</div>
+					<div class="feature-item"><span class="check">✓</span> 20+ hours of content</div>
+					<div class="feature-item"><span class="check">✓</span> All future courses - free</div>
+					<div class="feature-item"><span class="check">✓</span> 30 day money-back guarantee</div>
+				</div>
+				<a href="https://app.potteracademy.uk/checkout" class="js-checkout-link">
+					<button class="btn-buy">YES, GIVE ME ACCESS NOW</button>
+				</a>
+				<p class="buy-secure">Secure checkout · Powered by Creem.io</p>
+			</div>
+		</section>
+
+		<hr class="divider">
+
+		<!-- FAQ -->
+		<section class="faq-section section-dark" id="faq">
+			<h2 class="section-title section-title-centered">
+				Have a Question?
+			</h2>
+			<div class="faq-list">
+				<div class="faq-row">
+					<div class="faq-row-header">
+						<span class="row-index">01 ·</span>
+						<span class="faq-q"
+							>DO I NEED BLENDER EXPERIENCE TO START?</span
+						>
+						<span class="faq-toggle-icon">[+]</span>
 					</div>
-					<div class="testimonial-card">
-						<p class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+					<div class="faq-answer">
 						<p>
-							"This is the stuff! As a complete blender beginner
-							this course is great. I used it as a guide to model
-							a character off a different piece of artwork,
-							instead of following exactly along, but the course
-							was still great in teaching me the required skills.
-							Excellent pacing ensures that the skills you learn
-							one minute are being tested soon after and are
-							quickly cemented."
+							This course is not designed for absolute beginners,
+							the modules are a similar style to my youtube
+							videos, just more in depth and step by step through
+							the whole process. But if you're patient and a quick
+							learner, you're in the right place
 						</p>
-						<div class="testimonial-footer">
-							<span class="author">BENJAMIN BULL</span>
-							<span class="course-tag">
-								PS1 Character Course
-							</span>
-						</div>
-					</div>
-					<div class="testimonial-card">
-						<p class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-						<p>
-							"Great guide. It has both the theory and the
-							practice, and the explanations are easy to
-							understand even for someone like me who hasn't got a
-							degree in modeling or something like that. Good
-							topology was exactly what I was missing, and now I
-							have it! 🙌"
-						</p>
-						<div class="testimonial-footer">
-							<span class="author">ANONYMOUS</span>
-							<span class="course-tag">Topology Guide</span>
-						</div>
 					</div>
 				</div>
+				<div class="faq-row">
+					<div class="faq-row-header">
+						<span class="row-index">02 ·</span>
+						<span class="faq-q">WHAT VERSION OF BLENDER?</span>
+						<span class="faq-toggle-icon">[+]</span>
+					</div>
+					<div class="faq-answer">
+						<p>
+							Courses are recorded in Blender 4.x. The workflows
+							are version-agnostic and will work in any recent
+							release.
+							Game Animation Course is recorded in 5.2 Beta
+						</p>
+					</div>
+				</div>
+				<div class="faq-row">
+					<div class="faq-row-header">
+						<span class="row-index">03 ·</span>
+						<span class="faq-q"
+							>HOW IS THIS DIFFERENT FROM FREE YOUTUBE
+							TUTORIALS?</span
+						>
+						<span class="faq-toggle-icon">[+]</span>
+					</div>
+					<div class="faq-answer">
+						<p>
+							YouTube teaches steps. This teaches decision-making.
+							I explain why every choice is made so you can adapt
+							the workflow to your own art, not just copy mine.
+						</p>
+					</div>
+				</div>
+				<div class="faq-row">
+					<div class="faq-row-header">
+						<span class="row-index">04 ·</span>
+						<span class="faq-q">WHAT IF I'M NOT HAPPY?</span>
+						<span class="faq-toggle-icon">[+]</span>
+					</div>
+					<div class="faq-answer">
+						<p>
+							30-day money-back guarantee. No questions asked.
+							Email me and I'll refund every cent.
+						</p>
+					</div>
+				</div>
+				<div class="faq-row">
+					<div class="faq-row-header">
+						<span class="row-index">05 ·</span>
+						<span class="faq-q"
+							>WILL YOU ADD MORE COURSES? DO I NEED TO PAY
+							AGAIN?</span
+						>
+						<span class="faq-toggle-icon">[+]</span>
+					</div>
+					<div class="faq-answer">
+						<p>
+							No. Future courses are included at no extra cost.
+							One purchase, forever.
+						</p>
+					</div>
+				</div>
+				<div class="faq-row">
+					<div class="faq-row-header">
+						<span class="row-index">06 ·</span>
+						<span class="faq-q">WHAT IF I RUN INTO ISSUES?</span>
+						<span class="faq-toggle-icon">[+]</span>
+					</div>
+					<div class="faq-answer">
+						<p>
+							You won't be left on your own. If you run into any
+							issues hop in the discord or message me and I'll do
+							my best to help. You can send screenshots of your
+							work, ask questions, and get feedback directly from
+							me and other game devs.
+						</p>
+					</div>
+				</div>
+				<div class="faq-row">
+					<div class="faq-row-header">
+						<span class="row-index">07 ·</span>
+						<span class="faq-q">ARE THERE SUBTITLES?</span>
+						<span class="faq-toggle-icon">[+]</span>
+					</div>
+					<div class="faq-answer">
+						<p>
+							Currently there are machine generated english subtitles, with the posibility of translations coming in the future. If you have any specific needs regarding this, please reach out to me. 
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<hr class="divider">
+
+		<!-- FINAL CTA -->
+		<section class="final-cta section-dark">
+			<div class="final-cta-inner">
+				<h2>
+					TAKE YOUR GAME ART TO THE <em class="text-accent">NEXT LEVEL</em>
+				</h2>
+				<a href="#pricing" class="btn-primary btn-large"
+					>JOIN THE ACADEMY NOW</a
+				>
 			</div>
 		</section>
 
 		<!-- FOOTER -->
-		<footer class="section-dark">
-			<div class="footer-inner">
-				<div class="footer-links">
-					<a href="/terms">[TERMS &amp; PRIVACY POLICY]</a>
-					<a href="/contact">[CONTACT]</a>
-					<a href="https://app.potteracademy.uk/login">[LOGIN]</a>
-				</div>
-				<p class="footer-copy">© 2026 Thomas Potter</p>
+		<footer>
+			<div class="footer-links">
+				<a href="/terms">Terms & Privacy Policy</a>
+				<a href="mailto:contact@thomaspotter.uk">Contact</a>
+				<a href="https://app.potteracademy.uk/login">Login</a>
 			</div>
+			<p class="footer-copy">© 2026 Thomas Potter</p>
 		</footer>
 
-		<script>
-			// Scroll indicator animation
-			const scrollIndicator = document.querySelector(".scroll-indicator");
-			if (scrollIndicator) {
-				window.addEventListener("scroll", () => {
-					if (window.scrollY > 100) {
-						scrollIndicator.style.opacity = "0";
-						scrollIndicator.style.pointerEvents = "none";
-					} else {
-						scrollIndicator.style.opacity = "1";
-					}
-				});
-			}
-		</script>
 	</body>
 </html>

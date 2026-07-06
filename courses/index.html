@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Courses | Potter Academy</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@400;700&family=Fraunces:ital,wght@0,400..700;1,400..700&family=Syne:wght@400;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="/styles.css" />
+		<script src="/main.js" defer></script>
+		<link rel="icon" href="/Favicon.webp" type="image/webp" />
+		<script>
+			!(function (t, e) {
+				var o, n, p, r;
+				e.__SV ||
+					((window.posthog = e),
+					(e._i = []),
+					(e.init = function (i, s, a) {
+						function g(t, e) {
+							var o = e.split(".");
+							(2 == o.length && ((t = t[o[0]]), (e = o[1])),
+								(t[e] = function () {
+									t.push(
+										[e].concat(
+											Array.prototype.slice.call(
+												arguments,
+												0,
+											),
+										),
+									);
+								}));
+						}
+						(((p = t.createElement("script")).type =
+							"text/javascript"),
+							(p.async = !0),
+							(p.src =
+								s.api_host.replace(
+									".i.posthog.com",
+									"-assets.i.posthog.com",
+								) + "/static/array.js"),
+							(r =
+								t.getElementsByTagName(
+									"script",
+								)[0]).parentNode.insertBefore(p, r));
+						var u = e;
+						for (
+							void 0 !== a ? (u = e[a] = []) : (a = "posthog"),
+								u.people = u.people || [],
+								u.toString = function (t) {
+									var e = "posthog";
+									return (
+										"posthog" !== a && (e += "." + a),
+										t || (e += " (stub)"),
+										e
+									);
+								},
+								u.people.toString = function () {
+									return u.toString(1) + ".people (stub)";
+								},
+								o =
+								"capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getActiveMatchingFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep onSessionId".split(
+									" ",
+								),
+								n = 0;
+							n < o.length;
+							n++
+						)
+							g(u, o[n]);
+						e._i.push([i, s, a]);
+					}),
+					(e.__SV = 1));
+			})(document, window.posthog || []);
+			posthog.init("phc_h3D9Ry7HM4D515gEUYsQzj3jpyxjfuCeXCCxn7hDhUU", {
+				api_host: "https://eu.i.posthog.com",
+				persistence: "memory",
+				autocapture: true,
+				capture_pageview: true,
+			});
+		</script>
+	</head>
+	<body>
+		<!-- NAV -->
+		<nav id="navbar">
+			<div class="nav-inner">
+				<a href="/" class="nav-logo">POTTER<span>ACADEMY</span></a>
+				<a href="/bundle#pricing" class="nav-cta">ENROLL NOW</a>
+			</div>
+		</nav>
+
+		<!-- HEADER -->
+		<main class="section-dark" style="padding-top: 10rem;">
+			<div class="section-inner">
+				<div class="section-header">
+					<h2 class="section-title section-title-centered">PICK A COURSE</h2>
+					<p style="font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-light); opacity: 0.7; text-align: center; margin-top: 1rem;">
+						Buy any course on its own, or upgrade to the full Academy
+					</p>
+				</div>
+			</div>
+		</main>
+
+		<!-- COURSES -->
+		<section class="courses-section section-dark" id="courses">
+			<div class="courses-grid">
+				<a href="/ps1-guide" class="course-card">
+					<div class="course-thumb">
+						<img
+							src="/imgs/ps1_v2_banner.webp"
+							alt="PS1 Character Course V2 banner with retro-style character"
+							loading="lazy"
+							decoding="async"
+						/>
+						<span class="course-value">Worth $60</span>
+					</div>
+					<div class="course-info">
+						<span class="course-runtime">8+ hours</span>
+						<h3 class="course-title">PS1 Character Course V2</h3>
+						<ul class="course-list">
+							<li>Base mesh masterclass, covering topology and proportions</li>
+							<li>Modeling clothing, hair, weapons and accessories</li>
+							<li>Step by step UV unwrapping tutorial</li>
+							<li>Full Texturing guide, with extra tips and tricks</li>
+						</ul>
+						<span class="course-learn">LEARN MORE &rarr;</span>
+					</div>
+				</a>
+
+				<a href="/low-poly-masterclass" class="course-card">
+					<div class="course-thumb">
+						<img
+							src="/imgs/low_poly_banner.webp"
+							alt="Low Poly Character Course banner with stylized model"
+							loading="lazy"
+							decoding="async"
+						/>
+						<span class="course-value">Worth $60</span>
+					</div>
+					<div class="course-info">
+						<span class="course-runtime">8+ hours</span>
+						<h3 class="course-title">Low Poly Character Course</h3>
+						<ul class="course-list">
+							<li>Develop character idea and concept</li>
+							<li>Create clean base mesh with proper topology</li>
+							<li>Model clothing, hair, and accessories with simple tools</li>
+							<li>Rigging and weight painting for game-ready animations</li>
+							<li>Free 5 rigged base mesh character pack</li>
+						</ul>
+						<span class="course-learn">LEARN MORE &rarr;</span>
+					</div>
+				</a>
+
+				<a href="/topology-guide" class="course-card">
+					<div class="course-thumb">
+						<img
+							src="/imgs/topology_banner.webp"
+							alt="Character Topology Guide banner with wireframe overlay"
+							loading="lazy"
+							decoding="async"
+						/>
+						<span class="course-value">Worth $20</span>
+					</div>
+					<div class="course-info">
+						<span class="course-runtime">2 hours</span>
+						<h3 class="course-title">Character Topology Guide</h3>
+						<ul class="course-list">
+							<li>Game-ready topology fundamentals</li>
+							<li>Where to place edge loops for clean deformation</li>
+							<li>Build a low poly base mesh from scratch</li>
+							<li>Feedback on your models &amp; watch other reviews</li>
+						</ul>
+						<span class="course-learn">LEARN MORE &rarr;</span>
+					</div>
+				</a>
+
+				<a href="/animation-guide" class="course-card">
+					<div class="course-thumb">
+						<img
+							src="/imgs/game_animation_header.webp"
+							alt="Game Animation Course banner with animated character"
+							loading="lazy"
+							decoding="async"
+						/>
+						<span class="course-value">Worth $40</span>
+					</div>
+					<div class="course-info">
+						<span class="course-runtime">5+ hours</span>
+						<h3 class="course-title">Game Animation Guide</h3>
+						<ul class="course-list">
+							<li>Animation principles with practical examples and application</li>
+							<li>Step-by-step guides to animating walk and run cycles</li>
+							<li>Creating a unique attack animation from start to finish</li>
+							<li>Working directly with the included free rig</li>
+						</ul>
+						<span class="course-learn">LEARN MORE &rarr;</span>
+					</div>
+				</a>
+
+				<a href="/rigging-guide" class="course-card">
+					<div class="course-thumb">
+						<img
+							src="https://d1yei2z3i6k35z.cloudfront.net/9770196/6a480efa48b6e9.71866907_riggingmasterclassthumbnail.jpg"
+							alt="Rigging Masterclass thumbnail showing a character rig"
+							loading="lazy"
+							decoding="async"
+						/>
+						<span class="course-value">Worth $20</span>
+					</div>
+					<div class="course-info">
+						<span class="course-runtime">2+ hours</span>
+						<h3 class="course-title">Rigging Masterclass</h3>
+						<ul class="course-list">
+							<li>Rigging fundamentals from the ground up</li>
+							<li>Building clean, animator-friendly rigs</li>
+							<li>Weight painting for smooth deformation</li>
+							<li>Game-ready rigging workflow tips</li>
+						</ul>
+						<span class="course-learn">LEARN MORE &rarr;</span>
+					</div>
+				</a>
+			</div>
+
+			<div class="courses-footnote">
+				<p>
+					Or get every course — plus all future courses — with the
+					<strong>Potter Academy</strong> bundle.
+				</p>
+				<a href="/bundle#pricing" class="btn-primary courses-cta">SEE THE ACADEMY BUNDLE</a>
+			</div>
+		</section>
+
+		<!-- FOOTER -->
+		<footer>
+			<div class="footer-links">
+				<a href="/terms">Terms &amp; Privacy Policy</a>
+				<a href="mailto:contact@thomaspotter.uk">Contact</a>
+				<a href="https://app.potteracademy.uk/login">Login</a>
+			</div>
+			<p class="footer-copy">© 2026 Thomas Potter</p>
+		</footer>
+	</body>
+</html>
