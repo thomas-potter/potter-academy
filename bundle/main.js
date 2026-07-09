@@ -446,7 +446,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			if (!window.posthog) return;
 			posthog.capture("start_checkout", {
 				location: "bundle_pricing",
-				price: 69,
+				price: 79,
 				currency: "USD",
 				source: source,
 				bundle_distinct_id: bundleDistinctId,
