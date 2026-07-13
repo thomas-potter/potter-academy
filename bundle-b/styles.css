@@ -1081,6 +1081,7 @@ nav {
 }
 .faq-answer {
 	max-height: 0;
+	overflow: hidden;
 	align-items: center;
 	opacity: 0;
 	transition:

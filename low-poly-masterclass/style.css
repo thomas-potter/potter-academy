@@ -468,9 +468,9 @@ header {
 .module::before {
 	content: "";
 	position: absolute;
-	left: 13px;
+	left: 21px;
 	top: 50%;
-	transform: translateY(-50%);
+	transform: translate(-50%, -50%);
 	width: 15px;
 	height: 15px;
 	background: var(--bg-dark);

@@ -808,9 +808,9 @@ nav {
 .outcomes-section .module::before {
 	content: "";
 	position: absolute;
-	left: 13px;
+	left: 21px;
 	top: 50%;
-	transform: translateY(-50%);
+	transform: translate(-50%, -50%);
 	width: 15px;
 	height: 15px;
 	background: var(--bg-dark);
@@ -1527,6 +1527,7 @@ nav {
 }
 .faq-answer {
 	max-height: 0;
+	overflow: hidden;
 	align-items: center;
 	opacity: 0;
 	transition:
@@ -1666,11 +1667,11 @@ footer {
 	font-size: 1.05rem;
 	line-height: 1.6;
 	text-align: center;
-	max-width: 640px;
+	max-width: 800px;
 	opacity: 0.85;
 }
 .course-hero-sub.two-lines {
-	max-width: 420px;
+	max-width: 1000px;
 }
 .course-hero-media {
 	width: 100%;
@@ -1681,13 +1682,9 @@ footer {
 	overflow: hidden;
 }
 
-/* PS1 hero uses a wider, shorter image ratio */
-.course-hero-media.ps1-wide {
-	max-width: 1200px;
-	aspect-ratio: 16 / 8.5;
-}
 .course-hero-media.wide {
-	max-width: 1100px;
+	max-width: 1300px;
+	aspect-ratio: 16 / 7;
 }
 .course-hero-media img {
 	width: 100%;

@@ -45,6 +45,20 @@ document.addEventListener("DOMContentLoaded", () => {
 	const heroLayerB = document.getElementById("hero-layer-b");
 	const carouselContainer = document.getElementById("carousel");
 
+	// FAQ / accordion works on every page, even when the carousel is absent
+	function setupAccordion(headerSelector) {
+		document.querySelectorAll(headerSelector).forEach((header) => {
+			header.addEventListener("click", () => {
+				const row = header.parentElement;
+				row.parentElement.querySelectorAll(".active").forEach((el) => {
+					if (el !== row) el.classList.remove("active");
+				});
+				row.classList.toggle("active");
+			});
+		});
+	}
+	setupAccordion(".faq-row-header");
+
 	// Guard clauses for missing DOM elements
 	if (!track || !carouselContainer) return;
 
@@ -365,20 +379,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	buildTrack(document.getElementById("track1"), row1Cards, 60);
 	buildTrack(document.getElementById("track2"), row2Cards, 60);
-
-	// Shared accordion logic for FAQ and course rows
-	function setupAccordion(headerSelector) {
-		document.querySelectorAll(headerSelector).forEach((header) => {
-			header.addEventListener("click", () => {
-				const row = header.parentElement;
-				row.parentElement.querySelectorAll(".active").forEach((el) => {
-					if (el !== row) el.classList.remove("active");
-				});
-				row.classList.toggle("active");
-			});
-		});
-	}
-	setupAccordion(".faq-row-header");
 
 	// Clicking any course card scrolls to the pricing section
 	document.querySelectorAll(".course-card").forEach((card) => {
