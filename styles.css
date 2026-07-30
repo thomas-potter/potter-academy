@@ -873,6 +873,15 @@ nav {
 	opacity: 0.85;
 	line-height: 1.6;
 }
+.outcomes-section .module-label {
+	font-family: var(--font-body);
+	font-size: 0.75rem;
+	color: var(--green);
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	margin-bottom: 0.4rem;
+	font-weight: 700;
+}
 
 /* GUARANTEE */
 .guarantee-section {
@@ -2032,6 +2041,13 @@ footer {
 	.opt-price {
 		font-size: 3rem;
 	}
+	.outcomes-section .section-header h2 {
+		font-size: 2rem;
+	}
+	.outcomes-section .module-inner {
+		gap: 1.25rem;
+		padding: 1.25rem;
+	}
 }
 @media (max-width: 768px) {
 	.hero-bg-layer,
@@ -2170,6 +2186,35 @@ footer {
 	.bonus-thumb {
 		max-width: 100%;
 	}
+	.outcomes-section {
+		padding: 5rem 1rem;
+	}
+	.outcomes-section .timeline-line {
+		left: 12px;
+	}
+	.outcomes-section .module {
+		padding-left: 36px;
+	}
+	.outcomes-section .module::before {
+		left: 13px;
+		width: 12px;
+		height: 12px;
+	}
+	.outcomes-section .module-inner {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1rem;
+		padding: 1rem;
+	}
+	.outcomes-section .module-thumb {
+		width: 100%;
+	}
+	.outcomes-section .module-text h3 {
+		font-size: 1.15rem;
+	}
+	.outcomes-section .module-text p {
+		font-size: 0.85rem;
+	}
 }
 @media (max-width: 580px) {
 	.hero-footer {
@@ -2259,6 +2304,15 @@ footer {
 	}
 	.footer-links a {
 		font-size: 11px;
+	}
+	.outcomes-section .section-header h2 {
+		font-size: 1.5rem;
+	}
+	.outcomes-section .module-text h3 {
+		font-size: 1.05rem;
+	}
+	.outcomes-section .module-label {
+		font-size: 0.7rem;
 	}
 }
 @media (max-width: 380px) {
