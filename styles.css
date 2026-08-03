@@ -1276,17 +1276,17 @@ nav {
 	text-align: left;
 }
 .checkout-option.academy {
-	background: var(--green);
+	background: var(--bg-light);
 	border-color: var(--text-dark);
 	box-shadow: 8px 8px 0 var(--text-dark);
 	position: relative;
 }
 .checkout-option.academy .checkout-badge {
-	background: var(--text-dark);
-	color: var(--green);
+	background: var(--green);
+	color: var(--bg-dark);
 }
 .checkout-option.academy .opt-eyebrow {
-	color: var(--green-deep);
+	color: #3b4d40;
 }
 .checkout-option.academy .opt-title {
 	color: var(--text-dark);
@@ -1295,29 +1295,29 @@ nav {
 	color: var(--text-dark);
 }
 .checkout-option.academy .opt-was {
-	color: var(--green-deep);
+	color: #71717a;
 }
 .checkout-option.academy .opt-save {
-	background: var(--text-dark);
-	color: var(--green);
+	background: var(--green);
+	color: var(--bg-dark);
 }
 .checkout-option.academy .opt-features {
-	border-color: rgba(10, 10, 10, 0.18);
+	border-color: var(--border-light);
 }
 .checkout-option.academy .opt-features li {
-	border-color: rgba(10, 10, 10, 0.18);
-	color: var(--text-dark);
+	border-color: var(--border-light);
+	color: #1a221a;
 }
 .checkout-option.academy .opt-features .check {
-	color: var(--text-dark);
+	color: #166534;
 }
 .checkout-option.academy .btn-buy {
-	background: var(--text-dark);
-	color: var(--green);
+	background: var(--green);
+	color: var(--bg-dark);
 	border-color: var(--text-dark);
 }
 .checkout-option.academy .btn-buy:hover {
-	background: var(--bg-light);
+	background: #f7f8f7;
 	color: var(--text-dark);
 }
 .checkout-option .option-secure {
@@ -1330,7 +1330,7 @@ nav {
 	margin-top: 0.75rem;
 }
 .checkout-option.academy .option-secure {
-	color: var(--green-deep);
+	color: #4b5d4e;
 }
 .checkout-badge {
 	position: absolute;
